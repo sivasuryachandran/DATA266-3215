@@ -29,15 +29,16 @@ Cell 0 mounts Drive, finds the folder containing `diabetes.csv`, and `cd`s into 
 cell uses plain relative paths. If `diabetes.csv` is not found in Drive it falls back to Colab's
 upload widget.
 
-`neural_networks.ipynb` and `cuda.ipynb` are **identical combined notebooks** - both filenames are
-kept because the assignment lists both, but you only need to run one.
+`neural_networks.ipynb` holds the autoregressive-models answer and the PyTorch/TensorFlow
+experiments; `cuda.ipynb` holds the CUDA build, timing and profiling section. Run
+`neural_networks.ipynb` on any runtime and `cuda.ipynb` on a **T4 GPU** runtime.
 
 ## Contents
 
 | File | What it is |
 |------|------------|
-| `neural_networks.ipynb` | Combined notebook: autoregressive-models answer, diabetes preprocessing/EDA, PyTorch + TensorFlow baseline vs. HP_ID=5 models, 3-seed measurement, loss curves, and the CUDA section. |
-| `cuda.ipynb` | Identical copy of the above (assignment lists both filenames). |
+| `neural_networks.ipynb` | Autoregressive-models answer, diabetes preprocessing/EDA, PyTorch + TensorFlow baseline vs. HP_ID=5 models, 3-seed measurement, and loss curves. |
+| `cuda.ipynb` | CUDA section: GPU check, `nvcc` build, runs at N = 256/1024/4096, and profiler output. |
 | `matmul.cu` | Tiled CUDA matrix-multiplication kernel + CPU baseline + `cudaEvent` timing. Also embedded in the notebook via `%%writefile`. |
 | `diabetes.csv` | Dataset (759 rows, pre-scaled to ~[-1, 1], no header). |
 | `METRICS.md` | Required measurement tables. |
