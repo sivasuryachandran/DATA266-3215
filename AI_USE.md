@@ -1,4 +1,4 @@
-# AI-Use Appendix — Sivasurya Chandran
+# AI-Use Appendix - Sivasurya Chandran
 
 ## 1. Which parts did you use an assistant for, and which did you write yourself?
 
@@ -7,8 +7,8 @@ loading, the 70/15/15 split, the PyTorch `TorchFFN` model and training loop, the
 TensorFlow `Sequential` model, and the multi-seed measurement loop), the CUDA `matmul.cu` tiled
 kernel with its CPU baseline and `cudaEvent`-based timing harness, and the written answers in
 `cuda.ipynb`. I derived my personal parameters from my SID4 (3215; my SJSU ID is 019130215, and its
-last four digits `0215` have a leading zero that collapses to 3 digits, so I used 3215) — SEED, SLICE, HP_ID, CLS_A,
-CLS_B — and decided to use the pre-scaled `diabetes.csv` supplied for this course as-is rather than
+last four digits `0215` have a leading zero that collapses to 3 digits, so I used 3215) - SEED, SLICE, HP_ID, CLS_A,
+CLS_B - and decided to use the pre-scaled `diabetes.csv` supplied for this course as-is rather than
 substituting the raw Pima dataset.
 
 I used Google Gemini for two things. First, debugging: I ran everything in Google Colab because my
