@@ -44,7 +44,7 @@ experiments; `cuda.ipynb` holds the CUDA build, timing and profiling section. Ru
 | `METRICS.md` | Required measurement tables. |
 | `RUN_LOG.txt` | Console output from the run that produced the reported numbers. |
 | `AI_USE.md` | AI-use appendix (Section 0.5). |
-| `HW1_writeup.docx` | Document deliverable. |
+| `HW1_writeup.pdf` | Document deliverable. |
 | `figures/` | Correlation matrix, feature distributions, and per-framework loss curves. |
 
 ## Status
@@ -61,4 +61,4 @@ runtime, and all outputs are saved in `neural_networks.ipynb`.
   (`matmul_1024_ncu.ncu-rep`), but its reported kernel time is inflated ~300× by 9-pass counter
   replay and is flagged as such rather than used.
 
-`METRICS.md`, `RUN_LOG.txt`, and `HW1_writeup.docx` all contain the real measured numbers.
+`METRICS.md`, `RUN_LOG.txt`, and `HW1_writeup.pdf` all contain the real measured numbers.
