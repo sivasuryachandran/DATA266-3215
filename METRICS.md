@@ -1,4 +1,4 @@
-# METRICS — HW1
+# METRICS - HW1
 
 Personal parameters: SID4=3215, SEED=3215, SLICE=215, HP_ID=5 (Schedule-long), CLS_A=5, CLS_B=2
 
@@ -10,7 +10,7 @@ Baseline config (both frameworks): hidden layers `[64, 32]`, lr `0.001`, 30 epoc
 Modified config (HP_ID=5): hidden layers `[64, 32]`, lr `0.001`, **60 epochs**.
 Split: 70/15/15 train/val/test, `random_state=SEED`, identical split reused for every model.
 
-## 1. Test accuracy — mean ± std over 3 training seeds (SEED, SEED+1, SEED+2)
+## 1. Test accuracy - mean ± std over 3 training seeds (SEED, SEED+1, SEED+2)
 
 | Framework  | Model    | Seed 3215 | Seed 3216 | Seed 3217 | Mean   | Std    |
 |------------|----------|-----------|-----------|-----------|--------|--------|
@@ -32,10 +32,10 @@ across both operating systems and hardware.
 
 See `neural_networks.ipynb` Section 6 and `figures/loss_curves_pytorch.png` /
 `figures/loss_curves_tensorflow.png`. Train and validation loss track closely throughout in both
-frameworks — no divergence — indicating the modified model is still converging, not overfitting, at
+frameworks - no divergence - indicating the modified model is still converging, not overfitting, at
 60 epochs.
 
-## 3. CUDA matrix multiplication — CPU vs. GPU timing
+## 3. CUDA matrix multiplication - CPU vs. GPU timing
 
 Hardware: **NVIDIA Tesla T4** (compute capability sm_75, 15360 MiB), driver 580.82.07, CUDA 13.0;
 compiled with `nvcc` release 12.8 V12.8.93 at `-O3 -arch=sm_75`.
@@ -51,7 +51,7 @@ Timing: `cudaEvent` timers, with one warm-up kernel launch excluded from the mea
 ¹ The naive single-threaded O(N³) CPU baseline is skipped at N=4096 in `matmul.cu`
 (`ranCpu = N <= 2048`); at 4096 it would take roughly 234 s (≈64× the N=1024 time, since
 4096³/1024³ = 64).
-² Extrapolated from that estimate, **not measured** — reported as an estimate only.
+² Extrapolated from that estimate, **not measured** - reported as an estimate only.
 
 Correctness was verified at every size against the CPU result: max absolute difference 2.29e-05
 (N=256) and 9.16e-05 (N=1024), both printed as `(OK)`, consistent with float32 accumulation-order
@@ -81,14 +81,14 @@ also ran; its report is saved as `matmul_1024_ncu.ncu-rep`.
 ```
 
 This cleanly separates the two components: the kernel accounts for **78.80%** of GPU activity
-(11.586 ms over 2 launches — the warm-up plus the timed launch, ≈5.79 ms each, matching the
+(11.586 ms over 2 launches - the warm-up plus the timed launch, ≈5.79 ms each, matching the
 5.808 ms `cudaEvent` measurement in the table), while the memory copies account for the remaining
 **21.21%** (DtoH 1.5741 ms + HtoD 1.5432 ms = 3.117 ms of pure device-side copy time). Note that
 `cudaMalloc` dominates the *API-call* column at 182.89 ms; that is one-time CUDA context and
 allocation setup, not per-operation cost, and is excluded from the `cudaEvent` timings.
 
 **Caveat on the `ncu` run:** Nsight Compute reports a kernel time of 1714.722 ms for the same
-N=1024 kernel. That is *not* the real kernel time — `ncu` replays the kernel 9 times per launch to
+N=1024 kernel. That is *not* the real kernel time - `ncu` replays the kernel 9 times per launch to
 collect hardware counters (`Profiling "matMulTiled" - 0: ... - 9 passes`), inflating the measurement
 by roughly 300×. The un-instrumented `./matmul 1024` and `nvprof` figures (≈5.8 ms) are the correct
 ones and are what the table reports.
@@ -99,7 +99,7 @@ The GPU is already the better choice at the smallest size measured: at **N = 256
 GPU path (1.586 ms, including both transfers) beats the 23.236 ms CPU baseline by 14.65×, so the
 crossover lies somewhere below N = 256 in these measurements. The crossover is not at size zero
 because the GPU path pays costs the CPU path does not: at N=256, 1.473 ms of H2D+D2H PCIe transfer
-is **93% of the entire 1.586 ms end-to-end time**, while the kernel itself is only 0.113 ms — plus
+is **93% of the entire 1.586 ms end-to-end time**, while the kernel itself is only 0.113 ms - plus
 per-launch overhead and one-time context/`cudaMalloc` setup that `nvprof` measures at 182.89 ms.
 Those costs are fixed or grow only as O(N²) with data volume, whereas the compute they displace
 grows as O(N³), so at very small N the transfer and launch overhead dominates and the GPU cannot
