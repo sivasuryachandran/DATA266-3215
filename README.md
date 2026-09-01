@@ -1,6 +1,7 @@
 # DATA266 - HW1
 
 Author: sivasurya.chandran@sjsu.edu
+Siva Surya Chandran - 019130215
 
 ## Personal parameters (Section 0.1)
 
