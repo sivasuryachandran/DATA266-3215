@@ -1,4 +1,4 @@
-# DATA266 — HW1
+# DATA266 - HW1
 
 Author: sivasurya.chandran@sjsu.edu
 
@@ -29,7 +29,7 @@ Cell 0 mounts Drive, finds the folder containing `diabetes.csv`, and `cd`s into 
 cell uses plain relative paths. If `diabetes.csv` is not found in Drive it falls back to Colab's
 upload widget.
 
-`neural_networks.ipynb` and `cuda.ipynb` are **identical combined notebooks** — both filenames are
+`neural_networks.ipynb` and `cuda.ipynb` are **identical combined notebooks** - both filenames are
 kept because the assignment lists both, but you only need to run one.
 
 ## Contents
