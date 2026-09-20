@@ -13,6 +13,7 @@ One notebook, one small dataset.
 |:--|:--|
 | `HW4.ipynb` | The assignment - a decoder-only GPT I built from scratch in PyTorch |
 | `shakespeare.txt` | Training data - the Romeo and Juliet balcony scene (1,738 characters) |
+| `HW4.pdf` | The document (.pdf) that contains my findings.  |
 
 Also in here:
 
