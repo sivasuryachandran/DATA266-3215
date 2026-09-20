@@ -108,4 +108,4 @@ repetitive, high temperature = diverse but messy, top-k = somewhere in between),
 actual text would probably look a lot more like real writing instead of echoing the training
 data back at you.
 
-Full transcripts and the loss plot are in `Mini_GPT_Assignment.ipynb`, Parts 3 and 4.
+Full transcripts and the loss plot are in `HW4.ipynb`, Parts 3 and 4.

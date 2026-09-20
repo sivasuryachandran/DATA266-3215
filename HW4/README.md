@@ -11,7 +11,7 @@ One notebook, one small dataset.
 
 | File | Purpose |
 |:--|:--|
-| `Mini_GPT_Assignment.ipynb` | The assignment - a decoder-only GPT I built from scratch in PyTorch |
+| `HW4.ipynb` | The assignment - a decoder-only GPT I built from scratch in PyTorch |
 | `shakespeare.txt` | Training data - the Romeo and Juliet balcony scene (1,738 characters) |
 | `Demo_4_Mini_GPT.ipynb` | The single-head demo we went over in class, which this builds on |
 
@@ -60,7 +60,7 @@ Just needs CPU, the model's small enough (822K params) that GPU isn't necessary.
 pip install torch numpy matplotlib
 ```
 
-Then run `Mini_GPT_Assignment.ipynb` from top to bottom. Seed is 42 everywhere, so rerunning
+Then run `HW4.ipynb` from top to bottom. Seed is 42 everywhere, so rerunning
 it should give you the same loss curve, and greedy decoding should give the exact same text
 every time.
 
