@@ -4,3 +4,11 @@ __pycache__/
 matmul
 *.nsys-rep
 *.sqlite
+.venv/
+venv/
+.DS_Store
+*.o
+*.exe
+a.out
+.claude/
+~$*

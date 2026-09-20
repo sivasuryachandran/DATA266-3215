@@ -1,0 +1,232 @@
+Run start (UTC): 2026-09-01T05:23:26Z
+Command: python scratch/build_all.py
+Environment: Windows 11, Python 3.11.0, torch 2.13.0+cpu, tensorflow-cpu 2.21.0 (CPU only; no NVIDIA GPU on this host)
+Personal parameters: SID4=3215 SEED=3215 SLICE=215 HP_ID=5 CLS_A=5 CLS_B=2
+
+--- console output ---
+SID4=3215 SEED=3215 SLICE=215 HP_ID=5 CLS_A=5 CLS_B=2
+Baseline config: {'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 30}
+Modified config (HP_ID=5): {'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 60}
+
+Shape: (759, 9)
+Missing values:
+ Pregnancies                 0
+Glucose                     0
+BloodPressure               0
+SkinThickness               0
+Insulin                     0
+BMI                         0
+DiabetesPedigreeFunction    0
+Age                         0
+Outcome                     0
+dtype: int64
+Outcome distribution:
+ Outcome
+1    496
+0    263
+Name: count, dtype: int64
+       Pregnancies     Glucose  ...         Age     Outcome
+count   759.000000  759.000000  ...  759.000000  759.000000
+mean     -0.407657    0.218563  ...   -0.516162    0.653491
+std       0.386260    0.306419  ...    0.400794    0.476171
+min      -0.882353   -0.557789  ...   -0.966667    0.000000
+25%      -0.764706   -0.005025  ...   -0.866667    0.000000
+50%      -0.529412    0.165829  ...   -0.633333    1.000000
+75%       0.000000    0.407035  ...   -0.233333    1.000000
+max       1.000000    1.000000  ...    1.000000    1.000000
+
+[8 rows x 9 columns]
+Saved correlation_matrix.png and feature_distributions.png
+
+Split sizes -> train:531 val:114 test:114
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788240158.662491   38256 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788240161.789213   38256 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+
+[pytorch/baseline] training seed=3215 config={'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 30}
+  test_acc=0.7632
+
+[pytorch/baseline] training seed=3216 config={'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 30}
+  test_acc=0.7544
+
+[pytorch/baseline] training seed=3217 config={'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 30}
+  test_acc=0.7105
+
+[pytorch/modified] training seed=3215 config={'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 60}
+  test_acc=0.7719
+
+[pytorch/modified] training seed=3216 config={'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 60}
+  test_acc=0.7719
+
+[pytorch/modified] training seed=3217 config={'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 60}
+  test_acc=0.7719
+
+[tensorflow/baseline] training seed=3215 config={'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 30}
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+  test_acc=0.7193
+
+[tensorflow/baseline] training seed=3216 config={'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 30}
+  test_acc=0.7544
+
+[tensorflow/baseline] training seed=3217 config={'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 30}
+  test_acc=0.7632
+
+[tensorflow/modified] training seed=3215 config={'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 60}
+  test_acc=0.7719
+
+[tensorflow/modified] training seed=3216 config={'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 60}
+  test_acc=0.7895
+
+[tensorflow/modified] training seed=3217 config={'hidden_layers': [64, 32], 'lr': 0.001, 'epochs': 60}
+  test_acc=0.7807
+
+
+=== Summary (mean +/- std test accuracy over 3 seeds) ===
+pytorch    baseline  accs=['0.7632', '0.7544', '0.7105'] mean=0.7427 std=0.0230
+pytorch    modified  accs=['0.7719', '0.7719', '0.7719'] mean=0.7719 std=0.0000
+tensorflow baseline  accs=['0.7193', '0.7544', '0.7632'] mean=0.7456 std=0.0189
+tensorflow modified  accs=['0.7719', '0.7895', '0.7807'] mean=0.7807 std=0.0072
+
+Saved loss curve figures.
+
+DONE.
+
+--- end of neural_networks.ipynb / PyTorch+TensorFlow run ---
+
+=== CUDA matmul.cu run (Google Colab, Tesla T4 GPU) ===
+Run timestamp (from nvidia-smi): Tue Sep  1 05:54:10 2026
+Environment: Google Colab, Ubuntu, Tesla T4 (sm_75, 15360 MiB), driver 580.82.07, CUDA 13.0
+Working directory: /content/drive/MyDrive/DATA266/data266-3215
+
+NOTE: The PyTorch/TensorFlow sections above were re-executed in this same Colab session and
+produced accuracies bit-identical to the local Windows CPU run recorded above (all 12 values
+matched exactly), confirming reproducibility across OS and hardware.
+
+$ nvidia-smi
+Tue Sep  1 05:54:10 2026
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.82.07              Driver Version: 580.82.07      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|=========================================+========================+======================|
+|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |
+| N/A   48C    P0             26W /   70W |     381MiB /  15360MiB |      0%      Default |
++-----------------------------------------+------------------------+----------------------+
+
+$ nvcc --version
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2025 NVIDIA Corporation
+Built on Fri_Feb_21_20:23:50_PST_2025
+Cuda compilation tools, release 12.8, V12.8.93
+Build cuda_12.8.r12.8/compiler.35583870_0
+
+$ # compute capability auto-detected from nvidia-smi
+Detected compute capability: sm_75
+
+$ nvcc -O3 -arch=sm_75 matmul.cu -o matmul
+-rwx------ 1 root root 1006696 Sep  1 05:54 matmul
+
+$ ./matmul 256
+Matrix size: 256 x 256 (TILE=16)
+CPU time:                23.236 ms
+Grid: (16, 16) blocks, Block: (16, 16) threads => 65536 threads total
+GPU H2D transfer:         1.209 ms
+GPU kernel time:          0.113 ms
+GPU D2H transfer:         0.264 ms
+GPU H2D+D2H total:        1.473 ms
+GPU end-to-end time:      1.586 ms
+Speedup (CPU / GPU kernel only):     206.28x
+Speedup (CPU / GPU end-to-end):       14.65x
+Max abs diff GPU vs CPU: 2.288818e-05 (OK)
+
+$ ./matmul 1024
+Matrix size: 1024 x 1024 (TILE=16)
+CPU time:              3663.505 ms
+Grid: (64, 64) blocks, Block: (16, 16) threads => 1048576 threads total
+GPU H2D transfer:         2.143 ms
+GPU kernel time:          5.808 ms
+GPU D2H transfer:         2.891 ms
+GPU H2D+D2H total:        5.034 ms
+GPU end-to-end time:     10.842 ms
+Speedup (CPU / GPU kernel only):     630.81x
+Speedup (CPU / GPU end-to-end):      337.90x
+Max abs diff GPU vs CPU: 9.155273e-05 (OK)
+
+$ ./matmul 4096
+Matrix size: 4096 x 4096 (TILE=16)
+CPU time:            skipped (N=4096 too large for naive single-thread CPU loop)
+Grid: (256, 256) blocks, Block: (16, 16) threads => 16777216 threads total
+GPU H2D transfer:        28.992 ms
+GPU kernel time:        196.829 ms
+GPU D2H transfer:        47.662 ms
+GPU H2D+D2H total:       76.655 ms
+GPU end-to-end time:    273.484 ms
+
+$ which nsys && nsys --version
+nsys not available in this image
+
+$ nsys profile -o matmul_1024_profile --stats=true ./matmul 1024
+/bin/bash: line 1: nsys: command not found
+nsys profiling unavailable - use the ncu/nvprof cells below
+--> Nsight Systems is not installed in the current Colab image. Fell back to nvprof (below),
+    which is the profiler reported in METRICS.md.
+
+$ nvprof ./matmul 1024
+Matrix size: 1024 x 1024 (TILE=16)
+CPU time:              3306.403 ms
+==5937== NVPROF is profiling process 5937, command: ./matmul 1024
+Grid: (64, 64) blocks, Block: (16, 16) threads => 1048576 threads total
+GPU H2D transfer:         2.041 ms
+GPU kernel time:          5.842 ms
+GPU D2H transfer:         2.911 ms
+GPU H2D+D2H total:        4.951 ms
+GPU end-to-end time:     10.794 ms
+Speedup (CPU / GPU kernel only):     565.93x
+Speedup (CPU / GPU end-to-end):      306.32x
+Max abs diff GPU vs CPU: 9.155273e-05 (OK)
+==5937== Profiling application: ./matmul 1024
+==5937== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   78.80%  11.586ms         2  5.7929ms  5.7892ms  5.7965ms  matMulTiled(float const *, float const *, float*, int)
+                   10.71%  1.5741ms         1  1.5741ms  1.5741ms  1.5741ms  [CUDA memcpy DtoH]
+                   10.50%  1.5432ms         2  771.61us  740.21us  803.02us  [CUDA memcpy HtoD]
+      API calls:   90.58%  182.89ms         3  60.962ms  59.553us  182.76ms  cudaMalloc
+                    2.87%  5.8001ms         2  2.9000ms  2.7600us  5.7973ms  cudaEventSynchronize
+                    2.87%  5.7913ms         1  5.7913ms  5.7913ms  5.7913ms  cudaDeviceSynchronize
+                    2.40%  4.8534ms         3  1.6178ms  969.02us  2.9039ms  cudaMemcpy
+                    0.79%  1.5986ms       114  14.022us      88ns  858.19us  cuDeviceGetAttribute
+                    0.26%  517.73us         3  172.58us  115.72us  203.56us  cudaFree
+                    0.12%  252.20us         2  126.10us  13.353us  238.84us  cudaLaunchKernel
+                    0.04%  88.122us         6  14.687us     405ns  82.377us  cudaEventCreate
+                    0.04%  78.140us         6  13.023us  3.1550us  36.227us  cudaEventRecord
+                    0.01%  11.561us         1  11.561us  11.561us  11.561us  cuDeviceGetName
+                    0.00%  8.2600us         6  1.3760us     515ns  5.2720us  cudaEventDestroy
+                    0.00%  8.1120us         3  2.7040us  2.1400us  3.6890us  cudaEventElapsedTime
+
+$ ncu --set basic -o matmul_1024_ncu ./matmul 1024
+Matrix size: 1024 x 1024 (TILE=16)
+CPU time:              3708.261 ms
+==PROF== Connected to process 5995 (/content/drive/MyDrive/DATA266/data266-3215/matmul)
+Grid: (64, 64) blocks, Block: (16, 16) threads => 1048576 threads total
+==PROF== Profiling "matMulTiled" - 0: 0%....50%....100% - 9 passes
+==PROF== Profiling "matMulTiled" - 1: 0%....50%....100% - 9 passes
+GPU H2D transfer:         2.886 ms
+GPU kernel time:       1714.722 ms
+GPU D2H transfer:         3.886 ms
+GPU H2D+D2H total:        6.772 ms
+GPU end-to-end time:   1721.494 ms
+Speedup (CPU / GPU kernel only):       2.16x
+Speedup (CPU / GPU end-to-end):        2.15x
+Max abs diff GPU vs CPU: 9.155273e-05 (OK)
+==PROF== Disconnected from process 5995
+==PROF== Report: /content/drive/MyDrive/DATA266/data266-3215/matmul_1024_ncu.ncu-rep
+
+--> WARNING: the 1714.722 ms "kernel time" above is instrumentation overhead, NOT real kernel
+    time. Nsight Compute replays the kernel 9 times per launch to collect hardware counters
+    ("9 passes" above), inflating the measurement by roughly 300x. The un-instrumented
+    ./matmul 1024 and nvprof runs (~5.8 ms) are the correct figures and are what METRICS.md
+    reports.
+
+--- end of CUDA run ---

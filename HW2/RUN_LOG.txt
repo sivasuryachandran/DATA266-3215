@@ -1,0 +1,326 @@
+HW2 RUN LOG
+Run date: 2026-09-06
+Global seed: 42 (all three notebooks)
+
+Environments used:
+  Parts 1 & 2 -- local: Windows 11, Python 3.11.0, gensim 4.4.0, numpy 2.4.6, pandas 2.3.3,
+                 langchain 1.4.0, langchain-community 0.4.2, chromadb 1.5.9,
+                 sentence-transformers 6.0.1, transformers 4.44.2, scikit-learn 1.8.0,
+                 matplotlib 3.10.8. CPU only (no NVIDIA GPU on this host).
+  Part 3      -- Google Colab, Tesla T4 GPU. Run on Colab rather than locally because every
+                 technique it measures (peak GPU memory, fp16 tensor cores, activation
+                 recomputation) requires a CUDA device; on CPU the section would be vacuous.
+
+Notebooks:
+  Part1_Word2Vec_IMDB.ipynb
+  Part2_RAG_LangChain.ipynb
+  Part3_Training_Optimizations.ipynb
+
+
+================================================================================
+PART 1 -- Word2Vec transfer learning on IMDB   (local, CPU)
+================================================================================
+
+--- console output ---
+gensim: 4.4.0
+numpy : 2.4.6
+
+loaded in 45.9s
+vocab size : 3,000,000
+dimensions : 300
+
+Nearest neighbours BEFORE fine-tuning (pretrained word2vec-google-news-300):
+                pre top1           pre top2            pre top3
+cast       casts (0.722)    casting (0.719)        Cast (0.664)
+score    scoring (0.720)     scores (0.660)      scored (0.638)
+plot       plots (0.762)       Plot (0.652)    plotting (0.633)
+screen   screens (0.773)   onscreen (0.612)  LCD_screen (0.560)
+review  reviewed (0.663)  reviewing (0.661)     reviews (0.638)
+
+reviews: 50,000
+tokenised 50,000 reviews in 25.0s
+total tokens: 10,974,387
+example     : ['rented', 'am', 'curious', 'yellow', 'from', 'my', 'video', 'store', 'because', ...]
+
+{'cast': (300,), 'score': (300,), 'plot': (300,), 'screen': (300,), 'review': (300,)}
+
+IMDB vocab: 39,156 words  (2.8s)
+seeded 32,066/39,156 words (81.9%) from word2vec-google-news-300
+7,090 IMDB-only words keep their random initialisation
+
+fine-tuned 5 epochs in 174.7s
+final cumulative training loss: 44928712.0
+
+Nearest neighbours AFTER fine-tuning:
+                post top1           post top2         post top3
+cast       actors (0.653)  supporting (0.645)  ensemble (0.593)
+score   morricone (0.675)       music (0.671)     ennio (0.665)
+plot    storyline (0.750)       story (0.711)  plotline (0.678)
+screen    screens (0.597)    onscreen (0.523)     stage (0.471)
+review    comment (0.660)     reviews (0.617)   nixflix (0.581)
+
+==============================================================================
+TOP-3 NEAREST NEIGHBOURS: PRETRAINED vs FINE-TUNED
+==============================================================================
+
+CAST
+   1.  pre : casts                    0.7219   |   post: actors                   0.6526
+   2.  pre : casting                  0.7188   |   post: supporting               0.6453
+   3.  pre : Cast                     0.6638   |   post: ensemble                 0.5925
+
+SCORE
+   1.  pre : scoring                  0.7197   |   post: morricone                0.6755
+   2.  pre : scores                   0.6596   |   post: music                    0.6713
+   3.  pre : scored                   0.6384   |   post: ennio                    0.6653
+
+PLOT
+   1.  pre : plots                    0.7625   |   post: storyline                0.7501
+   2.  pre : Plot                     0.6524   |   post: story                    0.7105
+   3.  pre : plotting                 0.6328   |   post: plotline                 0.6783
+
+SCREEN
+   1.  pre : screens                  0.7729   |   post: screens                  0.5974
+   2.  pre : onscreen                 0.6115   |   post: onscreen                 0.5235
+   3.  pre : LCD_screen               0.5599   |   post: stage                    0.4712
+
+REVIEW
+   1.  pre : reviewed                 0.6630   |   post: comment                  0.6599
+   2.  pre : reviewing                0.6610   |   post: reviews                  0.6174
+   3.  pre : reviews                  0.6380   |   post: nixflix                  0.5806
+
+VECTOR SHIFT (original vs fine-tuned)
+      word  cos(original, fine-tuned)  shift (1 - cos)  L2 distance
+1    score                     0.5299           0.4701       3.6714
+4   review                     0.5384           0.4616       3.4615
+2     plot                     0.5929           0.4071       2.8017
+0     cast                     0.6138           0.3862       2.7176
+3   screen                     0.6497           0.3503       2.6774
+
+MOST  shifted : 'score'   cos = 0.5299
+LEAST shifted : 'screen'  cos = 0.6497
+
+Focus word for the detailed t-SNE plot: score
+
+Saved: results/neighbors_before_after.csv
+       results/neighbors_long.csv
+       results/vector_shift.csv
+       results/imdb_finetuned_w2v.kv (+ .vectors.npy)
+       results/part1_summary.md
+
+--- end of Part 1 ---
+
+Note on setup: the legacy "imdb" dataset loader script is unsupported by recent versions of
+`datasets`, so the notebook loads "stanfordnlp/imdb" (the community parquet mirror) instead.
+IMDB review text contains literal <br /> tags, which are stripped by a regex before
+simple_preprocess -- otherwise "br" ends up as a high-frequency vocabulary item.
+
+
+================================================================================
+PART 2 -- RAG pipeline over movie Wikipedia pages   (local, CPU)
+================================================================================
+
+--- console output ---
+Running fully locally with free HuggingFace models -- no API key required.
+
+loaded 10 documents
+ - The Shawshank Redemption            20,000 chars
+ - Inception                           20,000 chars
+ - The Godfather                       20,000 chars
+ - Pulp Fiction                        20,000 chars
+ - The Dark Knight                     20,000 chars
+ - Forrest Gump                        20,000 chars
+ - The Matrix                          20,000 chars
+ - Interstellar (film)                 20,000 chars
+ - Parasite (2019 film)                20,000 chars
+ - Titanic (1997 film)                 20,000 chars
+
+10 documents -> 601 chunks (chunk_size=500, overlap=50)
+
+Forrest Gump                60
+Inception (film)            62
+Interstellar (film)         62
+Parasite (2019 film)        59
+Pulp Fiction                58
+The Dark Knight             62
+The Godfather               60
+The Matrix                  61
+The Shawshank Redemption    60
+Titanic (1997 film)         57
+Name: n_chunks, dtype: int64
+
+vector store built: 601 vectors
+Local LLM ready: google/flan-t5-base (CPU)
+pipeline ready: retriever -> PromptTemplate -> LLM -> StrOutputParser
+
+====================================================================================
+Q: What crime is Andy Dufresne convicted of in The Shawshank Redemption?
+  [1] (The Shawshank Redemption)  == Plot == In 1947, Portland, Maine, banker Andy Dufresne
+      arrives at Shawshank State Prison to serve two consecutive life sentences for murdering
+      his wife and her lover...
+  [2] (The Shawshank Redemption)  . While guards search for him, Andy poses as Randall
+      Stephens and withdraws over $370,000 of the laundered money...
+  [3] (The Shawshank Redemption)  . Just as Andy can be interpreted as a Christ-like figure...
+ANSWER: murdering his wife and her lover
+
+====================================================================================
+Q: What is the name of the spinning top object used in Inception?
+  [1] (Inception (film))  Inception is a 2010 science fiction heist film written and directed
+      by Christopher Nolan...
+  [2] (Inception (film))  . Cobb uses a top that spins indefinitely in a dream to verify that
+      he is in the real world...
+ANSWER: Cobb
+
+(full retrieved chunks for all 5 questions -> results/retrieved_chunks_v1.csv)
+
+Final answers (500/50):
+                                            question                            answer
+0  What crime is Andy Dufresne convicted of in Th...  murdering his wife and her lover
+1  What is the name of the spinning top object us...                              Cobb
+2                        Who directed The Godfather?              Francis Ford Coppola
+3  In Pulp Fiction, what do Vincent and Jules do ...                             crime
+4            Who plays the Joker in The Dark Knight?                            Ledger
+
+--- chunk size rerun: 1000/100 ---
+10 documents -> 330 chunks (chunk_size=1000, overlap=100)  [was 601 chunks at 500/50]
+
+Q: What crime is Andy Dufresne convicted of in The Shawshank Redemption?
+ANSWER: murdering his wife and her lover        (unchanged; top-1 chunk identical, 443 chars)
+
+Q: What is the name of the spinning top object used in Inception?
+  [1] (Inception (film))  Inception is a 2010 science fiction heist film...
+  [2] (Inception (film))  Inception's premiere was held in London on July 8, 2010; it was
+      released in both conventional and IMAX theaters... grossed $839 million worldwide...
+  [3] (Inception (film))  Nolan had been trying to work with Leonardo DiCaprio for years...
+ANSWER: I don't know                            (worse than 500/50; relevant sentence no
+                                                 longer in the retrieved set)
+
+--- retrieval evaluation ---
+                                            question       ground_truth_movie top3_contains_answer rank
+0  What crime is Andy Dufresne convicted of in Th... The Shawshank Redemption                  Yes    1
+1  What is the name of the spinning top object us...         Inception (film)                  Yes    1
+2                        Who directed The Godfather?            The Godfather                  Yes    1
+3  In Pulp Fiction, what do Vincent and Jules do ...             Pulp Fiction                   No    -
+4            Who plays the Joker in The Dark Knight?          The Dark Knight                  Yes    1
+
+Retrieval Success Rate = 4/5 = 80%
+
+Saved: results/answers_v1.csv
+       results/retrieved_chunks_v1.csv
+       results/retrieval_evaluation.csv
+       results/chunking_comparison.csv
+       results/rag_failures.csv
+       results/part2_summary.md
+
+--- end of Part 2 ---
+
+Notes / warnings seen during this run:
+  - The `wikipedia` package defaults its API_URL to http://, which Wikipedia now rejects with
+    403. Patched to https:// before importing WikipediaLoader.
+  - DeprecationWarning: `langchain-community` is being sunset. Non-fatal; WikipediaLoader
+    still works.
+  - "Token indices sequence length is longer than the specified maximum sequence length for
+    this model (604 > 512)" during the 1000/100 rerun. flan-t5-base has a 512-token limit and
+    three 1000-char chunks exceed it, so the tail of the context is truncated. This is part of
+    why the larger chunk size performed worse on the Inception question, not just a cosmetic
+    warning.
+  - The Yes/No retrieval column is generated by a keyword-hint match as a first pass; every
+    retrieved chunk was then read by hand against the ground-truth passage before the column
+    was accepted.
+
+
+================================================================================
+PART 3 -- Training-time optimization techniques   (Google Colab, Tesla T4)
+================================================================================
+
+--- console output ---
+CUDA available: True
+GPU: Tesla T4
+
+Shared config for every experiment: MLP 8 layers x 2048 hidden, in_dim=1024, batch=256,
+200 steps, SGD momentum=0.9, torch.manual_seed(0) reset before each run.
+
+--- 1. Tensor creation: CPU vs GPU ---
+[CPU] time=117.15s  final_loss=2.3028
+[GPU] time=3.60s  final_loss=2.3033  peak_mem=380.7 MB
+GPU speedup over CPU: 32.6x
+
+--- 2. Weight initialization ---
+[default (PyTorch)           ] time=3.05s  final_loss=2.3033  mean_last10=2.3025
+[Xavier uniform              ] time=3.10s  final_loss=2.2998  mean_last10=2.3028
+[large-normal (std=1.0, bad) ] time=2.67s  final_loss=nan  mean_last10=nan
+
+--- 3. Activation checkpointing ---
+model parameters alone :    120.1 MB
++ gradients + momentum :    360.4 MB  <- fixed floor, checkpointing can't touch this
+
+batch=  4096  no checkpointing :    838.1 MB    5.28s   (~57% of peak is activations)
+batch=  4096  checkpoint, 2 segments:    775.1 MB    7.21s   memory +7.5%  time +36.5%
+batch=  4096  checkpoint, 4 segments:    743.1 MB    7.35s   memory +11.3%  time +39.1%
+
+batch= 16384  no checkpointing :   1843.6 MB   21.58s   (~80% of peak is activations)
+batch= 16384  checkpoint, 2 segments:   1459.6 MB   31.06s   memory +20.8%  time +43.9%
+batch= 16384  checkpoint, 4 segments:   1459.6 MB   34.31s   memory +20.8%  time +59.0%
+
+==============================================================================
+Best result: batch=16384, 2 segments -> 20.8% less memory for +43.9% time.
+==============================================================================
+
+--- 4. Gradient accumulation ---
+[no accumulation]   micro_bs=256  time=4.02s  final_loss=2.3033  mem=622.0 MB
+[4x accumulation]   micro_bs=64  time=5.52s  final_loss=2.3025  mem=880.0 MB
+
+--- 5. Mixed precision ---
+[fp32]  time=3.98s  peak_mem=1102.5 MB  final_loss=2.3033
+
+/tmp/ipykernel_5821/1675026101.py:12: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is
+deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+
+[fp16 autocast+scaler]  time=2.17s  peak_mem=1224.7 MB  final_loss=2.3033
+
+mixed-precision speedup: 1.83x   memory reduction: -11.1%
+
+--- summary table ---
+                   technique                      variant   time_s  gpu_mem_mb  final_loss
+0            Tensor creation                          CPU  117.155         NaN      2.3028
+1            Tensor creation                          GPU    3.597       380.7      2.3033
+2                Weight init            default (PyTorch)    3.055       500.8      2.3033
+3                Weight init               Xavier uniform    3.098       500.8      2.2998
+4                Weight init  large-normal (std=1.0, bad)    2.667       500.8         NaN
+5   Activation checkpointing               off (bs=16384)   21.582      1843.6      2.3026
+6   Activation checkpointing         on (2 seg, bs=16384)   31.058      1459.6      2.3026
+7      Gradient accumulation     no accumulation (bs=256)    4.017       622.0      2.3033
+8      Gradient accumulation       4x accum (micro_bs=64)    5.519       880.0      2.3025
+9            Mixed precision                         fp32    3.976      1102.5      2.3033
+10           Mixed precision       fp16 (autocast+scaler)    2.174      1224.7      2.3033
+
+Saved: results/optimization_techniques_summary.csv
+       figures/ (loss curves, checkpointing sweep, summary bar charts)
+
+DONE.
+
+--- end of Part 3 ---
+
+Notes on this run:
+  - Activation checkpointing was originally measured at the shared batch size of 256 and
+    showed a 0.2% memory saving for 42.7% more time, i.e. no benefit. That result was an
+    artifact of the configuration, not the technique: at batch 256 the 360.4 MB fixed floor is
+    nearly the whole 380.7 MB peak, leaving almost no activation memory to reclaim. The
+    section was rewritten to sweep batch size and segment count, re-measuring the baseline at
+    each batch size. See AI_USE.md for the full write-up.
+  - Loss is unchanged to four decimals with checkpointing on vs off (2.3026), which is the
+    correctness check: recomputation is mathematically a no-op, so a loss change would mean
+    broken gradients.
+  - Gradient accumulation's peak memory came out HIGHER than the baseline (880.0 vs 622.0 MB),
+    the opposite of the expected direction. Logged as measured. At this model size the
+    activation saving from a 64- vs 256-example batch is only a few MB, so the number is
+    dominated by PyTorch caching-allocator fragmentation across the extra forward/backward
+    cycles rather than by the technique itself.
+  - Mixed precision also increased peak memory (+11.1%) while cutting time 1.83x -- the fp32
+    master weights and GradScaler state outweigh the fp16 activation saving at this size.
+  - The GradScaler FutureWarning is cosmetic; `torch.cuda.amp.GradScaler` still functions in
+    the installed torch version.
+  - The prose commentary cells in the notebook were drafted against an earlier execution of
+    the same experiments and cite slightly different wall-clock numbers (e.g. 98s/3.3s for the
+    CPU-vs-GPU comparison). The authoritative numbers are the executed cell outputs
+    reproduced above and carried into METRICS.md.

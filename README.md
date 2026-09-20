@@ -1,65 +1,15 @@
-# DATA266 - HW1
+# DATA 266
 
-Author: sivasurya.chandran@sjsu.edu
-Siva Surya Chandran - 019130215
+**Siva Surya Chandran**
+Email: sivasurya.chandran@sjsu.edu
+San José State University - DATA 266
 
-## Personal parameters (Section 0.1)
+Homework for this course, one folder per assignment. Each folder has its own README with the
+actual writeup.
 
-| SID4 | SEED | SLICE | HP_ID | CLS_A | CLS_B |
-|------|------|-------|-------|-------|-------|
-| 3215 | 3215 | 215   | 5     | 5     | 2     |
-
-**Note on SID4.** My SJSU ID is 019130215, so the last four digits are `0215`. Taken literally that
-has a leading zero, which collapses to the 3-digit number 215 when used as a number and makes SID4
-ambiguous with SLICE. I used **3215** instead - the last four digits with the preceding digit `3`
-in place of the leading zero - so that SID4 is a genuine 4-digit value and SEED/SLICE stay distinct.
-All parameters in this repo are derived from SID4 = 3215.
-
-HP_ID = 5 -> **Schedule-long** -> hidden layers `[64, 32]`, learning rate `0.001`, **60 epochs**
-(baseline is the same architecture and learning rate at 30 epochs). CLS_A/CLS_B are derived per the
-standing requirements but are not referenced by any HW1 task.
-
-## How to run on Google Colab
-
-1. Copy this whole folder into your Google Drive (anywhere under `MyDrive`).
-2. Open `neural_networks.ipynb` in Colab (right-click -> Open with -> Google Colaboratory).
-3. `Runtime` -> `Change runtime type` -> **Hardware accelerator: T4 GPU**.
-4. `Runtime` -> `Run all`.
-
-Cell 0 mounts Drive, finds the folder containing `diabetes.csv`, and `cd`s into it, so every later
-cell uses plain relative paths. If `diabetes.csv` is not found in Drive it falls back to Colab's
-upload widget.
-
-`neural_networks.ipynb` holds the autoregressive-models answer and the PyTorch/TensorFlow
-experiments; `cuda.ipynb` holds the CUDA build, timing and profiling section. Run
-`neural_networks.ipynb` on any runtime and `cuda.ipynb` on a **T4 GPU** runtime.
-
-## Contents
-
-| File | What it is |
-|------|------------|
-| `neural_networks.ipynb` | Autoregressive-models answer, diabetes preprocessing/EDA, PyTorch + TensorFlow baseline vs. HP_ID=5 models, 3-seed measurement, and loss curves. |
-| `cuda.ipynb` | CUDA section: GPU check, `nvcc` build, runs at N = 256/1024/4096, and profiler output. |
-| `matmul.cu` | Tiled CUDA matrix-multiplication kernel + CPU baseline + `cudaEvent` timing. Also embedded in the notebook via `%%writefile`. |
-| `diabetes.csv` | Dataset (759 rows, pre-scaled to ~[-1, 1], no header). |
-| `METRICS.md` | Required measurement tables. |
-| `RUN_LOG.txt` | Console output from the run that produced the reported numbers. |
-| `AI_USE.md` | AI-use appendix (Section 0.5). |
-| `HW1_writeup.pdf` | Document deliverable. |
-| `figures/` | Correlation matrix, feature distributions, and per-framework loss curves. |
-
-## Status
-
-**Complete.** The whole notebook has been executed end to end on Google Colab with a Tesla T4
-runtime, and all outputs are saved in `neural_networks.ipynb`.
-
-- PyTorch/TensorFlow sections were run both locally (Windows, CPU) and on Colab; all 12 reported
-  accuracies are bit-identical across the two environments.
-- The CUDA section built with `nvcc` at `-arch=sm_75` and ran at N = 256, 1024, and 4096, with
-  correctness verified against the CPU baseline (`max abs diff` ~1e-5, printed `(OK)`).
-- Profiler: **`nvprof`**. Nsight Systems (`nsys`) is not installed in the current Colab image;
-  `nvprof` ran successfully and supplied the kernel-vs-transfer breakdown. Nsight Compute also ran
-  (`matmul_1024_ncu.ncu-rep`), but its reported kernel time is inflated ~300× by 9-pass counter
-  replay and is flagged as such rather than used.
-
-`METRICS.md`, `RUN_LOG.txt`, and `HW1_writeup.pdf` all contain the real measured numbers.
+| Folder | Assignment |
+|:--|:--|
+| [`HW1/`](HW1/) | Neural networks (PyTorch/TensorFlow) + CUDA matmul |
+| [`HW2/`](HW2/) | Word2Vec transfer learning, RAG pipeline, training-time optimizations |
+| [`HW3/`](HW3/) | Prompt engineering + self-attention from scratch |
+| [`HW4/`](HW4/) | Mini GPT from scratch (multi-head attention, decoding strategies) |

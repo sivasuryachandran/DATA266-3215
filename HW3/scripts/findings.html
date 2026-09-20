@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HW3 Findings</title>
+<style>
+  body { font-family: Georgia, 'Times New Roman', serif; max-width: 800px; margin: 40px auto; color: #1a1a1a; line-height: 1.5; }
+  h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 6px; }
+  h2 { font-size: 18px; margin-top: 28px; border-bottom: 1px solid #999; padding-bottom: 4px; }
+  h3 { font-size: 15px; margin-top: 20px; }
+  code, pre { font-family: Consolas, monospace; background: #f4f4f4; padding: 2px 4px; border-radius: 3px; font-size: 12.5px; }
+  pre { padding: 10px; overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; }
+  th { background: #eee; }
+  .params { background: #f0f4f8; border: 1px solid #cdd; padding: 10px 14px; border-radius: 4px; font-size: 14px; }
+  img { max-width: 100%; border: 1px solid #ddd; margin: 10px 0; }
+  .figrow { display: flex; gap: 10px; flex-wrap: wrap; }
+  .figrow img { max-width: 48%; }
+  ul { margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<h1>DATA 266 - Homework 3 - Findings Report</h1>
+
+<div class="params">
+<b>Personal Parameters (Section 0.1):</b><br>
+SID4 = 0215 &nbsp;|&nbsp; SEED = 215 &nbsp;|&nbsp; SLICE = 215 &nbsp;|&nbsp; HP_ID = 5 &nbsp;|&nbsp; CLS_A = 5 &nbsp;|&nbsp; CLS_B = 9
+</div>
+
+<h2>Part A - Prompt Engineering Techniques (LangChain)</h2>
+
+<p>I tried six prompt engineering techniques - Zero-Shot, Few-Shot, Chain-of-Thought (CoT),
+Zero-Shot CoT, Meta-Prompting, and Tree of Thoughts (ToT) - in LangChain, with two examples of my
+own for each one (a train speed word problem, and a syllogism-style logic question). Everything
+runs against a locally hosted <code>llama3.2</code> model through <code>langchain-ollama</code>,
+since I didn't have an Anthropic API key available in this environment. The assignment wanted real
+code calling prompts rather than chat screenshots, so this fits that either way. All the prompts,
+raw responses, and code are in <code>hw3_part_a_prompt_engineering.ipynb</code>.</p>
+
+<h3>Results summary</h3>
+<table>
+<tr><th>Technique</th><th>Example 1 (avg speed; correct = 52.5 mph)</th><th>Example 2 (syllogism; correct = "Cannot be determined")</th><th>Correct?</th></tr>
+<tr><td>Zero-Shot</td><td>90 (wrong)</td><td>No</td><td>&#10007; / ~&#10003;</td></tr>
+<tr><td>Few-Shot</td><td>52.5</td><td>Cannot be determined</td><td>&#10003; / &#10003;</td></tr>
+<tr><td>Chain-of-Thought</td><td>52.5</td><td>Cannot be determined</td><td>&#10003; / &#10003;</td></tr>
+<tr><td>Zero-Shot CoT</td><td>52.5</td><td>"Maria must be an engineer" (wrong)</td><td>&#10003; / &#10007;</td></tr>
+<tr><td>Meta-Prompting</td><td>52.5</td><td>No, not necessarily an engineer</td><td>&#10003; / &#10003;</td></tr>
+<tr><td>Tree of Thoughts</td><td>52.5</td><td>Not necessarily an engineer</td><td>&#10003; / &#10003;</td></tr>
+</table>
+
+<h3>What I noticed</h3>
+<p><b>Zero-Shot</b> just got the math wrong - it answered "90" with no work shown, so there's no
+way to know where that came from. Its "No" on the logic question was basically right, though,
+even without any help. <b>Few-Shot</b> fixed the math right away and gave the clean "Cannot be
+determined" answer on the logic question too - even though the examples I gave it didn't show any
+reasoning, just problem-and-answer pairs, it still seemed to shift into a more careful mode.
+<b>Chain-of-Thought</b> (few-shot, but with the reasoning shown in the examples) also got both
+right, and its answers followed my examples' structure the most closely out of all six.</p>
+
+<p><b>Zero-Shot CoT</b> ("let's think step by step") is the interesting failure here: it got the
+math right, but walked itself straight into the classic affirming-the-consequent mistake on the
+logic question, concluding "Maria must be an engineer." It laid out clean, confident-sounding
+steps the whole way there - which is really the point: telling a model to think step by step
+doesn't guarantee the steps are actually valid, just that they sound like reasoning.
+<b>Meta-Prompting</b> was the only technique that explicitly called out the fallacy by name
+("Affirming the Consequent error") before answering, and it got both questions right, though its
+answers were the longest of the bunch. <b>Tree of Thoughts</b> (three branches - one direct, one
+skeptical, one hunting for counterexamples - plus a judge call) also got both right, and it was
+the only technique where the branches actually disagreed with each other before getting resolved:
+one branch's shaky argument got overridden by the other two, which came up with real
+counterexamples, and the judge went with the stronger reasoning instead of just picking whatever
+sounded most confident.</p>
+
+<p><b>Overall</b>: the two mistakes I saw - zero-shot's wrong math and zero-shot-CoT's bad logic -
+both happened on the techniques that don't give the model anything to check itself against. Every
+technique that added a worked example, a named strategy, or multiple attempts plus a judge got
+both questions right. So it looks like having some kind of check built in matters more than which
+specific technique you pick - but just telling the model to reason step by step, on its own,
+doesn't guarantee the reasoning will actually hold up.</p>
+
+<h2>Part B - Self-Attention and Causal Masking from Scratch</h2>
+
+<p>I built a single-head scaled dot-product self-attention layer completely from scratch in
+PyTorch (Vaswani et al., 2017, Section 3.2) - just <code>nn.Embedding</code>,
+<code>nn.Linear</code>, matrix multiplication, softmax, and cross-entropy loss, no
+<code>nn.MultiheadAttention</code> or <code>nn.Transformer</code>. It runs on the assignment's
+fixed 5-sentence text (46 word-level tokens, 39 unique words - punctuation is dropped rather than
+kept as its own token). I trained the token/position
+embeddings and the Q/K/V projections together for 300 epochs (Adam, lr=1e-2), first with no
+masking at all (Part 1), then again from scratch with a lower-triangular causal mask applied at
+every step (Part 2).</p>
+
+<h3>Unmasked self-attention (Part 1)</h3>
+<img src="../figures/part1_unmasked_attention_heatmap.png" alt="Unmasked attention heatmap">
+<p>The trained attention matrix here is clearly not just noise - it's sparse and high-contrast
+instead of flat gray, which tells me the Q/K/V weights actually picked up real relationships
+between tokens during training, rather than sitting at their random starting values. You can see
+bright spots where specific tokens get a lot of attention from many different queries, instead of
+attention being spread evenly across all 46 tokens.</p>
+
+<h3>Causal (masked) self-attention (Part 2)</h3>
+<img src="../figures/part2_masked_attention_heatmap.png" alt="Masked attention heatmap">
+<p>With the causal mask applied the whole way through training, the heatmap comes out strictly
+lower-triangular - everything above the diagonal is exactly zero. I checked this two ways: visually
+in the plot, and with a check in the notebook confirming the attention mass on future positions is
+under <code>1e-6</code>. This is exactly what you want to see - proof that no token is looking
+ahead at something that hasn't "happened" yet, which is the whole point of causal masking.</p>
+
+<h3>Training loss comparison</h3>
+<div class="figrow">
+<img src="../figures/part1_training_loss.png" alt="Unmasked training loss">
+<img src="../figures/part2_training_loss_comparison.png" alt="Masked vs unmasked training loss">
+</div>
+<p>One thing that surprised me: the causal-masked model actually ends up with a <i>lower and much
+more stable</i> training loss than the unmasked model, not a higher or noisier one. The masked
+curve flattens out smoothly around 0.15 and stays there; the unmasked curve gets noticeably
+noisier later in training, with several visible spikes after epoch 150, ending up around 0.17. I
+expected the opposite going in, since the masked model has strictly less information to work with
+at each position. My best guess: with such a tiny dataset (only 46 tokens), the unmasked model can
+take a shortcut by peeking at future tokens that happen to line up with the answer, and chasing
+that shortcut seems to make its training less stable rather than more - it keeps finding slightly
+different ways to exploit that extra context as training goes on. The causal model doesn't have
+that option, so once it finds a good left-to-right representation there's less for it to keep
+readjusting. That said, this is a small enough setup that I wouldn't generalize this pattern beyond
+this specific run - it's easily a quirk of this tiny dataset rather than a general property of
+masked vs. unmasked attention.</p>
+
+<h2>AI Use Notes</h2>
+<p>See <code>AI_USE.md</code> for the full appendix. Short version: I originally wrote the
+discussion/findings sections of both notebooks before actually running the code, and that produced
+two real mistakes - I claimed the Tree-of-Thoughts branches disagreed with each other, when the
+first version actually produced three identical branches (turned out Ollama's seeding made repeat
+calls fully deterministic), and I predicted causal masking would raise the training loss, when the
+real curves showed the opposite for most of training. I caught both by actually running the
+notebooks end-to-end and reading the real outputs and plots, then fixed the code (giving each ToT
+branch its own persona so they'd genuinely differ) and rewrote the findings to match what actually
+happened instead of what I assumed would happen. Separately, an earlier draft of this report also
+stated the wrong token/vocabulary counts (47 tokens, 39 words) because the tokenizer at the time
+kept punctuation marks as their own tokens, which the notebook's actual output contradicted (51
+tokens, 40 vocabulary items with punctuation kept). Since the assignment specifically asks for
+word-level tokenization, the tokenizer was changed to drop punctuation entirely, and Part B was
+rerun - the correct, verified numbers are 46 tokens and 39 unique words, which is what's reported
+throughout this document now.</p>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+word,rank,neighbor_pre,cosine_pre,neighbor_post,cosine_post
+cast,1,casts,0.7219,actors,0.6526
+cast,2,casting,0.7188,supporting,0.6453
+cast,3,Cast,0.6638,ensemble,0.5925
+score,1,scoring,0.7197,morricone,0.6755
+score,2,scores,0.6596,music,0.6713
+score,3,scored,0.6384,ennio,0.6653
+plot,1,plots,0.7625,storyline,0.7501
+plot,2,Plot,0.6524,story,0.7105
+plot,3,plotting,0.6328,plotline,0.6783
+screen,1,screens,0.7729,screens,0.5974
+screen,2,onscreen,0.6115,onscreen,0.5235
+screen,3,LCD_screen,0.5599,stage,0.4712
+review,1,reviewed,0.663,comment,0.6599
+review,2,reviewing,0.661,reviews,0.6174
+review,3,reviews,0.638,nixflix,0.5806

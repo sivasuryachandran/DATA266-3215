@@ -1,0 +1,6 @@
+question,ground_truth_movie,ground_truth_passage,top3_contains_answer,rank_of_first_relevant_chunk
+What crime is Andy Dufresne convicted of in The Shawshank Redemption?,The Shawshank Redemption,"Andy Dufresne, a banker, is convicted of murdering his wife and her lover.",Yes,1
+What is the name of the spinning top object used in Inception?,Inception (film),"Cobb carries a spinning top, his totem, to test whether he is dreaming.",Yes,1
+Who directed The Godfather?,The Godfather,The Godfather was directed by Francis Ford Coppola.,Yes,1
+"In Pulp Fiction, what do Vincent and Jules do for a living?",Pulp Fiction,Vincent Vega and Jules Winnfield are hitmen working for crime boss Marsellus Wallace.,No,-
+Who plays the Joker in The Dark Knight?,The Dark Knight,Heath Ledger plays the Joker in The Dark Knight.,Yes,1
