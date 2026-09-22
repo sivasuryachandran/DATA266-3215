@@ -1,57 +1,46 @@
-# GPU Reservation Record - HW2.5
+# GPU Reservation and GPU-Hour Record — HW2.5
 
-This assignment needed an RTX-series GPU, and my Mac doesn't have one. The TA (Shriansh Chari)
-posted an update saying we could use any NVIDIA RTX GPU this round instead of just the campus lab,
-since the lab was going to be short on capacity because of the Edge AI Hackathon - so I rented a
-pod instead of waiting on lab time.
+## Reservation
 
-## Provider and instance
+I used a rented Vast.ai GPU instance because my local computer does not
+have an NVIDIA CUDA GPU capable of running this assignment.
 
 | Field | Value |
 |---|---|
 | Provider | Vast.ai |
-| Listing | Type #49545596 - Thailand, TH |
-| GPU | 1x RTX 4090, 24 GB VRAM |
-| Host machine | 440BX Desktop Reference Platform, AMD EPYC 7C13, PCIe 4.0 x16 |
-| Instance ID | 52008951 (later reconnected as 52010579 after an IP change) |
-| Price | $0.260/hr plus bandwidth |
-| Reliability (listed) | 99.79% |
+| Listing | Type #49545596 — Thailand, TH |
+| GPU | 1 × NVIDIA GeForce RTX 4090 |
+| VRAM | 24 GB |
+| Host machine | 440BX Desktop Reference Platform |
+| CPU | AMD EPYC 7C13 |
+| PCIe | PCIe 4.0 x16 |
+| Instance ID | 52008951 |
+| Reconnected instance ID | 52010579 |
+| Listed price | $0.260 per hour plus bandwidth |
+| Reservation type | On-demand |
+| GPU UUID | `GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c` |
 
-## GPU actually used (from the run itself)
+## GPU provenance
+
+The benchmark was run on the following GPU:
 
 | Field | Value |
 |---|---|
 | GPU name | NVIDIA GeForce RTX 4090 |
 | GPU UUID | `GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c` |
 | Driver version | 570.86.16 |
-| CUDA (driver-reported) | 12.8 |
-| PyTorch build used | 2.6.0+cu124 (had to reinstall - the default `pip install torch` grabbed a cu130 build that the driver couldn't run) |
+| CUDA reported by driver | 12.8 |
+| PyTorch CUDA build | 12.4 |
+| VRAM capacity | 24564 MiB |
+| Reported power limit | 450 W |
 
-## Timing (from RUN_LOG.txt)
+The UUID above is the identifier used to label the benchmark, attention,
+bandwidth, and thermal measurements in `RUN_LOG.txt`, the CSV files, and
+`METRICS.md`.
 
-| Event | Timestamp (UTC) |
-|---|---|
-| Notebook run started (Part A) | 2026-09-22 05:53:40 |
-| Part E (20-min sustained load) started | 2026-09-22 06:27:18 |
-| Part E finished | 2026-09-22 06:47:23 |
-| Full notebook run finished | 2026-09-22 06:47:23 |
+## Benchmark usage
 
-Measured run time (Part A through the end of Part E): **~54 minutes** of actual GPU compute.
+The notebook execution began at approximately:
 
-## GPU-hours billed - TODO, fill in from the Vast.ai billing page
-
-The timestamps above only cover the notebook's own execution, not the whole time the pod was
-rented (I also spent time before/after that debugging the CUDA driver mismatch, setting up SSH
-keys, and copying files back down). Need to check the **Vast.ai billing / instance history page**
-for the actual instance start and stop time, then fill in below:
-
-| Field | Value |
-|---|---|
-| Pod rented at (UTC) | _(fill in)_ |
-| Pod terminated at (UTC) | _(fill in)_ |
-| Total wall-clock time rented | _(fill in)_ |
-| GPU-hours billed | _(fill in)_ |
-| Total cost | _(fill in, should be close to hours x $0.260/hr plus any bandwidth charges)_ |
-
-Once filled in, this table plus `RUN_LOG.txt` and `METRICS.md` (all tagged with the same GPU UUID
-above) is the full provenance trail for this assignment.
+```text
+2026-09-22 05:53:40 UTC
