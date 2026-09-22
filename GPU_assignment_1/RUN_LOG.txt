@@ -1,0 +1,207 @@
+[2026-09-22T05:53:40] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | GPU=NVIDIA GeForce RTX 4090
+[2026-09-22T05:53:40] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Driver=570.86.16
+[2026-09-22T05:53:40] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | PyTorch CUDA build=12.4
+[2026-09-22T05:53:55] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Saved full nvidia-smi -q output to /workspace/gpu_assignment/nvidia-smi-q_GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c.txt
+[2026-09-22T05:53:55] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Driver version: 570.86.16
+[2026-09-22T05:53:55] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | PyTorch CUDA build: 12.4
+[2026-09-22T05:53:55] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | CUDA reported by nvidia-smi -q: 12.8
+[2026-09-22T05:53:55] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | VRAM total: 24564 MiB
+[2026-09-22T05:53:55] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Power limit: 450.00 W
+[2026-09-22T05:54:05] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Using dense RTX 4090 theoretical peaks.
+[2026-09-22T05:54:16] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP32 N=1024: 44.21 TFLOPS, 53.5% of dense peak, 0.049 ms/call
+[2026-09-22T05:54:16] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP32 N=4096: 52.91 TFLOPS, 64.1% of dense peak, 2.598 ms/call
+[2026-09-22T05:54:17] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP32 N=8192: 52.94 TFLOPS, 64.1% of dense peak, 20.770 ms/call
+[2026-09-22T05:54:24] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP32 N=16384: 50.07 TFLOPS, 60.6% of dense peak, 175.660 ms/call
+[2026-09-22T05:54:24] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] TF32 N=1024: 51.91 TFLOPS, 62.8% of dense peak, 0.041 ms/call
+[2026-09-22T05:54:24] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] TF32 N=4096: 79.42 TFLOPS, 96.2% of dense peak, 1.730 ms/call
+[2026-09-22T05:54:25] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] TF32 N=8192: 83.69 TFLOPS, 101.3% of dense peak, 13.138 ms/call
+[2026-09-22T05:54:29] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] TF32 N=16384: 83.33 TFLOPS, 100.9% of dense peak, 105.556 ms/call
+[2026-09-22T05:54:29] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP16 N=1024: 104.34 TFLOPS, 31.6% of dense peak, 0.021 ms/call
+[2026-09-22T05:54:29] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP16 N=4096: 163.72 TFLOPS, 49.6% of dense peak, 0.839 ms/call
+[2026-09-22T05:54:29] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP16 N=8192: 151.21 TFLOPS, 45.8% of dense peak, 7.271 ms/call
+[2026-09-22T05:54:32] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP16 N=16384: 153.07 TFLOPS, 46.3% of dense peak, 57.466 ms/call
+[2026-09-22T05:54:32] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] BF16 N=1024: 117.18 TFLOPS, 70.9% of dense peak, 0.018 ms/call
+[2026-09-22T05:54:32] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] BF16 N=4096: 144.88 TFLOPS, 87.7% of dense peak, 0.949 ms/call
+[2026-09-22T05:54:32] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] BF16 N=8192: 155.54 TFLOPS, 94.2% of dense peak, 7.069 ms/call
+[2026-09-22T05:54:34] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] BF16 N=16384: 154.89 TFLOPS, 93.8% of dense peak, 56.788 ms/call
+[2026-09-22T05:54:48] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP8 N=4096: 313.11 TFLOPS, 0.439 ms/call, reps=30
+[2026-09-22T05:55:27] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] Plateau table generated.
+[2026-09-22T05:55:58] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part C] Elementwise add: 949.28 GB/s, 94.2% of specified bandwidth, AI=0.0833 FLOP/byte
+[2026-09-22T05:55:58] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part C] BF16 matmul: 154.89 TFLOPS, AI=5461.33 FLOP/byte
+[2026-09-22T05:55:58] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part C] Roofline ridge point=163.89 FLOP/byte
+[2026-09-22T05:56:10] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=512: 0.044 ms, 77.0 MB
+[2026-09-22T05:56:10] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=1024: 0.042 ms, 80.5 MB
+[2026-09-22T05:56:10] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=2048: 0.052 ms, 93.7 MB
+[2026-09-22T05:56:10] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=4096: 0.130 ms, 145.4 MB
+[2026-09-22T05:56:10] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=8192: 0.849 ms, 349.3 MB
+[2026-09-22T05:56:10] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=16384: 3.477 ms, 1159.9 MB
+[2026-09-22T05:56:10] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=512: 0.015 ms, 76.2 MB
+[2026-09-22T05:56:10] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=1024: 0.015 ms, 77.4 MB
+[2026-09-22T05:56:10] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=2048: 0.019 ms, 81.2 MB
+[2026-09-22T05:56:10] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=4096: 0.042 ms, 82.5 MB
+[2026-09-22T05:56:10] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=8192: 0.134 ms, 85.2 MB
+[2026-09-22T05:56:10] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=16384: 0.491 ms, 86.2 MB
+[2026-09-22T05:56:25] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=32768: 14.696 ms, 4387.4 MB
+[2026-09-22T05:56:25] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=49152: 37.092 ms, 9764.5 MB
+[2026-09-22T05:56:25] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=65536: 259.951 ms, 17289.1 MB
+[2026-09-22T05:56:26] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=81920: OOM
+[2026-09-22T05:56:26] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=98304: OOM
+[2026-09-22T05:56:26] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=114688: OOM
+[2026-09-22T05:56:26] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=131072: OOM
+[2026-09-22T05:56:26] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=32768: 1.854 ms, 92.5 MB
+[2026-09-22T05:56:26] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=49152: 4.254 ms, 101.0 MB
+[2026-09-22T05:56:26] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=65536: 7.235 ms, 109.4 MB
+[2026-09-22T05:56:26] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=81920: 11.123 ms, 117.9 MB
+[2026-09-22T05:56:26] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=98304: 15.924 ms, 126.4 MB
+[2026-09-22T05:56:26] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=114688: 21.468 ms, 134.8 MB
+[2026-09-22T05:56:26] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=131072: 27.857 ms, 143.3 MB
+[2026-09-22T05:56:47] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D] Quadratic coefficient=3.99928322e-06 MB/token^2
+[2026-09-22T06:02:45] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | GPU=NVIDIA GeForce RTX 4090
+[2026-09-22T06:02:45] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Driver=570.86.16
+[2026-09-22T06:02:45] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | PyTorch CUDA build=12.4
+[2026-09-22T06:02:48] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Saved full nvidia-smi -q output to /workspace/gpu_assignment/nvidia-smi-q_GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c.txt
+[2026-09-22T06:02:48] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Driver version: 570.86.16
+[2026-09-22T06:02:48] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | PyTorch CUDA build: 12.4
+[2026-09-22T06:02:48] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | CUDA reported by nvidia-smi -q: 12.8
+[2026-09-22T06:02:48] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | VRAM total: 24564 MiB
+[2026-09-22T06:02:48] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Power limit: 450.00 W
+[2026-09-22T06:02:50] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Using dense RTX 4090 theoretical peaks.
+[2026-09-22T06:02:53] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP32 N=1024: 45.92 TFLOPS, 55.6% of dense peak, 0.047 ms/call
+[2026-09-22T06:02:53] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP32 N=4096: 54.26 TFLOPS, 65.7% of dense peak, 2.533 ms/call
+[2026-09-22T06:02:54] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP32 N=8192: 52.99 TFLOPS, 64.1% of dense peak, 20.751 ms/call
+[2026-09-22T06:03:01] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP32 N=16384: 49.71 TFLOPS, 60.2% of dense peak, 176.945 ms/call
+[2026-09-22T06:03:01] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] TF32 N=1024: 50.13 TFLOPS, 60.7% of dense peak, 0.043 ms/call
+[2026-09-22T06:03:01] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] TF32 N=4096: 79.42 TFLOPS, 96.2% of dense peak, 1.730 ms/call
+[2026-09-22T06:03:02] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] TF32 N=8192: 83.83 TFLOPS, 101.5% of dense peak, 13.117 ms/call
+[2026-09-22T06:03:06] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] TF32 N=16384: 82.99 TFLOPS, 100.5% of dense peak, 105.990 ms/call
+[2026-09-22T06:03:06] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP16 N=1024: 103.14 TFLOPS, 31.2% of dense peak, 0.021 ms/call
+[2026-09-22T06:03:06] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP16 N=4096: 163.22 TFLOPS, 49.4% of dense peak, 0.842 ms/call
+[2026-09-22T06:03:06] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP16 N=8192: 150.26 TFLOPS, 45.5% of dense peak, 7.318 ms/call
+[2026-09-22T06:03:09] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP16 N=16384: 152.63 TFLOPS, 46.2% of dense peak, 57.630 ms/call
+[2026-09-22T06:03:09] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] BF16 N=1024: 116.72 TFLOPS, 70.7% of dense peak, 0.018 ms/call
+[2026-09-22T06:03:09] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] BF16 N=4096: 146.35 TFLOPS, 88.6% of dense peak, 0.939 ms/call
+[2026-09-22T06:03:09] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] BF16 N=8192: 154.48 TFLOPS, 93.5% of dense peak, 7.118 ms/call
+[2026-09-22T06:03:11] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] BF16 N=16384: 154.25 TFLOPS, 93.4% of dense peak, 57.026 ms/call
+[2026-09-22T06:03:11] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP8 N=4096: 313.35 TFLOPS, 0.439 ms/call, reps=30
+[2026-09-22T06:03:38] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] Plateau table generated.
+[2026-09-22T06:03:42] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part C] Elementwise add: 949.90 GB/s, 94.2% of specified bandwidth, AI=0.0833 FLOP/byte
+[2026-09-22T06:03:42] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part C] BF16 matmul: 154.25 TFLOPS, AI=5461.33 FLOP/byte
+[2026-09-22T06:03:42] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part C] Roofline ridge point=163.89 FLOP/byte
+[2026-09-22T06:03:44] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=512: 0.043 ms, 77.0 MB
+[2026-09-22T06:03:44] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=1024: 0.041 ms, 80.5 MB
+[2026-09-22T06:03:44] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=2048: 0.050 ms, 93.7 MB
+[2026-09-22T06:03:44] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=4096: 0.124 ms, 145.4 MB
+[2026-09-22T06:03:44] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=8192: 0.848 ms, 349.3 MB
+[2026-09-22T06:03:44] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=16384: 3.474 ms, 1159.9 MB
+[2026-09-22T06:03:44] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=512: 0.015 ms, 76.2 MB
+[2026-09-22T06:03:44] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=1024: 0.015 ms, 77.4 MB
+[2026-09-22T06:03:44] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=2048: 0.018 ms, 81.2 MB
+[2026-09-22T06:03:44] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=4096: 0.041 ms, 82.5 MB
+[2026-09-22T06:03:44] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=8192: 0.129 ms, 85.2 MB
+[2026-09-22T06:03:44] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=16384: 0.474 ms, 86.2 MB
+[2026-09-22T06:03:45] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=32768: 14.754 ms, 4387.4 MB
+[2026-09-22T06:03:45] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=49152: 37.126 ms, 9764.5 MB
+[2026-09-22T06:03:45] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=65536: 249.042 ms, 17289.1 MB
+[2026-09-22T06:03:46] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=81920: OOM
+[2026-09-22T06:03:46] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=98304: OOM
+[2026-09-22T06:03:46] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=114688: OOM
+[2026-09-22T06:03:46] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=131072: OOM
+[2026-09-22T06:03:46] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=32768: 1.858 ms, 92.5 MB
+[2026-09-22T06:03:46] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=49152: 4.346 ms, 101.0 MB
+[2026-09-22T06:03:46] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=65536: 7.256 ms, 109.4 MB
+[2026-09-22T06:03:46] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=81920: 11.888 ms, 117.9 MB
+[2026-09-22T06:03:46] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=98304: 17.277 ms, 126.4 MB
+[2026-09-22T06:03:46] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=114688: 21.367 ms, 134.8 MB
+[2026-09-22T06:03:46] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=131072: 27.858 ms, 143.3 MB
+[2026-09-22T06:03:49] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D] Quadratic coefficient=3.99928322e-06 MB/token^2
+[2026-09-22T06:05:43] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | GPU=NVIDIA GeForce RTX 4090
+[2026-09-22T06:05:43] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Driver=570.86.16
+[2026-09-22T06:05:43] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | PyTorch CUDA build=12.4
+[2026-09-22T06:05:45] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Saved full nvidia-smi -q output to /workspace/gpu_assignment/nvidia-smi-q_GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c.txt
+[2026-09-22T06:05:45] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Driver version: 570.86.16
+[2026-09-22T06:05:45] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | PyTorch CUDA build: 12.4
+[2026-09-22T06:05:45] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | CUDA reported by nvidia-smi -q: 12.8
+[2026-09-22T06:05:45] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | VRAM total: 24564 MiB
+[2026-09-22T06:05:45] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Power limit: 450.00 W
+[2026-09-22T06:05:48] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Using dense RTX 4090 theoretical peaks.
+[2026-09-22T06:05:50] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP32 N=1024: 46.36 TFLOPS, 56.1% of dense peak, 0.046 ms/call
+[2026-09-22T06:05:50] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP32 N=4096: 51.51 TFLOPS, 62.4% of dense peak, 2.668 ms/call
+[2026-09-22T06:05:51] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP32 N=8192: 52.89 TFLOPS, 64.0% of dense peak, 20.788 ms/call
+[2026-09-22T06:05:58] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP32 N=16384: 49.64 TFLOPS, 60.1% of dense peak, 177.181 ms/call
+[2026-09-22T06:05:58] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] TF32 N=1024: 50.29 TFLOPS, 60.9% of dense peak, 0.043 ms/call
+[2026-09-22T06:05:58] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] TF32 N=4096: 71.82 TFLOPS, 87.0% of dense peak, 1.914 ms/call
+[2026-09-22T06:05:58] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] TF32 N=8192: 83.86 TFLOPS, 101.5% of dense peak, 13.111 ms/call
+[2026-09-22T06:06:03] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] TF32 N=16384: 82.86 TFLOPS, 100.3% of dense peak, 106.152 ms/call
+[2026-09-22T06:06:03] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP16 N=1024: 102.63 TFLOPS, 31.1% of dense peak, 0.021 ms/call
+[2026-09-22T06:06:03] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP16 N=4096: 160.92 TFLOPS, 48.7% of dense peak, 0.854 ms/call
+[2026-09-22T06:06:03] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP16 N=8192: 149.77 TFLOPS, 45.3% of dense peak, 7.341 ms/call
+[2026-09-22T06:06:05] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP16 N=16384: 151.80 TFLOPS, 46.0% of dense peak, 57.946 ms/call
+[2026-09-22T06:06:05] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] BF16 N=1024: 115.02 TFLOPS, 69.6% of dense peak, 0.019 ms/call
+[2026-09-22T06:06:05] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] BF16 N=4096: 145.26 TFLOPS, 87.9% of dense peak, 0.946 ms/call
+[2026-09-22T06:06:06] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] BF16 N=8192: 154.55 TFLOPS, 93.6% of dense peak, 7.114 ms/call
+[2026-09-22T06:06:08] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] BF16 N=16384: 153.55 TFLOPS, 92.9% of dense peak, 57.284 ms/call
+[2026-09-22T06:07:08] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] FP8 N=4096: 313.06 TFLOPS, 0.439 ms/call, reps=30
+[2026-09-22T06:07:10] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part B] Plateau table generated.
+[2026-09-22T06:07:12] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part C] Elementwise add: 949.41 GB/s, 94.2% of specified bandwidth, AI=0.0833 FLOP/byte
+[2026-09-22T06:07:12] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part C] BF16 matmul: 153.55 TFLOPS, AI=5461.33 FLOP/byte
+[2026-09-22T06:07:12] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part C] Roofline ridge point=163.89 FLOP/byte
+[2026-09-22T06:07:14] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=512: 0.044 ms, 77.0 MB
+[2026-09-22T06:07:14] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=1024: 0.042 ms, 80.5 MB
+[2026-09-22T06:07:14] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=2048: 0.052 ms, 93.7 MB
+[2026-09-22T06:07:14] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=4096: 0.128 ms, 145.4 MB
+[2026-09-22T06:07:14] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=8192: 0.852 ms, 349.3 MB
+[2026-09-22T06:07:14] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive] L=16384: 3.477 ms, 1159.9 MB
+[2026-09-22T06:07:14] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=512: 0.016 ms, 76.2 MB
+[2026-09-22T06:07:14] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=1024: 0.015 ms, 77.4 MB
+[2026-09-22T06:07:14] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=2048: 0.019 ms, 81.2 MB
+[2026-09-22T06:07:14] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=4096: 0.042 ms, 82.5 MB
+[2026-09-22T06:07:14] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=8192: 0.134 ms, 85.2 MB
+[2026-09-22T06:07:14] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused] L=16384: 0.492 ms, 86.2 MB
+[2026-09-22T06:07:15] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=32768: 14.270 ms, 4387.4 MB
+[2026-09-22T06:07:15] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=49152: 37.420 ms, 9764.5 MB
+[2026-09-22T06:07:15] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=65536: 244.520 ms, 17289.1 MB
+[2026-09-22T06:07:15] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=81920: OOM
+[2026-09-22T06:07:16] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=98304: OOM
+[2026-09-22T06:07:16] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=114688: OOM
+[2026-09-22T06:07:16] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:naive_extended] L=131072: OOM
+[2026-09-22T06:07:16] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=32768: 1.837 ms, 92.5 MB
+[2026-09-22T06:07:16] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=49152: 3.972 ms, 101.0 MB
+[2026-09-22T06:07:16] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=65536: 7.102 ms, 109.4 MB
+[2026-09-22T06:07:16] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=81920: 10.988 ms, 117.9 MB
+[2026-09-22T06:07:16] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=98304: 15.708 ms, 126.4 MB
+[2026-09-22T06:07:16] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=114688: 21.297 ms, 134.8 MB
+[2026-09-22T06:07:16] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D:fused_extended] L=131072: 27.838 ms, 143.3 MB
+[2026-09-22T06:07:16] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part D] Quadratic coefficient=3.99928322e-06 MB/token^2
+[2026-09-22T06:19:07] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | GPU=NVIDIA GeForce RTX 4090
+[2026-09-22T06:19:07] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Driver=570.86.16
+[2026-09-22T06:19:07] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | PyTorch CUDA build=12.4
+[2026-09-22T06:19:11] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Saved full nvidia-smi -q output to /workspace/gpu_assignment/nvidia-smi-q_GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c.txt
+[2026-09-22T06:19:11] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Driver version: 570.86.16
+[2026-09-22T06:19:11] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | PyTorch CUDA build: 12.4
+[2026-09-22T06:19:11] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | CUDA reported by nvidia-smi -q: 12.8
+[2026-09-22T06:19:11] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | VRAM total: 24564 MiB
+[2026-09-22T06:19:11] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Power limit: 450.00 W
+[2026-09-22T06:19:12] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Detected card family match: RTX 4090 (GPU_NAME='NVIDIA GeForce RTX 4090')
+[2026-09-22T06:19:12] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | Using vendor spec: {
+  "architecture": "Ada Lovelace (AD102)",
+  "memory_type": "GDDR6X",
+  "memory_bandwidth_GBps": 1008,
+  "tensor_core_gen": "4th generation (Ada)",
+  "precisions": [
+    "FP32",
+    "TF32",
+    "FP16",
+    "BF16",
+    "INT8",
+    "FP8 (via transformer engine emulation)"
+  ],
+  "fp32_tflops_peak": 82.6,
+  "fp16_tensor_tflops_peak": 330.3,
+  "bf16_tensor_tflops_peak": 330.3,
+  "tf32_tensor_tflops_peak": 82.6,
+  "source": "NVIDIA Ada Lovelace Architecture Whitepaper; RTX 4090 product page"
+}
+[2026-09-22T06:23:17] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part F] Wrote /workspace/gpu_assignment/METRICS.md
+[2026-09-22T06:27:18] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part E][GPU UUID GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c] Starting 20-minute sustained BF16 matmul load; sampling every 5s
+[2026-09-22T06:47:23] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part E][GPU UUID GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c] Wrote 237 thermal samples to /workspace/gpu_assignment/thermal_log.csv
+[2026-09-22T06:47:23] gpu_uuid=GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c | [Part E][GPU UUID GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c] Wrote 162790 throughput samples to /workspace/gpu_assignment/part_e_throughput.csv

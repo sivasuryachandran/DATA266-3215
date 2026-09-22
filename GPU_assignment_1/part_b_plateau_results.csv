@@ -1,0 +1,5 @@
+precision,definition,plateau_N,gpu_uuid
+BF16,first N reaching at least 90% of measured maximum,4096,GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c
+FP16,first N reaching at least 90% of measured maximum,4096,GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c
+FP32,first N reaching at least 90% of measured maximum,4096,GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c
+TF32,first N reaching at least 90% of measured maximum,8192,GPU-f7f152a8-7ef2-fa17-4745-38a374331d8c
