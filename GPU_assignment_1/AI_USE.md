@@ -6,7 +6,7 @@ during that run.
 
 ## 1. Which parts did you use an assistant for, and which did you write yourself?
 
-I had Claude write the first draft of `GPU_Assignment_1.ipynb` and the script that generates it
+I had used AI to write the first draft of `GPU_Assignment_1.ipynb` and the script that generates it
 (`scripts/build_gpu_assignment_notebook.py`), based on the assignment spec: the Step 0 GPU checks,
 the Part B matmul sweep across precisions and sizes, the Part C bandwidth-vs-compute roofline math,
 the Part D naive-vs-fused attention comparison with the OOM boundary search and the quadratic
