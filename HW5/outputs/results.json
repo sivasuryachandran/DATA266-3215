@@ -1,0 +1,203 @@
+{
+  "baseline": {
+    "rouge": {
+      "rouge1": 28.37,
+      "rouge2": 11.09,
+      "rougeL": 24.99,
+      "rougeLsum": 24.92,
+      "avg_words": 15.5
+    }
+  },
+  "r4": {
+    "trainable": 442368,
+    "total": 248020224,
+    "log": {
+      "step": [
+        25,
+        50,
+        75,
+        100,
+        125,
+        150,
+        175,
+        200,
+        225,
+        250,
+        275,
+        300,
+        325,
+        350,
+        375,
+        400,
+        425,
+        450,
+        475,
+        500,
+        525,
+        550,
+        575,
+        600,
+        625,
+        650,
+        675,
+        700,
+        725,
+        750
+      ],
+      "train_loss": [
+        1.8373612785339355,
+        1.4676399993896485,
+        1.3270981442928313,
+        1.3221905732154846,
+        1.3312392568588256,
+        1.2549147355556487,
+        1.2825207757949828,
+        1.2828056931495666,
+        1.3351523613929748,
+        1.275101855993271,
+        1.2474108159542083,
+        1.2558161854743957,
+        1.2819982981681823,
+        1.244813871383667,
+        1.2825302112102508,
+        1.2102757823467254,
+        1.2362564408779144,
+        1.2204713308811188,
+        1.2739132678508758,
+        1.1584610366821289,
+        1.2182897126674652,
+        1.2138164699077607,
+        1.1979281044006347,
+        1.2083162903785705,
+        1.2370564222335816,
+        1.2202142977714538,
+        1.233455525636673,
+        1.183270434141159,
+        1.1350631415843964,
+        1.2018535649776458
+      ],
+      "epoch_val_loss": [
+        1.137211371035803,
+        1.106395255005549,
+        1.0953300141152882
+      ],
+      "final_train_loss": 1.2018535649776458,
+      "train_time_s": 639.3
+    },
+    "rouge": {
+      "rouge1": 49.5,
+      "rouge2": 23.41,
+      "rougeL": 41.32,
+      "rougeLsum": 41.28,
+      "avg_words": 22.5
+    }
+  },
+  "r16": {
+    "trainable": 1769472,
+    "total": 249347328,
+    "log": {
+      "step": [
+        25,
+        50,
+        75,
+        100,
+        125,
+        150,
+        175,
+        200,
+        225,
+        250,
+        275,
+        300,
+        325,
+        350,
+        375,
+        400,
+        425,
+        450,
+        475,
+        500,
+        525,
+        550,
+        575,
+        600,
+        625,
+        650,
+        675,
+        700,
+        725,
+        750
+      ],
+      "train_loss": [
+        1.7313137793540954,
+        1.4141145467758178,
+        1.3016621267795563,
+        1.3066608011722565,
+        1.3132011532783507,
+        1.2391701912879944,
+        1.2635599660873413,
+        1.2650943541526793,
+        1.313514356613159,
+        1.2520212388038636,
+        1.2123834478855133,
+        1.2182837915420532,
+        1.2412148809432983,
+        1.2150076913833618,
+        1.2445830702781677,
+        1.1774087679386138,
+        1.1987564706802367,
+        1.1796992874145509,
+        1.2331292593479157,
+        1.1229349017143249,
+        1.1524491679668427,
+        1.145809291601181,
+        1.132690328359604,
+        1.1459343183040618,
+        1.1742388641834258,
+        1.1568376314640045,
+        1.1649354267120362,
+        1.122936519384384,
+        1.076369481086731,
+        1.1418267261981965
+      ],
+      "epoch_val_loss": [
+        1.118032419492328,
+        1.0973028739293416,
+        1.079386175624908
+      ],
+      "final_train_loss": 1.1418267261981965,
+      "train_time_s": 640.3
+    },
+    "rouge": {
+      "rouge1": 50.38,
+      "rouge2": 24.52,
+      "rougeL": 42.34,
+      "rougeLsum": 42.24,
+      "avg_words": 21.5
+    }
+  },
+  "demo": [
+    {
+      "id": "test_0",
+      "references": [
+        "Ms. Dawson helps #Person1# to write a memo to inform every employee that they have to change the communication method and should not use Instant Messaging anymore.",
+        "In order to prevent employees from wasting time on Instant Message programs, #Person1# decides to terminate the use of those programs and asks Ms. Dawson to send out a memo to all employees by the afternoon.",
+        "Ms. Dawson takes a dictation for #Person1# about prohibiting the use of Instant Message programs in the office. They argue about its reasonability but #Person1# still insists."
+      ],
+      "baseline": "The memo is to be distributed to all employees by this afternoon.",
+      "r4": "Ms. Dawson tells #Person1# the new policy of using Instant Messaging in the office.",
+      "r16": "#Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the rules of office communications and the new policy."
+    },
+    {
+      "id": "test_1",
+      "references": [
+        "#Person2# arrives late because of traffic jam. #Person1# persuades #Person2# to use public transportations to keep healthy and to protect the environment.",
+        "#Person2# decides to follow #Person1#'s suggestions on quitting driving to work and will try to use public transportations.",
+        "#Person2# complains to #Person1# about the traffic jam, #Person1# suggests quitting driving and taking public transportation instead."
+      ],
+      "baseline": "The traffic jam at the Carrefour intersection has caused a lot of congestion.",
+      "r4": "#Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# feels bad about the pollution problem in this city. #Person1# recommends biking to work.",
+      "r16": "#Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# thinks it's better for the environment and #Person2# will quit driving to work."
+    }
+  ]
+}
