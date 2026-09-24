@@ -1,0 +1,20 @@
+[
+  {
+    "id": "test_0",
+    "references": [
+      "Ms. Dawson helps #Person1# to write a memo to inform every employee that they have to change the communication method and should not use Instant Messaging anymore.",
+      "In order to prevent employees from wasting time on Instant Message programs, #Person1# decides to terminate the use of those programs and asks Ms. Dawson to send out a memo to all employees by the afternoon.",
+      "Ms. Dawson takes a dictation for #Person1# about prohibiting the use of Instant Message programs in the office. They argue about its reasonability but #Person1# still insists."
+    ],
+    "baseline": "The memo is to be distributed to all employees by this afternoon."
+  },
+  {
+    "id": "test_1",
+    "references": [
+      "#Person2# arrives late because of traffic jam. #Person1# persuades #Person2# to use public transportations to keep healthy and to protect the environment.",
+      "#Person2# decides to follow #Person1#'s suggestions on quitting driving to work and will try to use public transportations.",
+      "#Person2# complains to #Person1# about the traffic jam, #Person1# suggests quitting driving and taking public transportation instead."
+    ],
+    "baseline": "The traffic jam at the Carrefour intersection has caused a lot of congestion."
+  }
+]
