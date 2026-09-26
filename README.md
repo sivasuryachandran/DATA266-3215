@@ -13,3 +13,4 @@ actual writeup.
 | [`HW2/`](HW2/) | Word2Vec transfer learning, RAG pipeline, training-time optimizations |
 | [`HW3/`](HW3/) | Prompt engineering + self-attention from scratch |
 | [`HW4/`](HW4/) | Mini GPT from scratch (multi-head attention, decoding strategies) |
+| [`HW5/`](HW5/) | LoRA fine-tuning of flan-t5-base on DialogSum (r=4 vs r=16) |
