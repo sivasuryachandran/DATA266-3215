@@ -1,0 +1,314 @@
+LORA FINE-TUNING (DialogSum) - RUN LOG
+
+Ran this on: September 26, 2026
+Seed: 42
+Machine: Google Colab, T4 GPU runtime (Python 3.13)
+Packages: torch 2.11.0+cu128, transformers 5.16.1, peft 0.20.0, plus datasets, evaluate, rouge_score
+Notes: I uninstalled Colab's preinstalled torchao (0.10) first. The newest peft won't import with it.
+
+Below is the console output from running the notebook top to bottom, in order. I cut out the
+repeated library warnings (HF token, tied-weights message) and replaced the plots with [plot].
+
+---
+
+Device: cuda
+torch 2.11.0+cu128 | transformers 5.16.1 | peft 0.20.0
+
+DatasetDict({
+    train: Dataset({
+        features: ['id', 'dialogue', 'summary', 'topic'],
+        num_rows: 1999
+    })
+    validation: Dataset({
+        features: ['id', 'dialogue', 'summary', 'topic'],
+        num_rows: 499
+    })
+    test: Dataset({
+        features: ['id', 'dialogue', 'summary', 'topic'],
+        num_rows: 499
+    })
+})
+
+DatasetDict({
+    train: Dataset({
+        features: ['id', 'input', 'target'],
+        num_rows: 1999
+    })
+    validation: Dataset({
+        features: ['id', 'input', 'target'],
+        num_rows: 499
+    })
+    test: Dataset({
+        features: ['id', 'input', 'target'],
+        num_rows: 499
+    })
+})
+test split: 499 rows -> 167 unique dialogues
+==================== processed sample 0 (train_0) ====================
+INPUT:
+Summarize the following conversation.
+
+#Person1#: Hi, Mr. Smith. I'm Doctor Hawkins. Why are you here today?
+#Person2#: I found it would be a good idea to get a check-up.
+#Person1#: Yes, well, you haven't had one for 5 years. You should have one every year.
+#Person2#: I know. I figure as long as there is nothing wrong, why go see the doctor?
+#Person1#: Well, the best way to avoid serious illnesses is to find out about them early. So try to come at least once a year for your own good.
+#Person2#: Ok.
+#Person1#: Let me see here. Your eyes and ears look fine. Take a deep breath, please. Do you smoke, Mr. Smith?
+#Person2#: Yes.
+#Person1#: Smoking is the leading cause of lung cancer and heart disease, you know. You really should quit.
+#Person2#: I've tried hundreds of times, but I just can't seem to kick the habit.
+#Person1#: Well, we have classes and some medications that might help. I'll give you more information before you leave.
+#Person2#: Ok, thanks doctor.
+
+Summary:
+
+TARGET:
+Mr. Smith's getting a check-up, and Doctor Hawkins advises him to have one every year. Hawkins'll give some information about their classes and medications to help Mr. Smith quit smoking.
+
+==================== processed sample 1 (train_1) ====================
+INPUT:
+Summarize the following conversation.
+
+#Person1#: Hello Mrs. Parker, how have you been?
+#Person2#: Hello Dr. Peters. Just fine thank you. Ricky and I are here for his vaccines.
+#Person1#: Very well. Let's see, according to his vaccination record, Ricky has received his Polio, Tetanus and Hepatitis B shots. He is 14 months old, so he is due for Hepatitis A, Chickenpox and Measles shots.
+#Person2#: What about Rubella and Mumps?
+#Person1#: Well, I can only give him these for now, and after a couple of weeks I can administer the rest.
+#Person2#: OK, great. Doctor, I think I also may need a Tetanus booster. Last time I got it was maybe fifteen years ago!
+#Person1#: We will check our records and I'll have the nurse administer and the booster as well. Now, please hold Ricky's arm tight, this may sting a little.
+
+Summary:
+
+TARGET:
+Mrs Parker takes Ricky for his vaccines. Dr. Peters checks the record and then gives Ricky a vaccine.
+
+DatasetDict({
+    train: Dataset({
+        features: ['input_ids', 'attention_mask', 'labels'],
+        num_rows: 1999
+    })
+    validation: Dataset({
+        features: ['input_ids', 'attention_mask', 'labels'],
+        num_rows: 499
+    })
+    test: Dataset({
+        features: ['input_ids', 'attention_mask', 'labels'],
+        num_rows: 499
+    })
+})
+input tokens : median 213, max 512, truncated at 512: 45
+target tokens: median 37, max 128
+
+==================== test_0 ====================
+#Person1#: Ms. Dawson, I need you to take a dictation for me.
+#Person2#: Yes, sir...
+#Person1#: This should go out as an intra-office memorandum to all employees by this afternoon. Are you ready?
+#Person2#: Yes, sir. Go ahead.
+#Person1#: Attention all staff... Effective immediately, all office communications are restricted to email correspondence and official memos. The use of Instant Message programs by employees during working hours is strictly prohibited.
+#Person2#: Sir, does this apply to intra-office communications only? Or will it also restrict external communications?
+#Person1#: It should apply to all communications, not only in this office between employees, but also any outside communications.
+#Person2#: But sir, many employees use Instant Messaging to communicate with their clients.
+#Person1#: They will just have to change their communication methods. I don't want any - one using Instant Messaging in this office. It wastes too much time! Now, please continue with the memo. Where were we?
+#Person2#: This applies to internal and external communications.
+#Person1#: Yes. Any employee who persists in using Instant Messaging will first receive a warning and be placed on probation. At second offense, the employee will face termination. Any questions regarding this new policy may be directed to department heads.
+#Person2#: Is that all?
+#Person1#: Yes. Please get this memo typed up and distributed to all employees before 4 pm.
+
+REFERENCE : Ms. Dawson helps #Person1# to write a memo to inform every employee that they have to change the communication method and should not use Instant Messaging anymore.
+BASELINE  : The memo is to be distributed to all employees by this afternoon.
+
+==================== test_1 ====================
+#Person1#: You're finally here! What took so long?
+#Person2#: I got stuck in traffic again. There was a terrible traffic jam near the Carrefour intersection.
+#Person1#: It's always rather congested down there during rush hour. Maybe you should try to find a different route to get home.
+#Person2#: I don't think it can be avoided, to be honest.
+#Person1#: perhaps it would be better if you started taking public transport system to work.
+#Person2#: I think it's something that I'll have to consider. The public transport system is pretty good.
+#Person1#: It would be better for the environment, too.
+#Person2#: I know. I feel bad about how much my car is adding to the pollution problem in this city.
+#Person1#: Taking the subway would be a lot less stressful than driving as well.
+#Person2#: The only problem is that I'm going to really miss having the freedom that you have with a car.
+#Person1#: Well, when it's nicer outside, you can start biking to work. That will give you just as much freedom as your car usually provides.
+#Person2#: That's true. I could certainly use the exercise!
+#Person1#: So, are you going to quit driving to work then?
+#Person2#: Yes, it's not good for me or for the environment.
+
+REFERENCE : #Person2# arrives late because of traffic jam. #Person1# persuades #Person2# to use public transportations to keep healthy and to protect the environment.
+BASELINE  : The traffic jam at the Carrefour intersection has caused a lot of congestion.
+
+Baseline ROUGE on 167 test dialogues (68s): {'rouge1': np.float64(28.37), 'rouge2': np.float64(11.09), 'rougeL': np.float64(24.99), 'rougeLsum': np.float64(24.92), 'avg_words': 15.5}
+Reference summaries avg words: 19.3
+
+LoraConfig(task_type=<TaskType.SEQ_2_SEQ_LM: 'SEQ_2_SEQ_LM'>, peft_type=<PeftType.LORA: 'LORA'>, auto_mapping=None, peft_version='0.20.0', base_model_name_or_path='google/flan-t5-base', revision=None, inference_mode=False, r=16, target_modules={'q', 'v'}, exclude_modules=None, lora_alpha=32, lora_dropout=0.05, fan_in_fan_out=False, bias='none', use_rslora=False, modules_to_save=None, init_lora_weights=True, layers_to_transform=None, layers_pattern=None, rank_pattern={}, alpha_pattern={}, megatron_config=None, megatron_core='megatron.core', trainable_token_indices=None, loftq_config={}, eva_config=None, corda_config=None, lora_ga_config=None, use_dora=False, velora_config=None, alora_invocation_tokens=None, use_qalora=False, qalora_group_size=16, monteclora_config=None, layer_replication=None, runtime_config=LoraRuntimeConfig(ephemeral_gpu_offload=False), lora_bias=False, target_parameters=None, use_bdlora=None, arrow_config=None, ensure_weight_tying=False)
+
+Total parameters     : 249,347,328
+Trainable parameters : 1,769,472
+Trainable %          : 0.7096%
+trainable params: 1,769,472 || all params: 249,347,328 || trainable%: 0.7096
+
+lora.Linear(
+  (base_layer): Linear(in_features=768, out_features=768, bias=False)
+  (lora_dropout): ModuleDict(
+    (default): Dropout(p=0.05, inplace=False)
+  )
+  (lora_A): ModuleDict(
+    (default): Linear(in_features=768, out_features=16, bias=False)
+  )
+  (lora_B): ModuleDict(
+    (default): Linear(in_features=16, out_features=768, bias=False)
+  )
+  (lora_embedding_A): ParameterDict()
+  (lora_embedding_B): ParameterDict()
+  (lora_magnitude_vector): ModuleDict()
+)
+
+[r=16] val loss before training: 1.8295
+[r=16] epoch 1 step   25/750 | train loss 1.7313 | lr 6.76e-04 | 40s
+[r=16] epoch 1 step   50/750 | train loss 1.4141 | lr 9.82e-04 | 61s
+[r=16] epoch 1 step   75/750 | train loss 1.3017 | lr 9.47e-04 | 79s
+[r=16] epoch 1 step  100/750 | train loss 1.3067 | lr 9.12e-04 | 98s
+[r=16] epoch 1 step  125/750 | train loss 1.3132 | lr 8.77e-04 | 117s
+[r=16] epoch 1 step  150/750 | train loss 1.2392 | lr 8.42e-04 | 135s
+[r=16] epoch 1 step  175/750 | train loss 1.2636 | lr 8.06e-04 | 153s
+[r=16] epoch 1 step  200/750 | train loss 1.2651 | lr 7.71e-04 | 172s
+[r=16] epoch 1 step  225/750 | train loss 1.3135 | lr 7.36e-04 | 191s
+[r=16] epoch 1 step  250/750 | train loss 1.2520 | lr 7.01e-04 | 207s
+[r=16] ---- end of epoch 1: val loss 1.1180
+[r=16] epoch 2 step  275/750 | train loss 1.2124 | lr 6.66e-04 | 249s
+[r=16] epoch 2 step  300/750 | train loss 1.2183 | lr 6.31e-04 | 268s
+[r=16] epoch 2 step  325/750 | train loss 1.2412 | lr 5.96e-04 | 286s
+[r=16] epoch 2 step  350/750 | train loss 1.2150 | lr 5.61e-04 | 303s
+[r=16] epoch 2 step  375/750 | train loss 1.2446 | lr 5.26e-04 | 321s
+[r=16] epoch 2 step  400/750 | train loss 1.1774 | lr 4.91e-04 | 340s
+[r=16] epoch 2 step  425/750 | train loss 1.1988 | lr 4.56e-04 | 358s
+[r=16] epoch 2 step  450/750 | train loss 1.1797 | lr 4.21e-04 | 377s
+[r=16] epoch 2 step  475/750 | train loss 1.2331 | lr 3.86e-04 | 395s
+[r=16] epoch 2 step  500/750 | train loss 1.1229 | lr 3.51e-04 | 412s
+[r=16] ---- end of epoch 2: val loss 1.0973
+[r=16] epoch 3 step  525/750 | train loss 1.1524 | lr 3.16e-04 | 454s
+[r=16] epoch 3 step  550/750 | train loss 1.1458 | lr 2.81e-04 | 472s
+[r=16] epoch 3 step  575/750 | train loss 1.1327 | lr 2.45e-04 | 490s
+[r=16] epoch 3 step  600/750 | train loss 1.1459 | lr 2.10e-04 | 507s
+[r=16] epoch 3 step  625/750 | train loss 1.1742 | lr 1.75e-04 | 526s
+[r=16] epoch 3 step  650/750 | train loss 1.1568 | lr 1.40e-04 | 545s
+[r=16] epoch 3 step  675/750 | train loss 1.1649 | lr 1.05e-04 | 563s
+[r=16] epoch 3 step  700/750 | train loss 1.1229 | lr 7.01e-05 | 580s
+[r=16] epoch 3 step  725/750 | train loss 1.0764 | lr 3.51e-05 | 598s
+[r=16] epoch 3 step  750/750 | train loss 1.1418 | lr 0.00e+00 | 616s
+[r=16] ---- end of epoch 3: val loss 1.0794
+[r=16] final training loss (last 25 steps): 1.1418 | total time 640.3s
+
+[plot]
+
+README.md                               0.01 MB
+adapter_config.json                     0.00 MB
+adapter_model.safetensors               7.10 MB
+tokenizer.json                          2.42 MB
+tokenizer_config.json                   0.00 MB
+
+reloaded == in-memory: True
+
+==================== test_0 ====================
+REFERENCE      : Ms. Dawson helps #Person1# to write a memo to inform every employee that they have to change the communication method and should not use Instant Messaging anymore.
+FINE-TUNED r=16: #Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the rules of office communications and the new policy.
+
+==================== test_1 ====================
+REFERENCE      : #Person2# arrives late because of traffic jam. #Person1# persuades #Person2# to use public transportations to keep healthy and to protect the environment.
+FINE-TUNED r=16: #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# thinks it's better for the environment and #Person2# will quit driving to work.
+
+==================== test_0 ====================
+REFERENCE          : Ms. Dawson helps #Person1# to write a memo to inform every employee that they have to change the communication method and should not use Instant Messaging anymore.
+BEFORE (base)      : The memo is to be distributed to all employees by this afternoon.
+AFTER  (LoRA r=16) : #Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the rules of office communications and the new policy.
+
+==================== test_1 ====================
+REFERENCE          : #Person2# arrives late because of traffic jam. #Person1# persuades #Person2# to use public transportations to keep healthy and to protect the environment.
+BEFORE (base)      : The traffic jam at the Carrefour intersection has caused a lot of congestion.
+AFTER  (LoRA r=16) : #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# thinks it's better for the environment and #Person2# will quit driving to work.
+
+ROUGE on 167 test dialogues
+model               rouge1  rouge2  rougeL  avg words
+base (no FT)         28.37   11.09   24.99       15.5
+LoRA r=16            50.38   24.52   42.34       21.5
+
+r=4  -> total 248,020,224 | trainable 442,368 (0.1784%)
+r=16 -> total 249,347,328 | trainable 1,769,472 (0.7096%)
+[r=4] val loss before training: 1.8295
+[r=4] epoch 1 step   25/750 | train loss 1.8374 | lr 6.76e-04 | 42s
+[r=4] epoch 1 step   50/750 | train loss 1.4676 | lr 9.82e-04 | 60s
+[r=4] epoch 1 step   75/750 | train loss 1.3271 | lr 9.47e-04 | 78s
+[r=4] epoch 1 step  100/750 | train loss 1.3222 | lr 9.12e-04 | 96s
+[r=4] epoch 1 step  125/750 | train loss 1.3312 | lr 8.77e-04 | 115s
+[r=4] epoch 1 step  150/750 | train loss 1.2549 | lr 8.42e-04 | 133s
+[r=4] epoch 1 step  175/750 | train loss 1.2825 | lr 8.06e-04 | 151s
+[r=4] epoch 1 step  200/750 | train loss 1.2828 | lr 7.71e-04 | 170s
+[r=4] epoch 1 step  225/750 | train loss 1.3352 | lr 7.36e-04 | 189s
+[r=4] epoch 1 step  250/750 | train loss 1.2751 | lr 7.01e-04 | 205s
+[r=4] ---- end of epoch 1: val loss 1.1372
+[r=4] epoch 2 step  275/750 | train loss 1.2474 | lr 6.66e-04 | 248s
+[r=4] epoch 2 step  300/750 | train loss 1.2558 | lr 6.31e-04 | 266s
+[r=4] epoch 2 step  325/750 | train loss 1.2820 | lr 5.96e-04 | 284s
+[r=4] epoch 2 step  350/750 | train loss 1.2448 | lr 5.61e-04 | 301s
+[r=4] epoch 2 step  375/750 | train loss 1.2825 | lr 5.26e-04 | 320s
+[r=4] epoch 2 step  400/750 | train loss 1.2103 | lr 4.91e-04 | 338s
+[r=4] epoch 2 step  425/750 | train loss 1.2363 | lr 4.56e-04 | 356s
+[r=4] epoch 2 step  450/750 | train loss 1.2205 | lr 4.21e-04 | 375s
+[r=4] epoch 2 step  475/750 | train loss 1.2739 | lr 3.86e-04 | 394s
+[r=4] epoch 2 step  500/750 | train loss 1.1585 | lr 3.51e-04 | 411s
+[r=4] ---- end of epoch 2: val loss 1.1064
+[r=4] epoch 3 step  525/750 | train loss 1.2183 | lr 3.16e-04 | 453s
+[r=4] epoch 3 step  550/750 | train loss 1.2138 | lr 2.81e-04 | 471s
+[r=4] epoch 3 step  575/750 | train loss 1.1979 | lr 2.45e-04 | 489s
+[r=4] epoch 3 step  600/750 | train loss 1.2083 | lr 2.10e-04 | 506s
+[r=4] epoch 3 step  625/750 | train loss 1.2371 | lr 1.75e-04 | 525s
+[r=4] epoch 3 step  650/750 | train loss 1.2202 | lr 1.40e-04 | 544s
+[r=4] epoch 3 step  675/750 | train loss 1.2335 | lr 1.05e-04 | 562s
+[r=4] epoch 3 step  700/750 | train loss 1.1833 | lr 7.01e-05 | 580s
+[r=4] epoch 3 step  725/750 | train loss 1.1351 | lr 3.51e-05 | 598s
+[r=4] epoch 3 step  750/750 | train loss 1.2019 | lr 0.00e+00 | 615s
+[r=4] ---- end of epoch 3: val loss 1.0953
+[r=4] final training loss (last 25 steps): 1.2019 | total time 639.3s
+
+[plot]
+
+==================== test_0 ====================
+REFERENCE  : Ms. Dawson helps #Person1# to write a memo to inform every employee that they have to change the communication method and should not use Instant Messaging anymore.
+BASE       : The memo is to be distributed to all employees by this afternoon.
+LoRA r=4   : Ms. Dawson tells #Person1# the new policy of using Instant Messaging in the office.
+LoRA r=16  : #Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the rules of office communications and the new policy.
+
+==================== test_1 ====================
+REFERENCE  : #Person2# arrives late because of traffic jam. #Person1# persuades #Person2# to use public transportations to keep healthy and to protect the environment.
+BASE       : The traffic jam at the Carrefour intersection has caused a lot of congestion.
+LoRA r=4   : #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# feels bad about the pollution problem in this city. #Person1# recommends biking to work.
+LoRA r=16  : #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# thinks it's better for the environment and #Person2# will quit driving to work.
+
+model            trainable        %  final train  final val  rouge1  rouge2  rougeL  avg words
+base (no FT)             -        -            -          -   28.37   11.09   24.99       15.5
+LoRA r=4           442,368   0.178%       1.2019     1.0953    49.5   23.41   41.32       22.5
+LoRA r=16        1,769,472   0.710%       1.1418     1.0794   50.38   24.52   42.34       21.5
+
+r=4 and r=16 produce different summaries on 144/167 test dialogues
+
+--- test_0 ---
+REF  : Ms. Dawson helps #Person1# to write a memo to inform every employee that they have to change the communication method and should not use Instant Messaging anymore.
+r=4  : Ms. Dawson tells #Person1# the new policy of using Instant Messaging in the office.
+r=16 : #Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the rules of office communications and the new policy.
+
+--- test_1 ---
+REF  : #Person2# arrives late because of traffic jam. #Person1# persuades #Person2# to use public transportations to keep healthy and to protect the environment.
+r=4  : #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# feels bad about the pollution problem in this city. #Person1# recommends biking to work.
+r=16 : #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# thinks it's better for the environment and #Person2# will quit driving to work.
+
+--- test_2 ---
+REF  : #Person1# tells Kate that Masha and Hero get divorced. Kate is surprised because she thought they are perfect couple.
+r=4  : Kate tells #Person2# Masha and Hero are getting divorced. #Person2# thinks they are perfect and they will divorce early in the New Year.
+r=16 : Kate tells #Person2# Masha and Hero are getting divorced. #Person2# thinks it's surprising.
+
+--- test_3 ---
+REF  : #Person1# and Brian are at the birthday party of Brian. Brian thinks #Person1# looks great and is popular.
+r=4  : Brian remembers his birthday and invites #Person1# to have a dance with him. Brian thinks he looks great and feels great.
+r=16 : Brian remembers his birthday and invites #Person1# to have a dance with him. Brian thinks he looks pretty today.
+
+['hw5_adapters.zip', 'hw5_results.zip']
