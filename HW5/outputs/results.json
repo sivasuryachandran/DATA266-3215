@@ -1,9 +1,9 @@
 {
   "baseline": {
     "rouge": {
-      "rouge1": 28.37,
-      "rouge2": 11.09,
-      "rougeL": 24.99,
+      "rouge1": 28.38,
+      "rouge2": 11.06,
+      "rougeL": 24.92,
       "rougeLsum": 24.92,
       "avg_words": 15.5
     }
@@ -45,51 +45,51 @@
         750
       ],
       "train_loss": [
-        1.8373612785339355,
-        1.4676399993896485,
-        1.3270981442928313,
-        1.3221905732154846,
-        1.3312392568588256,
-        1.2549147355556487,
-        1.2825207757949828,
-        1.2828056931495666,
-        1.3351523613929748,
-        1.275101855993271,
-        1.2474108159542083,
-        1.2558161854743957,
-        1.2819982981681823,
-        1.244813871383667,
-        1.2825302112102508,
-        1.2102757823467254,
-        1.2362564408779144,
-        1.2204713308811188,
-        1.2739132678508758,
-        1.1584610366821289,
-        1.2182897126674652,
-        1.2138164699077607,
-        1.1979281044006347,
-        1.2083162903785705,
-        1.2370564222335816,
-        1.2202142977714538,
-        1.233455525636673,
-        1.183270434141159,
-        1.1350631415843964,
-        1.2018535649776458
+        1.8697571921348572,
+        1.4237815201282502,
+        1.366564245223999,
+        1.3313775169849396,
+        1.328288595676422,
+        1.3027484512329102,
+        1.2938873887062072,
+        1.2477934598922729,
+        1.2763049125671386,
+        1.2816519963741302,
+        1.2530742108821868,
+        1.2569338738918305,
+        1.2216676902770995,
+        1.1993304562568665,
+        1.2266827368736266,
+        1.2866918051242828,
+        1.2214737939834595,
+        1.2705110728740692,
+        1.199985853433609,
+        1.2310632967948913,
+        1.1703580451011657,
+        1.245183230638504,
+        1.211287488937378,
+        1.1935782790184022,
+        1.2382410967350006,
+        1.2144330525398255,
+        1.2403978979587555,
+        1.1465608918666839,
+        1.2133272802829742,
+        1.1618606376647949
       ],
       "epoch_val_loss": [
-        1.137211371035803,
-        1.106395255005549,
-        1.0953300141152882
+        1.1220994752550881,
+        1.0988558710567535,
+        1.0948352624499609
       ],
-      "final_train_loss": 1.2018535649776458,
-      "train_time_s": 639.3
+      "final_train_loss": 1.1618606376647949,
+      "train_time_s": 666.9
     },
     "rouge": {
-      "rouge1": 49.5,
-      "rouge2": 23.41,
-      "rougeL": 41.32,
-      "rougeLsum": 41.28,
-      "avg_words": 22.5
+      "rouge1": 48.84,
+      "rouge2": 23.73,
+      "rougeL": 41.4,
+      "rougeLsum": 41.38,
+      "avg_words": 21.8
     }
   },
   "r16": {
@@ -129,51 +129,51 @@
         750
       ],
       "train_loss": [
-        1.7313137793540954,
-        1.4141145467758178,
-        1.3016621267795563,
-        1.3066608011722565,
-        1.3132011532783507,
-        1.2391701912879944,
-        1.2635599660873413,
-        1.2650943541526793,
-        1.313514356613159,
-        1.2520212388038636,
-        1.2123834478855133,
-        1.2182837915420532,
-        1.2412148809432983,
-        1.2150076913833618,
-        1.2445830702781677,
-        1.1774087679386138,
-        1.1987564706802367,
-        1.1796992874145509,
-        1.2331292593479157,
-        1.1229349017143249,
-        1.1524491679668427,
-        1.145809291601181,
-        1.132690328359604,
-        1.1459343183040618,
-        1.1742388641834258,
-        1.1568376314640045,
-        1.1649354267120362,
-        1.122936519384384,
-        1.076369481086731,
-        1.1418267261981965
+        1.755416738986969,
+        1.3698760640621186,
+        1.342432211637497,
+        1.3144062912464143,
+        1.30941344499588,
+        1.287584227323532,
+        1.2829013228416444,
+        1.233319754600525,
+        1.2734392166137696,
+        1.2659410405158997,
+        1.2151598286628724,
+        1.2243820023536682,
+        1.1900869774818421,
+        1.1624121499061584,
+        1.19251993060112,
+        1.252076723575592,
+        1.1894810330867767,
+        1.2313148593902588,
+        1.1611249458789825,
+        1.1873838782310486,
+        1.1149122130870819,
+        1.1854536354541778,
+        1.152862240076065,
+        1.125502076148987,
+        1.1687043869495393,
+        1.1485968005657197,
+        1.1795430445671082,
+        1.0902529728412629,
+        1.148614032268524,
+        1.10381281375885
       ],
       "epoch_val_loss": [
-        1.118032419492328,
-        1.0973028739293416,
-        1.079386175624908
+        1.1104768580860562,
+        1.0842808097127885,
+        1.078135661662571
       ],
-      "final_train_loss": 1.1418267261981965,
-      "train_time_s": 640.3
+      "final_train_loss": 1.10381281375885,
+      "train_time_s": 667.5
     },
     "rouge": {
-      "rouge1": 50.38,
-      "rouge2": 24.52,
-      "rougeL": 42.34,
-      "rougeLsum": 42.24,
-      "avg_words": 21.5
+      "rouge1": 49.06,
+      "rouge2": 24.17,
+      "rougeL": 41.25,
+      "rougeLsum": 41.18,
+      "avg_words": 23.8
     }
   },
   "demo": [
@@ -185,8 +185,8 @@
         "Ms. Dawson takes a dictation for #Person1# about prohibiting the use of Instant Message programs in the office. They argue about its reasonability but #Person1# still insists."
       ],
       "baseline": "The memo is to be distributed to all employees by this afternoon.",
-      "r4": "Ms. Dawson tells #Person1# the new policy of using Instant Messaging in the office.",
-      "r16": "#Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the rules of office communications and the new policy."
+      "r4": "Ms. Dawson asks #Person1# to take a dictation for #Person1#. #Person1# tells #Person2# that all office communications are restricted to email correspondence and official memos. The memo also restricts external communications.",
+      "r16": "#Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the new policy applies to all communications, including intra-office communications, and will be placed on probation."
     },
     {
       "id": "test_1",
@@ -196,8 +196,8 @@
         "#Person2# complains to #Person1# about the traffic jam, #Person1# suggests quitting driving and taking public transportation instead."
       ],
       "baseline": "The traffic jam at the Carrefour intersection has caused a lot of congestion.",
-      "r4": "#Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# feels bad about the pollution problem in this city. #Person1# recommends biking to work.",
-      "r16": "#Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# thinks it's better for the environment and #Person2# will quit driving to work."
+      "r4": "#Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# feels bad about the pollution problem in this city. #Person1# suggests biking to work.",
+      "r16": "#Person2# got stuck in traffic again. #Person1# suggests taking public transport to work. #Person2# thinks it's better for the environment and biking to work will give #Person2# more freedom."
     }
   ]
 }
