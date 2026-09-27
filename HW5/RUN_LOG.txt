@@ -1,18 +1,31 @@
 LORA FINE-TUNING (DialogSum) - RUN LOG
 
-Ran this on: September 26, 2026
-Seed: 42
-Machine: Google Colab, T4 GPU runtime (Python 3.13)
+Ran this on: September 27, 2026 (timestamps below are the Colab machine's clock, UTC)
+Run started 06:52:18, finished 07:18:14 (about 26 minutes)
+SID4 = 3215, SEED = 3215 (Python random, NumPy, torch CPU + CUDA, LoRA init, data shuffle)
+Machine: Google Colab, T4 GPU runtime, connected from VS Code (Python 3.13)
 Packages: torch 2.11.0+cu128, transformers 5.16.1, peft 0.20.0, plus datasets, evaluate, rouge_score
-Notes: I uninstalled Colab's preinstalled torchao (0.10) first. The newest peft won't import with it.
+Notes: the install cell uninstalls Colab's preinstalled torchao (0.10), because the newest peft won't
+import with it. On this runtime it was already gone ("Skipping torchao as it is not installed").
 
-Below is the console output from running the notebook top to bottom, in order. I cut out the
-repeated library warnings (HF token, tied-weights message) and replaced the plots with [plot].
+Below is the console output from running the notebook top to bottom, in order. I removed download
+and progress-bar lines, kept each library warning only the first time it appears (HF token,
+tied-weights message), and replaced the plots with [plot]. There were no errors.
 
 ---
 
+WARNING: Skipping torchao as it is not installed.
+
 Device: cuda
 torch 2.11.0+cu128 | transformers 5.16.1 | peft 0.20.0
+SID4=3215 SEED=3215 SLICE=215 HP_ID=5 CLS_A=5 CLS_B=2
+run started: 2026-09-27 06:52:18
+
+/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_auth.py:138: UserWarning: 
+Error while fetching `HF_TOKEN` secret value from your vault: 'Requesting secret HF_TOKEN timed out. Secrets can only be fetched when running from the Colab UI.'.
+  warnings.warn(f"\nError while fetching `HF_TOKEN` secret value from your vault: '{str(e)}'.")
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 
 DatasetDict({
     train: Dataset({
@@ -100,6 +113,8 @@ DatasetDict({
 input tokens : median 213, max 512, truncated at 512: 45
 target tokens: median 37, max 128
 
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+
 ==================== test_0 ====================
 #Person1#: Ms. Dawson, I need you to take a dictation for me.
 #Person2#: Yes, sir...
@@ -137,7 +152,7 @@ BASELINE  : The memo is to be distributed to all employees by this afternoon.
 REFERENCE : #Person2# arrives late because of traffic jam. #Person1# persuades #Person2# to use public transportations to keep healthy and to protect the environment.
 BASELINE  : The traffic jam at the Carrefour intersection has caused a lot of congestion.
 
-Baseline ROUGE on 167 test dialogues (68s): {'rouge1': np.float64(28.37), 'rouge2': np.float64(11.09), 'rougeL': np.float64(24.99), 'rougeLsum': np.float64(24.92), 'avg_words': 15.5}
+Baseline ROUGE on 167 test dialogues (51s): {'rouge1': np.float64(28.38), 'rouge2': np.float64(11.06), 'rougeL': np.float64(24.92), 'rougeLsum': np.float64(24.92), 'avg_words': 15.5}
 Reference summaries avg words: 19.3
 
 LoraConfig(task_type=<TaskType.SEQ_2_SEQ_LM: 'SEQ_2_SEQ_LM'>, peft_type=<PeftType.LORA: 'LORA'>, auto_mapping=None, peft_version='0.20.0', base_model_name_or_path='google/flan-t5-base', revision=None, inference_mode=False, r=16, target_modules={'q', 'v'}, exclude_modules=None, lora_alpha=32, lora_dropout=0.05, fan_in_fan_out=False, bias='none', use_rslora=False, modules_to_save=None, init_lora_weights=True, layers_to_transform=None, layers_pattern=None, rank_pattern={}, alpha_pattern={}, megatron_config=None, megatron_core='megatron.core', trainable_token_indices=None, loftq_config={}, eva_config=None, corda_config=None, lora_ga_config=None, use_dora=False, velora_config=None, alora_invocation_tokens=None, use_qalora=False, qalora_group_size=16, monteclora_config=None, layer_replication=None, runtime_config=LoraRuntimeConfig(ephemeral_gpu_offload=False), lora_bias=False, target_parameters=None, use_bdlora=None, arrow_config=None, ensure_weight_tying=False)
@@ -163,44 +178,43 @@ lora.Linear(
   (lora_magnitude_vector): ModuleDict()
 )
 
-[r=16] val loss before training: 1.8295
-[r=16] epoch 1 step   25/750 | train loss 1.7313 | lr 6.76e-04 | 40s
-[r=16] epoch 1 step   50/750 | train loss 1.4141 | lr 9.82e-04 | 61s
-[r=16] epoch 1 step   75/750 | train loss 1.3017 | lr 9.47e-04 | 79s
-[r=16] epoch 1 step  100/750 | train loss 1.3067 | lr 9.12e-04 | 98s
-[r=16] epoch 1 step  125/750 | train loss 1.3132 | lr 8.77e-04 | 117s
-[r=16] epoch 1 step  150/750 | train loss 1.2392 | lr 8.42e-04 | 135s
-[r=16] epoch 1 step  175/750 | train loss 1.2636 | lr 8.06e-04 | 153s
-[r=16] epoch 1 step  200/750 | train loss 1.2651 | lr 7.71e-04 | 172s
-[r=16] epoch 1 step  225/750 | train loss 1.3135 | lr 7.36e-04 | 191s
-[r=16] epoch 1 step  250/750 | train loss 1.2520 | lr 7.01e-04 | 207s
-[r=16] ---- end of epoch 1: val loss 1.1180
-[r=16] epoch 2 step  275/750 | train loss 1.2124 | lr 6.66e-04 | 249s
-[r=16] epoch 2 step  300/750 | train loss 1.2183 | lr 6.31e-04 | 268s
-[r=16] epoch 2 step  325/750 | train loss 1.2412 | lr 5.96e-04 | 286s
-[r=16] epoch 2 step  350/750 | train loss 1.2150 | lr 5.61e-04 | 303s
-[r=16] epoch 2 step  375/750 | train loss 1.2446 | lr 5.26e-04 | 321s
-[r=16] epoch 2 step  400/750 | train loss 1.1774 | lr 4.91e-04 | 340s
-[r=16] epoch 2 step  425/750 | train loss 1.1988 | lr 4.56e-04 | 358s
-[r=16] epoch 2 step  450/750 | train loss 1.1797 | lr 4.21e-04 | 377s
-[r=16] epoch 2 step  475/750 | train loss 1.2331 | lr 3.86e-04 | 395s
-[r=16] epoch 2 step  500/750 | train loss 1.1229 | lr 3.51e-04 | 412s
-[r=16] ---- end of epoch 2: val loss 1.0973
-[r=16] epoch 3 step  525/750 | train loss 1.1524 | lr 3.16e-04 | 454s
-[r=16] epoch 3 step  550/750 | train loss 1.1458 | lr 2.81e-04 | 472s
-[r=16] epoch 3 step  575/750 | train loss 1.1327 | lr 2.45e-04 | 490s
-[r=16] epoch 3 step  600/750 | train loss 1.1459 | lr 2.10e-04 | 507s
-[r=16] epoch 3 step  625/750 | train loss 1.1742 | lr 1.75e-04 | 526s
-[r=16] epoch 3 step  650/750 | train loss 1.1568 | lr 1.40e-04 | 545s
-[r=16] epoch 3 step  675/750 | train loss 1.1649 | lr 1.05e-04 | 563s
-[r=16] epoch 3 step  700/750 | train loss 1.1229 | lr 7.01e-05 | 580s
-[r=16] epoch 3 step  725/750 | train loss 1.0764 | lr 3.51e-05 | 598s
-[r=16] epoch 3 step  750/750 | train loss 1.1418 | lr 0.00e+00 | 616s
-[r=16] ---- end of epoch 3: val loss 1.0794
-[r=16] final training loss (last 25 steps): 1.1418 | total time 640.3s
+[2026-09-27 06:53:47] [r=16] val loss before training: 1.8295
+[2026-09-27 06:54:32] [r=16] epoch 1 step   25/750 | train loss 1.7554 | lr 6.76e-04 | 45s
+[2026-09-27 06:54:50] [r=16] epoch 1 step   50/750 | train loss 1.3699 | lr 9.82e-04 | 63s
+[2026-09-27 06:55:09] [r=16] epoch 1 step   75/750 | train loss 1.3424 | lr 9.47e-04 | 82s
+[2026-09-27 06:55:28] [r=16] epoch 1 step  100/750 | train loss 1.3144 | lr 9.12e-04 | 101s
+[2026-09-27 06:55:47] [r=16] epoch 1 step  125/750 | train loss 1.3094 | lr 8.77e-04 | 120s
+[2026-09-27 06:56:06] [r=16] epoch 1 step  150/750 | train loss 1.2876 | lr 8.42e-04 | 139s
+[2026-09-27 06:56:24] [r=16] epoch 1 step  175/750 | train loss 1.2829 | lr 8.06e-04 | 157s
+[2026-09-27 06:56:42] [r=16] epoch 1 step  200/750 | train loss 1.2333 | lr 7.71e-04 | 175s
+[2026-09-27 06:57:00] [r=16] epoch 1 step  225/750 | train loss 1.2734 | lr 7.36e-04 | 194s
+[2026-09-27 06:57:20] [r=16] epoch 1 step  250/750 | train loss 1.2659 | lr 7.01e-04 | 213s
+[2026-09-27 06:57:45] [r=16] ---- end of epoch 1: val loss 1.1105
+[2026-09-27 06:58:03] [r=16] epoch 2 step  275/750 | train loss 1.2152 | lr 6.66e-04 | 257s
+[2026-09-27 06:58:23] [r=16] epoch 2 step  300/750 | train loss 1.2244 | lr 6.31e-04 | 276s
+[2026-09-27 06:58:41] [r=16] epoch 2 step  325/750 | train loss 1.1901 | lr 5.96e-04 | 294s
+[2026-09-27 06:58:59] [r=16] epoch 2 step  350/750 | train loss 1.1624 | lr 5.61e-04 | 312s
+[2026-09-27 06:59:18] [r=16] epoch 2 step  375/750 | train loss 1.1925 | lr 5.26e-04 | 331s
+[2026-09-27 06:59:37] [r=16] epoch 2 step  400/750 | train loss 1.2521 | lr 4.91e-04 | 350s
+[2026-09-27 06:59:56] [r=16] epoch 2 step  425/750 | train loss 1.1895 | lr 4.56e-04 | 369s
+[2026-09-27 07:00:17] [r=16] epoch 2 step  450/750 | train loss 1.2313 | lr 4.21e-04 | 390s
+[2026-09-27 07:00:36] [r=16] epoch 2 step  475/750 | train loss 1.1611 | lr 3.86e-04 | 409s
+[2026-09-27 07:00:55] [r=16] epoch 2 step  500/750 | train loss 1.1874 | lr 3.51e-04 | 428s
+[2026-09-27 07:01:20] [r=16] ---- end of epoch 2: val loss 1.0843
+[2026-09-27 07:01:39] [r=16] epoch 3 step  525/750 | train loss 1.1149 | lr 3.16e-04 | 472s
+[2026-09-27 07:01:58] [r=16] epoch 3 step  550/750 | train loss 1.1855 | lr 2.81e-04 | 491s
+[2026-09-27 07:02:16] [r=16] epoch 3 step  575/750 | train loss 1.1529 | lr 2.45e-04 | 509s
+[2026-09-27 07:02:36] [r=16] epoch 3 step  600/750 | train loss 1.1255 | lr 2.10e-04 | 529s
+[2026-09-27 07:02:55] [r=16] epoch 3 step  625/750 | train loss 1.1687 | lr 1.75e-04 | 548s
+[2026-09-27 07:03:14] [r=16] epoch 3 step  650/750 | train loss 1.1486 | lr 1.40e-04 | 567s
+[2026-09-27 07:03:32] [r=16] epoch 3 step  675/750 | train loss 1.1795 | lr 1.05e-04 | 585s
+[2026-09-27 07:03:51] [r=16] epoch 3 step  700/750 | train loss 1.0903 | lr 7.01e-05 | 604s
+[2026-09-27 07:04:10] [r=16] epoch 3 step  725/750 | train loss 1.1486 | lr 3.51e-05 | 623s
+[2026-09-27 07:04:29] [r=16] epoch 3 step  750/750 | train loss 1.1038 | lr 0.00e+00 | 642s
+[2026-09-27 07:04:54] [r=16] ---- end of epoch 3: val loss 1.0781
+[2026-09-27 07:04:54] [r=16] final training loss (last 25 steps): 1.1038 | total time 667.5s
 
 [plot]
-
 README.md                               0.01 MB
 adapter_config.json                     0.00 MB
 adapter_model.safetensors               7.10 MB
@@ -211,104 +225,104 @@ reloaded == in-memory: True
 
 ==================== test_0 ====================
 REFERENCE      : Ms. Dawson helps #Person1# to write a memo to inform every employee that they have to change the communication method and should not use Instant Messaging anymore.
-FINE-TUNED r=16: #Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the rules of office communications and the new policy.
+FINE-TUNED r=16: #Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the new policy applies to all communications, including intra-office communications, and will be placed on probation.
 
 ==================== test_1 ====================
 REFERENCE      : #Person2# arrives late because of traffic jam. #Person1# persuades #Person2# to use public transportations to keep healthy and to protect the environment.
-FINE-TUNED r=16: #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# thinks it's better for the environment and #Person2# will quit driving to work.
+FINE-TUNED r=16: #Person2# got stuck in traffic again. #Person1# suggests taking public transport to work. #Person2# thinks it's better for the environment and biking to work will give #Person2# more freedom.
 
 ==================== test_0 ====================
 REFERENCE          : Ms. Dawson helps #Person1# to write a memo to inform every employee that they have to change the communication method and should not use Instant Messaging anymore.
 BEFORE (base)      : The memo is to be distributed to all employees by this afternoon.
-AFTER  (LoRA r=16) : #Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the rules of office communications and the new policy.
+AFTER  (LoRA r=16) : #Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the new policy applies to all communications, including intra-office communications, and will be placed on probation.
 
 ==================== test_1 ====================
 REFERENCE          : #Person2# arrives late because of traffic jam. #Person1# persuades #Person2# to use public transportations to keep healthy and to protect the environment.
 BEFORE (base)      : The traffic jam at the Carrefour intersection has caused a lot of congestion.
-AFTER  (LoRA r=16) : #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# thinks it's better for the environment and #Person2# will quit driving to work.
+AFTER  (LoRA r=16) : #Person2# got stuck in traffic again. #Person1# suggests taking public transport to work. #Person2# thinks it's better for the environment and biking to work will give #Person2# more freedom.
 
 ROUGE on 167 test dialogues
 model               rouge1  rouge2  rougeL  avg words
-base (no FT)         28.37   11.09   24.99       15.5
-LoRA r=16            50.38   24.52   42.34       21.5
+base (no FT)         28.38   11.06   24.92       15.5
+LoRA r=16            49.06   24.17   41.25       23.8
 
 r=4  -> total 248,020,224 | trainable 442,368 (0.1784%)
 r=16 -> total 249,347,328 | trainable 1,769,472 (0.7096%)
-[r=4] val loss before training: 1.8295
-[r=4] epoch 1 step   25/750 | train loss 1.8374 | lr 6.76e-04 | 42s
-[r=4] epoch 1 step   50/750 | train loss 1.4676 | lr 9.82e-04 | 60s
-[r=4] epoch 1 step   75/750 | train loss 1.3271 | lr 9.47e-04 | 78s
-[r=4] epoch 1 step  100/750 | train loss 1.3222 | lr 9.12e-04 | 96s
-[r=4] epoch 1 step  125/750 | train loss 1.3312 | lr 8.77e-04 | 115s
-[r=4] epoch 1 step  150/750 | train loss 1.2549 | lr 8.42e-04 | 133s
-[r=4] epoch 1 step  175/750 | train loss 1.2825 | lr 8.06e-04 | 151s
-[r=4] epoch 1 step  200/750 | train loss 1.2828 | lr 7.71e-04 | 170s
-[r=4] epoch 1 step  225/750 | train loss 1.3352 | lr 7.36e-04 | 189s
-[r=4] epoch 1 step  250/750 | train loss 1.2751 | lr 7.01e-04 | 205s
-[r=4] ---- end of epoch 1: val loss 1.1372
-[r=4] epoch 2 step  275/750 | train loss 1.2474 | lr 6.66e-04 | 248s
-[r=4] epoch 2 step  300/750 | train loss 1.2558 | lr 6.31e-04 | 266s
-[r=4] epoch 2 step  325/750 | train loss 1.2820 | lr 5.96e-04 | 284s
-[r=4] epoch 2 step  350/750 | train loss 1.2448 | lr 5.61e-04 | 301s
-[r=4] epoch 2 step  375/750 | train loss 1.2825 | lr 5.26e-04 | 320s
-[r=4] epoch 2 step  400/750 | train loss 1.2103 | lr 4.91e-04 | 338s
-[r=4] epoch 2 step  425/750 | train loss 1.2363 | lr 4.56e-04 | 356s
-[r=4] epoch 2 step  450/750 | train loss 1.2205 | lr 4.21e-04 | 375s
-[r=4] epoch 2 step  475/750 | train loss 1.2739 | lr 3.86e-04 | 394s
-[r=4] epoch 2 step  500/750 | train loss 1.1585 | lr 3.51e-04 | 411s
-[r=4] ---- end of epoch 2: val loss 1.1064
-[r=4] epoch 3 step  525/750 | train loss 1.2183 | lr 3.16e-04 | 453s
-[r=4] epoch 3 step  550/750 | train loss 1.2138 | lr 2.81e-04 | 471s
-[r=4] epoch 3 step  575/750 | train loss 1.1979 | lr 2.45e-04 | 489s
-[r=4] epoch 3 step  600/750 | train loss 1.2083 | lr 2.10e-04 | 506s
-[r=4] epoch 3 step  625/750 | train loss 1.2371 | lr 1.75e-04 | 525s
-[r=4] epoch 3 step  650/750 | train loss 1.2202 | lr 1.40e-04 | 544s
-[r=4] epoch 3 step  675/750 | train loss 1.2335 | lr 1.05e-04 | 562s
-[r=4] epoch 3 step  700/750 | train loss 1.1833 | lr 7.01e-05 | 580s
-[r=4] epoch 3 step  725/750 | train loss 1.1351 | lr 3.51e-05 | 598s
-[r=4] epoch 3 step  750/750 | train loss 1.2019 | lr 0.00e+00 | 615s
-[r=4] ---- end of epoch 3: val loss 1.0953
-[r=4] final training loss (last 25 steps): 1.2019 | total time 639.3s
+[2026-09-27 07:05:58] [r=4] val loss before training: 1.8295
+[2026-09-27 07:06:43] [r=4] epoch 1 step   25/750 | train loss 1.8698 | lr 6.76e-04 | 45s
+[2026-09-27 07:07:01] [r=4] epoch 1 step   50/750 | train loss 1.4238 | lr 9.82e-04 | 63s
+[2026-09-27 07:07:19] [r=4] epoch 1 step   75/750 | train loss 1.3666 | lr 9.47e-04 | 81s
+[2026-09-27 07:07:39] [r=4] epoch 1 step  100/750 | train loss 1.3314 | lr 9.12e-04 | 101s
+[2026-09-27 07:07:58] [r=4] epoch 1 step  125/750 | train loss 1.3283 | lr 8.77e-04 | 120s
+[2026-09-27 07:08:17] [r=4] epoch 1 step  150/750 | train loss 1.3027 | lr 8.42e-04 | 139s
+[2026-09-27 07:08:36] [r=4] epoch 1 step  175/750 | train loss 1.2939 | lr 8.06e-04 | 158s
+[2026-09-27 07:08:53] [r=4] epoch 1 step  200/750 | train loss 1.2478 | lr 7.71e-04 | 175s
+[2026-09-27 07:09:12] [r=4] epoch 1 step  225/750 | train loss 1.2763 | lr 7.36e-04 | 194s
+[2026-09-27 07:09:31] [r=4] epoch 1 step  250/750 | train loss 1.2817 | lr 7.01e-04 | 213s
+[2026-09-27 07:09:56] [r=4] ---- end of epoch 1: val loss 1.1221
+[2026-09-27 07:10:15] [r=4] epoch 2 step  275/750 | train loss 1.2531 | lr 6.66e-04 | 257s
+[2026-09-27 07:10:35] [r=4] epoch 2 step  300/750 | train loss 1.2569 | lr 6.31e-04 | 277s
+[2026-09-27 07:10:53] [r=4] epoch 2 step  325/750 | train loss 1.2217 | lr 5.96e-04 | 295s
+[2026-09-27 07:11:11] [r=4] epoch 2 step  350/750 | train loss 1.1993 | lr 5.61e-04 | 313s
+[2026-09-27 07:11:29] [r=4] epoch 2 step  375/750 | train loss 1.2267 | lr 5.26e-04 | 331s
+[2026-09-27 07:11:48] [r=4] epoch 2 step  400/750 | train loss 1.2867 | lr 4.91e-04 | 350s
+[2026-09-27 07:12:08] [r=4] epoch 2 step  425/750 | train loss 1.2215 | lr 4.56e-04 | 370s
+[2026-09-27 07:12:28] [r=4] epoch 2 step  450/750 | train loss 1.2705 | lr 4.21e-04 | 390s
+[2026-09-27 07:12:47] [r=4] epoch 2 step  475/750 | train loss 1.2000 | lr 3.86e-04 | 409s
+[2026-09-27 07:13:06] [r=4] epoch 2 step  500/750 | train loss 1.2311 | lr 3.51e-04 | 428s
+[2026-09-27 07:13:31] [r=4] ---- end of epoch 2: val loss 1.0989
+[2026-09-27 07:13:50] [r=4] epoch 3 step  525/750 | train loss 1.1704 | lr 3.16e-04 | 472s
+[2026-09-27 07:14:09] [r=4] epoch 3 step  550/750 | train loss 1.2452 | lr 2.81e-04 | 491s
+[2026-09-27 07:14:27] [r=4] epoch 3 step  575/750 | train loss 1.2113 | lr 2.45e-04 | 509s
+[2026-09-27 07:14:46] [r=4] epoch 3 step  600/750 | train loss 1.1936 | lr 2.10e-04 | 528s
+[2026-09-27 07:15:06] [r=4] epoch 3 step  625/750 | train loss 1.2382 | lr 1.75e-04 | 548s
+[2026-09-27 07:15:25] [r=4] epoch 3 step  650/750 | train loss 1.2144 | lr 1.40e-04 | 567s
+[2026-09-27 07:15:43] [r=4] epoch 3 step  675/750 | train loss 1.2404 | lr 1.05e-04 | 585s
+[2026-09-27 07:16:02] [r=4] epoch 3 step  700/750 | train loss 1.1466 | lr 7.01e-05 | 604s
+[2026-09-27 07:16:21] [r=4] epoch 3 step  725/750 | train loss 1.2133 | lr 3.51e-05 | 623s
+[2026-09-27 07:16:40] [r=4] epoch 3 step  750/750 | train loss 1.1619 | lr 0.00e+00 | 642s
+[2026-09-27 07:17:05] [r=4] ---- end of epoch 3: val loss 1.0948
+[2026-09-27 07:17:05] [r=4] final training loss (last 25 steps): 1.1619 | total time 666.9s
 
 [plot]
-
 ==================== test_0 ====================
 REFERENCE  : Ms. Dawson helps #Person1# to write a memo to inform every employee that they have to change the communication method and should not use Instant Messaging anymore.
 BASE       : The memo is to be distributed to all employees by this afternoon.
-LoRA r=4   : Ms. Dawson tells #Person1# the new policy of using Instant Messaging in the office.
-LoRA r=16  : #Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the rules of office communications and the new policy.
+LoRA r=4   : Ms. Dawson asks #Person1# to take a dictation for #Person1#. #Person1# tells #Person2# that all office communications are restricted to email correspondence and official memos. The memo also restricts external communications.
+LoRA r=16  : #Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the new policy applies to all communications, including intra-office communications, and will be placed on probation.
 
 ==================== test_1 ====================
 REFERENCE  : #Person2# arrives late because of traffic jam. #Person1# persuades #Person2# to use public transportations to keep healthy and to protect the environment.
 BASE       : The traffic jam at the Carrefour intersection has caused a lot of congestion.
-LoRA r=4   : #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# feels bad about the pollution problem in this city. #Person1# recommends biking to work.
-LoRA r=16  : #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# thinks it's better for the environment and #Person2# will quit driving to work.
+LoRA r=4   : #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# feels bad about the pollution problem in this city. #Person1# suggests biking to work.
+LoRA r=16  : #Person2# got stuck in traffic again. #Person1# suggests taking public transport to work. #Person2# thinks it's better for the environment and biking to work will give #Person2# more freedom.
 
 model            trainable        %  final train  final val  rouge1  rouge2  rougeL  avg words
-base (no FT)             -        -            -          -   28.37   11.09   24.99       15.5
-LoRA r=4           442,368   0.178%       1.2019     1.0953    49.5   23.41   41.32       22.5
-LoRA r=16        1,769,472   0.710%       1.1418     1.0794   50.38   24.52   42.34       21.5
+base (no FT)             -        -            -          -   28.38   11.06   24.92       15.5
+LoRA r=4           442,368   0.178%       1.1619     1.0948   48.84   23.73    41.4       21.8
+LoRA r=16        1,769,472   0.710%       1.1038     1.0781   49.06   24.17   41.25       23.8
 
-r=4 and r=16 produce different summaries on 144/167 test dialogues
+r=4 and r=16 produce different summaries on 145/167 test dialogues
 
 --- test_0 ---
 REF  : Ms. Dawson helps #Person1# to write a memo to inform every employee that they have to change the communication method and should not use Instant Messaging anymore.
-r=4  : Ms. Dawson tells #Person1# the new policy of using Instant Messaging in the office.
-r=16 : #Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the rules of office communications and the new policy.
+r=4  : Ms. Dawson asks #Person1# to take a dictation for #Person1#. #Person1# tells #Person2# that all office communications are restricted to email correspondence and official memos. The memo also restricts external communications.
+r=16 : #Person1# asks Ms. Dawson to take a dictation for #Person1#. Ms. Dawson tells #Person1# the new policy applies to all communications, including intra-office communications, and will be placed on probation.
 
 --- test_1 ---
 REF  : #Person2# arrives late because of traffic jam. #Person1# persuades #Person2# to use public transportations to keep healthy and to protect the environment.
-r=4  : #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# feels bad about the pollution problem in this city. #Person1# recommends biking to work.
-r=16 : #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# thinks it's better for the environment and #Person2# will quit driving to work.
+r=4  : #Person2# got stuck in traffic again. #Person1# suggests #Person2# start taking public transport system to work. #Person2# feels bad about the pollution problem in this city. #Person1# suggests biking to work.
+r=16 : #Person2# got stuck in traffic again. #Person1# suggests taking public transport to work. #Person2# thinks it's better for the environment and biking to work will give #Person2# more freedom.
 
 --- test_2 ---
 REF  : #Person1# tells Kate that Masha and Hero get divorced. Kate is surprised because she thought they are perfect couple.
 r=4  : Kate tells #Person2# Masha and Hero are getting divorced. #Person2# thinks they are perfect and they will divorce early in the New Year.
-r=16 : Kate tells #Person2# Masha and Hero are getting divorced. #Person2# thinks it's surprising.
+r=16 : Kate tells #Person1# Masha and Hero are getting divorced. #Person1# thinks they are perfect couple and they will divorce early in the New Year.
 
 --- test_3 ---
 REF  : #Person1# and Brian are at the birthday party of Brian. Brian thinks #Person1# looks great and is popular.
-r=4  : Brian remembers his birthday and invites #Person1# to have a dance with him. Brian thinks he looks great and feels great.
-r=16 : Brian remembers his birthday and invites #Person1# to have a dance with him. Brian thinks he looks pretty today.
+r=4  : Brian remembers his birthday and asks #Person2# to have a dance with him. Brian is always popular with everyone and looks great.
+r=16 : Brian remembers his birthday and invites #Person2# to have a dance with him.
 
 ['hw5_adapters.zip', 'hw5_results.zip']
+run finished: 2026-09-27 07:18:14
