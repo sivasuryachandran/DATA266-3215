@@ -31,7 +31,7 @@ because of the scaling.
 ## What did you change, and why does your version work now?
 
 I changed `make_lora_model` so that `lora_alpha = 2 * r`, which keeps alpha/r at 2 for both
-runs (alpha=32 for r=16, alpha=8 for r=4). I also call `set_seed(42)` inside it and inside the
+runs (alpha=32 for r=16, alpha=8 for r=4). I also call `set_seed(SEED)` (SEED = 3215) inside it and inside the
 training function, so both runs get the same LoRA init and the same batch order. Now the only
 thing that differs between the two runs is the rank, so the comparison in Part 7 actually
 measures what it says it does. I explained this in the notebook too (end of Part 3).
