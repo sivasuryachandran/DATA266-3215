@@ -12,6 +12,7 @@ Email: sivasurya.chandran@sjsu.edu
 | `HW5.ipynb` | The assignment - LoRA fine-tuning of flan-t5-base on DialogSum, run on Colab (T4) |
 | `outputs/` | Baseline outputs (`baseline_outputs.json`), all results (`results.json`), and the two loss plots |
 | `adapters/` | The two saved LoRA adapters (r=16 and r=4). Only the adapter weights, not the full model |
+| `HW5.pdf` | The document (.pdf) that contains my findings. |
 
 Also in here:
 
