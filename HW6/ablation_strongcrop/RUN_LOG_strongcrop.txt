@@ -1,0 +1,111 @@
+HW6 - SELF-SUPERVISED AND CONTRASTIVE LEARNING (STL-10) - RUN LOG
+
+Ran this on: October 4, 2026 (local clock, PDT)
+Run started 12:16:03, finished 13:20:49 (about 65 minutes)
+SID4 = 3215, SEED = 3215 (Python random, NumPy, torch)
+Machine: Apple-silicon Mac (16 GB), MPS GPU, Python 3.14, torch 2.14.1, torchvision 0.29.1
+Command: jupyter nbconvert --to notebook --execute HW6.ipynb (the notebook was executed once, top to bottom)
+
+Below is the console output (print/stamp lines) from that run, in order, with plot outputs left out and blank
+lines squeezed. There were no errors or warnings in the notebook output.
+
+---
+
+SID4=3215 SEED=3215 SLICE=215 HP_ID=5 CLS_A=5 CLS_B=2
+(HW6 has no HP_ID mapping and no data slice; SEED, CLS_A and CLS_B are the ones used, CLS_A/CLS_B for the query images in Part D.)
+device: mps | torch 2.14.1 | torchvision 0.29.1
+run started: 2026-10-04 12:16:03
+
+train (5000, 3, 96, 96) test (8000, 3, 96, 96) unlabeled (100000, 3, 96, 96)
+labeled subset: (500, 3, 96, 96) per-class counts: [50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
+focus classes: CLS_A = 5 dog | CLS_B = 2 car
+[12:16:19 +  0.3 min] Part A epoch  1/15  train loss 2.252  test acc 20.54%
+[12:16:23 +  0.3 min] Part A epoch  2/15  train loss 1.993  test acc 23.23%
+[12:16:26 +  0.4 min] Part A epoch  3/15  train loss 1.874  test acc 28.10%
+[12:16:30 +  0.4 min] Part A epoch  4/15  train loss 1.714  test acc 14.29%
+[12:16:34 +  0.5 min] Part A epoch  5/15  train loss 1.585  test acc 26.71%
+[12:16:38 +  0.6 min] Part A epoch  6/15  train loss 1.375  test acc 37.69%
+[12:16:41 +  0.6 min] Part A epoch  7/15  train loss 1.273  test acc 40.15%
+[12:16:45 +  0.7 min] Part A epoch  8/15  train loss 1.159  test acc 35.53%
+[12:16:49 +  0.8 min] Part A epoch  9/15  train loss 0.983  test acc 41.01%
+[12:16:53 +  0.8 min] Part A epoch 10/15  train loss 0.892  test acc 42.84%
+[12:16:56 +  0.9 min] Part A epoch 11/15  train loss 0.748  test acc 41.79%
+[12:17:00 +  0.9 min] Part A epoch 12/15  train loss 0.681  test acc 44.57%
+[12:17:04 +  1.0 min] Part A epoch 13/15  train loss 0.653  test acc 44.59%
+[12:17:08 +  1.1 min] Part A epoch 14/15  train loss 0.589  test acc 43.87%
+[12:17:12 +  1.1 min] Part A epoch 15/15  train loss 0.527  test acc 43.95%
+[12:17:15 +  1.2 min] PART A  supervised 10% labels  TEST ACC = 43.95%
+[12:19:21 +  3.3 min] Part B pretext epoch  1/15  loss 1.0402  rotation acc 55.86%
+[12:21:36 +  5.6 min] Part B pretext epoch  2/15  loss 0.8531  rotation acc 65.23%
+[12:23:56 +  7.9 min] Part B pretext epoch  3/15  loss 0.7718  rotation acc 68.92%
+[12:26:18 + 10.2 min] Part B pretext epoch  4/15  loss 0.7080  rotation acc 71.85%
+[12:28:40 + 12.6 min] Part B pretext epoch  5/15  loss 0.6628  rotation acc 73.59%
+[12:31:16 + 15.2 min] Part B pretext epoch  6/15  loss 0.6250  rotation acc 75.43%
+[12:33:58 + 17.9 min] Part B pretext epoch  7/15  loss 0.5860  rotation acc 76.97%
+[12:36:26 + 20.4 min] Part B pretext epoch  8/15  loss 0.5545  rotation acc 78.36%
+[12:38:57 + 22.9 min] Part B pretext epoch  9/15  loss 0.5234  rotation acc 79.55%
+[12:41:28 + 25.4 min] Part B pretext epoch 10/15  loss 0.4992  rotation acc 80.64%
+[12:44:00 + 27.9 min] Part B pretext epoch 11/15  loss 0.4732  rotation acc 81.71%
+[12:46:58 + 30.9 min] Part B pretext epoch 12/15  loss 0.4547  rotation acc 82.59%
+[12:50:10 + 34.1 min] Part B pretext epoch 13/15  loss 0.4385  rotation acc 83.13%
+[12:53:16 + 37.2 min] Part B pretext epoch 14/15  loss 0.4283  rotation acc 83.61%
+[12:56:04 + 40.0 min] Part B pretext epoch 15/15  loss 0.4254  rotation acc 83.66%
+[12:56:09 + 40.1 min] Part B rotation accuracy on test images: 89.24%
+[12:56:15 + 40.2 min] Part B rotation: linear probe 20 ep, final train loss 0.297, TEST ACC 47.85%  (encoder hash unchanged: a801cf62)
+[12:56:15 + 40.2 min] PART B  rotation SSL + linear probe  TEST ACC = 47.85%
+[12:57:28 + 41.4 min] Part C pretext epoch  1/20  NT-Xent 5.1029  positive-pair top-1 8.2%
+[12:58:41 + 42.6 min] Part C pretext epoch  2/20  NT-Xent 4.1900  positive-pair top-1 22.6%
+[13:00:01 + 44.0 min] Part C pretext epoch  3/20  NT-Xent 3.8203  positive-pair top-1 33.2%
+[13:01:18 + 45.2 min] Part C pretext epoch  4/20  NT-Xent 3.5523  positive-pair top-1 44.2%
+[13:02:34 + 46.5 min] Part C pretext epoch  5/20  NT-Xent 3.3872  positive-pair top-1 51.8%
+[13:03:54 + 47.8 min] Part C pretext epoch  6/20  NT-Xent 3.2728  positive-pair top-1 56.6%
+[13:05:22 + 49.3 min] Part C pretext epoch  7/20  NT-Xent 3.1663  positive-pair top-1 61.2%
+[13:06:37 + 50.6 min] Part C pretext epoch  8/20  NT-Xent 3.0952  positive-pair top-1 64.3%
+[13:07:47 + 51.7 min] Part C pretext epoch  9/20  NT-Xent 3.0120  positive-pair top-1 67.7%
+[13:08:54 + 52.8 min] Part C pretext epoch 10/20  NT-Xent 2.9654  positive-pair top-1 69.5%
+[13:10:00 + 53.9 min] Part C pretext epoch 11/20  NT-Xent 2.9089  positive-pair top-1 72.0%
+[13:11:06 + 55.0 min] Part C pretext epoch 12/20  NT-Xent 2.8660  positive-pair top-1 74.0%
+[13:12:12 + 56.1 min] Part C pretext epoch 13/20  NT-Xent 2.8159  positive-pair top-1 75.9%
+[13:13:19 + 57.3 min] Part C pretext epoch 14/20  NT-Xent 2.7905  positive-pair top-1 76.9%
+[13:14:27 + 58.4 min] Part C pretext epoch 15/20  NT-Xent 2.7582  positive-pair top-1 78.2%
+[13:15:36 + 59.5 min] Part C pretext epoch 16/20  NT-Xent 2.7344  positive-pair top-1 79.4%
+[13:16:45 + 60.7 min] Part C pretext epoch 17/20  NT-Xent 2.7100  positive-pair top-1 80.1%
+[13:17:56 + 61.9 min] Part C pretext epoch 18/20  NT-Xent 2.6858  positive-pair top-1 81.3%
+[13:19:09 + 63.1 min] Part C pretext epoch 19/20  NT-Xent 2.6951  positive-pair top-1 80.7%
+[13:20:20 + 64.3 min] Part C pretext epoch 20/20  NT-Xent 2.6759  positive-pair top-1 81.5%
+[13:20:26 + 64.4 min] Part C SimCLR: linear probe 20 ep, final train loss 0.471, TEST ACC 51.16%  (encoder hash unchanged: 853ffad0)
+[13:20:26 + 64.4 min] PART C  SimCLR + linear probe  TEST ACC = 51.16%
+[13:20:32 + 64.5 min] Random-init encoder: linear probe 20 ep, final train loss 0.152, TEST ACC 28.59%  (encoder hash unchanged: 9a4415e8)
+
+Model                                      test acc
+A  Supervised, 500 labels, end-to-end       43.95%
+B  Rotation SSL + linear                    47.85%
+C  SimCLR + linear                          51.16%
+(ref) random encoder + linear               28.59%
+[13:20:46 + 64.7 min] Supervised (A): precision@5 over all 8000 test queries = 39.66%, 1-NN accuracy = 42.40%
+[13:20:46 + 64.7 min] Rotation SSL (B): precision@5 over all 8000 test queries = 40.97%, 1-NN accuracy = 44.74%
+[13:20:46 + 64.7 min] SimCLR (C): precision@5 over all 8000 test queries = 44.96%, 1-NN accuracy = 49.44%
+
+queries (test index, class): [(6224, 'dog'), (1842, 'car'), (3770, 'airplane'), (2209, 'deer')]
+query 6224 (dog     ) Supervised (A)    -> ['monkey', 'deer', 'deer', 'cat', 'dog']  cos=[0.98, 0.98, 0.98, 0.98, 0.98]
+query 6224 (dog     ) Rotation SSL (B)  -> ['horse', 'horse', 'dog', 'dog', 'horse']  cos=[0.98, 0.98, 0.98, 0.98, 0.98]
+query 6224 (dog     ) SimCLR (C)        -> ['horse', 'horse', 'dog', 'deer', 'horse']  cos=[0.93, 0.93, 0.92, 0.92, 0.9]
+
+query 1842 (car     ) Supervised (A)    -> ['car', 'car', 'car', 'car', 'car']  cos=[0.98, 0.98, 0.98, 0.98, 0.98]
+query 1842 (car     ) Rotation SSL (B)  -> ['car', 'truck', 'truck', 'truck', 'car']  cos=[0.99, 0.98, 0.98, 0.98, 0.98]
+query 1842 (car     ) SimCLR (C)        -> ['car', 'car', 'car', 'car', 'car']  cos=[0.94, 0.94, 0.93, 0.93, 0.93]
+
+query 3770 (airplane) Supervised (A)    -> ['ship', 'airplane', 'airplane', 'airplane', 'ship']  cos=[0.95, 0.95, 0.95, 0.94, 0.94]
+query 3770 (airplane) Rotation SSL (B)  -> ['airplane', 'airplane', 'ship', 'airplane', 'airplane']  cos=[0.98, 0.97, 0.97, 0.97, 0.97]
+query 3770 (airplane) SimCLR (C)        -> ['airplane', 'airplane', 'truck', 'airplane', 'ship']  cos=[0.92, 0.91, 0.9, 0.89, 0.89]
+
+query 2209 (deer    ) Supervised (A)    -> ['deer', 'deer', 'monkey', 'deer', 'deer']  cos=[0.97, 0.96, 0.96, 0.96, 0.96]
+query 2209 (deer    ) Rotation SSL (B)  -> ['deer', 'deer', 'horse', 'car', 'horse']  cos=[0.99, 0.99, 0.99, 0.99, 0.99]
+query 2209 (deer    ) SimCLR (C)        -> ['deer', 'deer', 'deer', 'deer', 'dog']  cos=[0.95, 0.93, 0.92, 0.92, 0.9]
+
+{'Supervised (A)': 1825, 'Rotation SSL (B)': 1591, 'SimCLR (C)': 1516} queries (of 8000) with 0/5 correct neighbours
+
+A supervised top confusions (count, true -> predicted): [(261, 'car', 'truck'), (209, 'ship', 'truck'), (192, 'truck', 'car'), (155, 'dog', 'horse')]
+B rotation top confusions (count, true -> predicted): [(172, 'truck', 'car'), (166, 'truck', 'ship'), (166, 'bird', 'monkey'), (163, 'deer', 'horse')]
+C SimCLR top confusions (count, true -> predicted): [(180, 'ship', 'truck'), (155, 'truck', 'car'), (135, 'car', 'truck'), (133, 'dog', 'cat')]
+[13:20:49 + 64.8 min] all done; results saved to outputs/results.json
