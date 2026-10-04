@@ -23,6 +23,7 @@ classes of the first two query images in Part D.
 |:--|:--|
 | `HW6.ipynb` | The assignment, executed top to bottom with outputs, including the written analysis at the end |
 | `outputs/` | Plots (augmentations, losses, per-class accuracy, nearest-neighbour figures per query, retrieval failures) and `results.json` with every number |
+| `checkpoints/` | The encoders (supervised, rotation, rotation on 20k, SimCLR), ResNet-18 state dicts, 45 MB each |
 | `scripts/` | `build_notebook.py` (generates the notebook code), `add_analysis.py` (appends the analysis cell after the run), `robustness.py` + `plot_robustness.py` (five-subset study and data-matched rotation) |
 | `ablation_strongcrop/` | The first full run (SimCLR with crop 0.2-1, no hue): notebook, log, results and encoder |
 | `HW6.pdf` | The document (.pdf) that contains my findings |
@@ -78,4 +79,4 @@ python scripts/robustness.py   # optional extra experiments, ~11 min
 STL-10 (2.6 GB) downloads into `data/` on first run and is not committed. SEED = 3215 is set for Python, NumPy and torch; the GPU augmentations are random, so a rerun on different hardware
 will not reproduce the exact numbers (MPS/CUDA kernels are not fully deterministic), but should land close.
 
-Encoder checkpoints are written to `checkpoints/` by the notebook (and `encoder_rotation_20k.pt` by `scripts/robustness.py`); they are not committed because of their size.
+The checkpoints in `checkpoints/` were produced by that notebook run (cells for Parts A, B and C); `encoder_rotation_20k.pt` comes from `scripts/robustness.py`.
