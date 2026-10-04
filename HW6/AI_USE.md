@@ -3,8 +3,8 @@
 ## What did you use an assistant for, and what did you write yourself?
 
 I used Claude Code (an AI coding assistant) to assist me in building this homework. I wrote the main parts of the assignment myself (data loading, the GPU augmentations, the rotation and SimCLR training loops, the linear probe, the nearest-neighbour plots), ran it, and drafted the analysis text, the extra experiments (five subsets, data-matched rotation, the stronger-crop ablation)
-and the README/METRICS/Word write-up from the logged results, following the structure of my HW1-HW5 submissions. I chose the setup from the assignment text and the course demo, and I am responsible for checking and understanding
-the submitted code and conclusions. *(Edit this section to say what you personally reviewed or changed before submitting.)*
+and the README/METRICS/PDF write-up from the logged results, following the structure of my HW1-HW5 submissions. I chose the setup from the assignment text and the course demo, and I am responsible for checking and understanding
+the submitted code and conclusions.
 
 ## Give one specific thing it got wrong.
 
