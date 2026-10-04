@@ -1,0 +1,183 @@
+HW6 - SELF-SUPERVISED AND CONTRASTIVE LEARNING (STL-10) - RUN LOG
+
+SID4 = 3215, SEED = 3215 (Python random, NumPy, torch)
+Machine: Apple-silicon Mac (16 GB), MPS GPU, Python 3.14, torch 2.14.1, torchvision 0.29.1
+Date: October 4, 2026 (local clock, PDT)
+
+Three runs, in this order:
+ 1. [ablation_strongcrop/RUN_LOG_strongcrop.txt] first run of the notebook, SimCLR with crop scale 0.2-1.0 and no hue (12:16-13:21).
+    Kept as an ablation, not the main result. Parts A and B are identical in both full runs.
+ 2. [PART 1 below] main run of HW6.ipynb with the demo's SimCLR augmentations (13:29:50 - 14:36:18, about 66 minutes).
+ 3. [PART 2 below] scripts/robustness.py: data-matched rotation (20k images) and 5 subsets/seeds (14:36:49 - 14:48, about 11 minutes).
+Commands: jupyter nbconvert --to notebook --execute HW6.ipynb ; python scripts/robustness.py
+
+Console output follows, with plot outputs left out and blank lines squeezed. No errors or warnings in either run.
+
+=================================================================
+PART 1 - HW6.ipynb (main run)
+=================================================================
+
+SID4=3215 SEED=3215 SLICE=215 HP_ID=5 CLS_A=5 CLS_B=2
+(HW6 has no HP_ID mapping and no data slice; SEED, CLS_A and CLS_B are the ones used, CLS_A/CLS_B for the query images in Part D.)
+device: mps | torch 2.14.1 | torchvision 0.29.1
+run started: 2026-10-04 13:29:50
+
+train (5000, 3, 96, 96) test (8000, 3, 96, 96) unlabeled (100000, 3, 96, 96)
+labeled subset: (500, 3, 96, 96) per-class counts: [50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
+focus classes: CLS_A = 5 dog | CLS_B = 2 car
+[13:30:06 +  0.3 min] Part A epoch  1/15  train loss 2.252  test acc 20.54%
+[13:30:10 +  0.3 min] Part A epoch  2/15  train loss 1.993  test acc 23.23%
+[13:30:14 +  0.4 min] Part A epoch  3/15  train loss 1.874  test acc 28.10%
+[13:30:18 +  0.5 min] Part A epoch  4/15  train loss 1.714  test acc 14.29%
+[13:30:21 +  0.5 min] Part A epoch  5/15  train loss 1.585  test acc 26.71%
+[13:30:25 +  0.6 min] Part A epoch  6/15  train loss 1.375  test acc 37.69%
+[13:30:29 +  0.7 min] Part A epoch  7/15  train loss 1.273  test acc 40.15%
+[13:30:33 +  0.7 min] Part A epoch  8/15  train loss 1.159  test acc 35.53%
+[13:30:37 +  0.8 min] Part A epoch  9/15  train loss 0.983  test acc 41.01%
+[13:30:40 +  0.8 min] Part A epoch 10/15  train loss 0.892  test acc 42.84%
+[13:30:44 +  0.9 min] Part A epoch 11/15  train loss 0.748  test acc 41.79%
+[13:30:48 +  1.0 min] Part A epoch 12/15  train loss 0.681  test acc 44.57%
+[13:30:52 +  1.0 min] Part A epoch 13/15  train loss 0.653  test acc 44.59%
+[13:30:56 +  1.1 min] Part A epoch 14/15  train loss 0.589  test acc 43.87%
+[13:31:00 +  1.2 min] Part A epoch 15/15  train loss 0.527  test acc 43.95%
+[13:31:04 +  1.2 min] PART A  supervised 10% labels  TEST ACC = 43.95%
+[13:33:57 +  4.1 min] Part B pretext epoch  1/15  loss 1.0402  rotation acc 55.86%
+[13:36:53 +  7.1 min] Part B pretext epoch  2/15  loss 0.8531  rotation acc 65.23%
+[13:39:43 +  9.9 min] Part B pretext epoch  3/15  loss 0.7718  rotation acc 68.92%
+[13:42:35 + 12.8 min] Part B pretext epoch  4/15  loss 0.7080  rotation acc 71.85%
+[13:45:31 + 15.7 min] Part B pretext epoch  5/15  loss 0.6628  rotation acc 73.59%
+[13:48:26 + 18.6 min] Part B pretext epoch  6/15  loss 0.6250  rotation acc 75.43%
+[13:51:18 + 21.5 min] Part B pretext epoch  7/15  loss 0.5860  rotation acc 76.97%
+[13:54:16 + 24.4 min] Part B pretext epoch  8/15  loss 0.5545  rotation acc 78.36%
+[13:57:08 + 27.3 min] Part B pretext epoch  9/15  loss 0.5234  rotation acc 79.55%
+[13:59:52 + 30.0 min] Part B pretext epoch 10/15  loss 0.4992  rotation acc 80.64%
+[14:02:42 + 32.9 min] Part B pretext epoch 11/15  loss 0.4732  rotation acc 81.71%
+[14:05:40 + 35.8 min] Part B pretext epoch 12/15  loss 0.4547  rotation acc 82.59%
+[14:08:24 + 38.6 min] Part B pretext epoch 13/15  loss 0.4385  rotation acc 83.13%
+[14:11:06 + 41.3 min] Part B pretext epoch 14/15  loss 0.4283  rotation acc 83.61%
+[14:13:50 + 44.0 min] Part B pretext epoch 15/15  loss 0.4254  rotation acc 83.66%
+[14:13:55 + 44.1 min] Part B rotation accuracy on test images: 89.24%
+[14:14:01 + 44.2 min] Part B rotation: linear probe 20 ep, final train loss 0.297, TEST ACC 47.85%  (encoder hash unchanged: a801cf62)
+[14:14:01 + 44.2 min] PART B  rotation SSL + linear probe  TEST ACC = 47.85%
+[14:15:10 + 45.3 min] Part C pretext epoch  1/20  NT-Xent 4.2847  positive-pair top-1 25.4%
+[14:16:21 + 46.5 min] Part C pretext epoch  2/20  NT-Xent 3.0806  positive-pair top-1 62.5%
+[14:17:29 + 47.7 min] Part C pretext epoch  3/20  NT-Xent 2.7099  positive-pair top-1 80.6%
+[14:18:35 + 48.8 min] Part C pretext epoch  4/20  NT-Xent 2.5331  positive-pair top-1 87.8%
+[14:19:42 + 49.9 min] Part C pretext epoch  5/20  NT-Xent 2.4347  positive-pair top-1 91.1%
+[14:20:47 + 51.0 min] Part C pretext epoch  6/20  NT-Xent 2.3584  positive-pair top-1 93.5%
+[14:21:54 + 52.1 min] Part C pretext epoch  7/20  NT-Xent 2.3029  positive-pair top-1 95.1%
+[14:22:59 + 53.2 min] Part C pretext epoch  8/20  NT-Xent 2.2545  positive-pair top-1 95.9%
+[14:24:03 + 54.2 min] Part C pretext epoch  9/20  NT-Xent 2.2144  positive-pair top-1 96.9%
+[14:25:07 + 55.3 min] Part C pretext epoch 10/20  NT-Xent 2.1859  positive-pair top-1 97.4%
+[14:26:11 + 56.4 min] Part C pretext epoch 11/20  NT-Xent 2.1582  positive-pair top-1 97.9%
+[14:27:16 + 57.4 min] Part C pretext epoch 12/20  NT-Xent 2.1277  positive-pair top-1 98.2%
+[14:28:22 + 58.5 min] Part C pretext epoch 13/20  NT-Xent 2.1075  positive-pair top-1 98.3%
+[14:29:27 + 59.6 min] Part C pretext epoch 14/20  NT-Xent 2.0887  positive-pair top-1 98.6%
+[14:30:32 + 60.7 min] Part C pretext epoch 15/20  NT-Xent 2.0718  positive-pair top-1 98.6%
+[14:31:35 + 61.8 min] Part C pretext epoch 16/20  NT-Xent 2.0571  positive-pair top-1 98.9%
+[14:32:40 + 62.8 min] Part C pretext epoch 17/20  NT-Xent 2.0494  positive-pair top-1 98.9%
+[14:33:44 + 63.9 min] Part C pretext epoch 18/20  NT-Xent 2.0365  positive-pair top-1 99.1%
+[14:34:47 + 65.0 min] Part C pretext epoch 19/20  NT-Xent 2.0375  positive-pair top-1 99.0%
+[14:35:51 + 66.0 min] Part C pretext epoch 20/20  NT-Xent 2.0318  positive-pair top-1 99.0%
+[14:35:57 + 66.1 min] Part C SimCLR: linear probe 20 ep, final train loss 0.388, TEST ACC 44.62%  (encoder hash unchanged: 90d5fec3)
+[14:35:57 + 66.1 min] PART C  SimCLR + linear probe  TEST ACC = 44.62%
+[14:36:02 + 66.2 min] Random-init encoder: linear probe 20 ep, final train loss 0.152, TEST ACC 28.59%  (encoder hash unchanged: 9a4415e8)
+
+Model                                      test acc
+A  Supervised, 500 labels, end-to-end       43.95%
+B  Rotation SSL + linear                    47.85%
+C  SimCLR + linear                          44.62%
+(ref) random encoder + linear               28.59%
+[14:36:15 + 66.4 min] Supervised (A): precision@5 over all 8000 test queries = 39.66%, 1-NN accuracy = 42.40%
+[14:36:15 + 66.4 min] Rotation SSL (B): precision@5 over all 8000 test queries = 40.97%, 1-NN accuracy = 44.74%
+[14:36:15 + 66.4 min] SimCLR (C): precision@5 over all 8000 test queries = 39.89%, 1-NN accuracy = 43.22%
+
+queries (test index, class): [(6224, 'dog'), (1842, 'car'), (3770, 'airplane'), (2209, 'deer')]
+query 6224 (dog     ) Supervised (A)    -> ['monkey', 'deer', 'deer', 'cat', 'dog']  cos=[0.98, 0.98, 0.98, 0.98, 0.98]
+query 6224 (dog     ) Rotation SSL (B)  -> ['horse', 'horse', 'dog', 'dog', 'horse']  cos=[0.98, 0.98, 0.98, 0.98, 0.98]
+query 6224 (dog     ) SimCLR (C)        -> ['horse', 'horse', 'deer', 'dog', 'horse']  cos=[0.93, 0.93, 0.92, 0.9, 0.88]
+
+query 1842 (car     ) Supervised (A)    -> ['car', 'car', 'car', 'car', 'car']  cos=[0.98, 0.98, 0.98, 0.98, 0.98]
+query 1842 (car     ) Rotation SSL (B)  -> ['car', 'truck', 'truck', 'truck', 'car']  cos=[0.99, 0.98, 0.98, 0.98, 0.98]
+query 1842 (car     ) SimCLR (C)        -> ['car', 'car', 'car', 'car', 'car']  cos=[0.93, 0.93, 0.92, 0.92, 0.91]
+
+query 3770 (airplane) Supervised (A)    -> ['ship', 'airplane', 'airplane', 'airplane', 'ship']  cos=[0.95, 0.95, 0.95, 0.94, 0.94]
+query 3770 (airplane) Rotation SSL (B)  -> ['airplane', 'airplane', 'ship', 'airplane', 'airplane']  cos=[0.98, 0.97, 0.97, 0.97, 0.97]
+query 3770 (airplane) SimCLR (C)        -> ['truck', 'airplane', 'ship', 'airplane', 'horse']  cos=[0.88, 0.88, 0.88, 0.87, 0.87]
+
+query 2209 (deer    ) Supervised (A)    -> ['deer', 'deer', 'monkey', 'deer', 'deer']  cos=[0.97, 0.96, 0.96, 0.96, 0.96]
+query 2209 (deer    ) Rotation SSL (B)  -> ['deer', 'deer', 'horse', 'car', 'horse']  cos=[0.99, 0.99, 0.99, 0.99, 0.99]
+query 2209 (deer    ) SimCLR (C)        -> ['deer', 'dog', 'deer', 'deer', 'deer']  cos=[0.94, 0.93, 0.92, 0.92, 0.91]
+
+{'Supervised (A)': 1825, 'Rotation SSL (B)': 1591, 'SimCLR (C)': 1671} queries (of 8000) with 0/5 correct neighbours
+
+A supervised top confusions (count, true -> predicted): [(261, 'car', 'truck'), (209, 'ship', 'truck'), (192, 'truck', 'car'), (155, 'dog', 'horse')]
+B rotation top confusions (count, true -> predicted): [(172, 'truck', 'car'), (166, 'truck', 'ship'), (166, 'bird', 'monkey'), (163, 'deer', 'horse')]
+C SimCLR top confusions (count, true -> predicted): [(221, 'car', 'truck'), (184, 'truck', 'car'), (172, 'dog', 'monkey'), (158, 'cat', 'monkey')]
+[14:36:18 + 66.5 min] all done; results saved to outputs/results.json
+
+
+=================================================================
+PART 2 - scripts/robustness.py
+=================================================================
+
+SID4=3215 SEED=3215 SLICE=215 HP_ID=5 CLS_A=5 CLS_B=2
+(HW6 has no HP_ID mapping and no data slice; SEED, CLS_A and CLS_B are the ones used, CLS_A/CLS_B for the query images in Part D.)
+device: mps | torch 2.14.1 | torchvision 0.29.1
+run started: 2026-10-04 14:36:49
+train (5000, 3, 96, 96) test (8000, 3, 96, 96) unlabeled (100000, 3, 96, 96)
+labeled subset: (500, 3, 96, 96) per-class counts: [50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
+focus classes: CLS_A = 5 dog | CLS_B = 2 car
+[14:37:27 +  0.6 min] rotation-20k pretext epoch 1/15 loss 1.2175 rot acc 46.65%
+[14:37:53 +  1.1 min] rotation-20k pretext epoch 2/15 loss 1.0695 rot acc 54.40%
+[14:38:21 +  1.5 min] rotation-20k pretext epoch 3/15 loss 0.9943 rot acc 58.24%
+[14:38:51 +  2.0 min] rotation-20k pretext epoch 4/15 loss 0.9457 rot acc 61.01%
+[14:39:22 +  2.5 min] rotation-20k pretext epoch 5/15 loss 0.9054 rot acc 62.72%
+[14:39:54 +  3.1 min] rotation-20k pretext epoch 6/15 loss 0.8702 rot acc 64.00%
+[14:40:26 +  3.6 min] rotation-20k pretext epoch 7/15 loss 0.8424 rot acc 65.77%
+[14:40:57 +  4.1 min] rotation-20k pretext epoch 8/15 loss 0.8062 rot acc 67.29%
+[14:41:28 +  4.6 min] rotation-20k pretext epoch 9/15 loss 0.7817 rot acc 68.30%
+[14:41:58 +  5.2 min] rotation-20k pretext epoch 10/15 loss 0.7520 rot acc 69.46%
+[14:42:28 +  5.7 min] rotation-20k pretext epoch 11/15 loss 0.7266 rot acc 70.75%
+[14:42:59 +  6.2 min] rotation-20k pretext epoch 12/15 loss 0.7048 rot acc 71.48%
+[14:43:29 +  6.7 min] rotation-20k pretext epoch 13/15 loss 0.6811 rot acc 72.81%
+[14:44:00 +  7.2 min] rotation-20k pretext epoch 14/15 loss 0.6760 rot acc 72.91%
+[14:44:30 +  7.7 min] rotation-20k pretext epoch 15/15 loss 0.6630 rot acc 73.70%
+[14:44:47 +  8.0 min] seed 3215: A supervised = 43.95%
+[14:44:52 +  8.1 min] seed 3215 B rotation (100k): linear probe 20 ep, final train loss 0.297, TEST ACC 47.85%  (encoder hash unchanged: a801cf62)
+[14:44:57 +  8.1 min] seed 3215 B' rotation (20k, data-matched): linear probe 20 ep, final train loss 0.166, TEST ACC 43.00%  (encoder hash unchanged: 8493379d)
+[14:45:02 +  8.2 min] seed 3215 C SimCLR (20k, demo aug): linear probe 20 ep, final train loss 0.388, TEST ACC 44.62%  (encoder hash unchanged: 90d5fec3)
+[14:45:06 +  8.3 min] seed 3215 C' SimCLR (20k, strong crop, no hue; ablation): linear probe 20 ep, final train loss 0.471, TEST ACC 51.16%  (encoder hash unchanged: 853ffad0)
+[14:45:11 +  8.4 min] seed 3215 random: linear probe 20 ep, final train loss 0.152, TEST ACC 28.59%  (encoder hash unchanged: 9a4415e8)
+[14:45:27 +  8.6 min] seed 3216: A supervised = 44.36%
+[14:45:32 +  8.7 min] seed 3216 B rotation (100k): linear probe 20 ep, final train loss 0.251, TEST ACC 46.60%  (encoder hash unchanged: a801cf62)
+[14:45:37 +  8.8 min] seed 3216 B' rotation (20k, data-matched): linear probe 20 ep, final train loss 0.166, TEST ACC 42.66%  (encoder hash unchanged: 8493379d)
+[14:45:42 +  8.9 min] seed 3216 C SimCLR (20k, demo aug): linear probe 20 ep, final train loss 0.361, TEST ACC 43.66%  (encoder hash unchanged: 90d5fec3)
+[14:45:47 +  9.0 min] seed 3216 C' SimCLR (20k, strong crop, no hue; ablation): linear probe 20 ep, final train loss 0.432, TEST ACC 50.85%  (encoder hash unchanged: 853ffad0)
+[14:45:52 +  9.1 min] seed 3216 random: linear probe 20 ep, final train loss 0.097, TEST ACC 28.20%  (encoder hash unchanged: e13654a3)
+[14:46:10 +  9.3 min] seed 3217: A supervised = 46.25%
+[14:46:16 +  9.4 min] seed 3217 B rotation (100k): linear probe 20 ep, final train loss 0.256, TEST ACC 46.64%  (encoder hash unchanged: a801cf62)
+[14:46:22 +  9.5 min] seed 3217 B' rotation (20k, data-matched): linear probe 20 ep, final train loss 0.137, TEST ACC 42.59%  (encoder hash unchanged: 8493379d)
+[14:46:27 +  9.6 min] seed 3217 C SimCLR (20k, demo aug): linear probe 20 ep, final train loss 0.341, TEST ACC 45.21%  (encoder hash unchanged: 90d5fec3)
+[14:46:34 +  9.7 min] seed 3217 C' SimCLR (20k, strong crop, no hue; ablation): linear probe 20 ep, final train loss 0.361, TEST ACC 51.71%  (encoder hash unchanged: 853ffad0)
+[14:46:39 +  9.8 min] seed 3217 random: linear probe 20 ep, final train loss 0.196, TEST ACC 32.06%  (encoder hash unchanged: 04d6711d)
+[14:46:57 + 10.1 min] seed 3218: A supervised = 43.81%
+[14:47:03 + 10.2 min] seed 3218 B rotation (100k): linear probe 20 ep, final train loss 0.267, TEST ACC 47.69%  (encoder hash unchanged: a801cf62)
+[14:47:09 + 10.3 min] seed 3218 B' rotation (20k, data-matched): linear probe 20 ep, final train loss 0.146, TEST ACC 43.21%  (encoder hash unchanged: 8493379d)
+[14:47:15 + 10.4 min] seed 3218 C SimCLR (20k, demo aug): linear probe 20 ep, final train loss 0.397, TEST ACC 44.61%  (encoder hash unchanged: 90d5fec3)
+[14:47:20 + 10.5 min] seed 3218 C' SimCLR (20k, strong crop, no hue; ablation): linear probe 20 ep, final train loss 0.386, TEST ACC 49.46%  (encoder hash unchanged: 853ffad0)
+[14:47:26 + 10.6 min] seed 3218 random: linear probe 20 ep, final train loss 0.178, TEST ACC 29.44%  (encoder hash unchanged: 59337240)
+[14:47:45 + 10.9 min] seed 3219: A supervised = 45.86%
+[14:47:50 + 11.0 min] seed 3219 B rotation (100k): linear probe 20 ep, final train loss 0.303, TEST ACC 46.55%  (encoder hash unchanged: a801cf62)
+[14:47:56 + 11.1 min] seed 3219 B' rotation (20k, data-matched): linear probe 20 ep, final train loss 0.166, TEST ACC 42.59%  (encoder hash unchanged: 8493379d)
+[14:48:02 + 11.2 min] seed 3219 C SimCLR (20k, demo aug): linear probe 20 ep, final train loss 0.276, TEST ACC 43.60%  (encoder hash unchanged: 90d5fec3)
+[14:48:07 + 11.3 min] seed 3219 C' SimCLR (20k, strong crop, no hue; ablation): linear probe 20 ep, final train loss 0.302, TEST ACC 48.60%  (encoder hash unchanged: 853ffad0)
+[14:48:13 + 11.4 min] seed 3219 random: linear probe 20 ep, final train loss 0.112, TEST ACC 28.81%  (encoder hash unchanged: 1fc840c2)
+
+SUMMARY (test acc %, mean +- std over 5 seeds/subsets; seed 3215 is the one reported in the notebook)
+A                                   44.85 +- 1.13   (min 43.81, max 46.25)   per-seed [43.95, 44.36, 46.25, 43.81, 45.86]
+random                              29.42 +- 1.54   (min 28.20, max 32.06)   per-seed [28.59, 28.2, 32.06, 29.44, 28.81]
+B rotation (100k)                   47.06 +- 0.65   (min 46.55, max 47.85)   per-seed [47.85, 46.6, 46.64, 47.69, 46.55]
+B' rotation (20k, data-matched)     42.81 +- 0.28   (min 42.59, max 43.21)   per-seed [43.0, 42.66, 42.59, 43.21, 42.59]
+C SimCLR (20k, demo aug)            44.34 +- 0.69   (min 43.60, max 45.21)   per-seed [44.62, 43.66, 45.21, 44.61, 43.6]
+C' SimCLR (20k, strong crop, no hue; ablation)  50.36 +- 1.29   (min 48.60, max 51.71)   per-seed [51.16, 50.85, 51.71, 49.46, 48.6]
