@@ -1,6 +1,7 @@
-# DATA 266 — HW7
+# DATA 266 - HW7
 
 Siva Surya Chandran — sivasurya.chandran@sjsu.edu
+019130215
 
 ## Personal parameters
 
