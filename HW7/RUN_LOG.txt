@@ -1,0 +1,18 @@
+HW7 execution log
+Timestamp: 2026-10-19 (America/Los_Angeles)
+Command: ../HW6/.venv/bin/jupyter nbconvert --to notebook --execute HW7.ipynb --output HW7.ipynb --ExecutePreprocessor.timeout=3600 --ExecutePreprocessor.kernel_name=python3
+
+Personal parameters: SID4=3215 SEED=3215 SLICE=215 HP_ID=5 CLS_A=5 CLS_B=2
+Environment: torch 2.14.1, torchvision 0.29.1, numpy 2.5.3, device=mps
+Dataset: FashionMNIST train=60,000 test=10,000
+Configuration: batch_size=256, Adam lr=0.001, epochs=8
+
+Training summary:
+FC-AE final loss=0.0149891882 train_seconds=15.86
+VAE final total loss=0.4761110110 reconstruction=0.4279102273 KL=0.0482007842 train_seconds=18.77
+
+Evaluation:
+FC-AE test_mse=0.0149377761 test_psnr_db=18.2571392 parameters=476720
+VAE test_mse=0.0624842457 test_psnr_db=12.0422945 parameters=474672
+
+Notebook execution completed successfully. No error outputs were found in the executed notebook. The first development run exposed a VAE loss-scaling issue (KL=0.000007); the loss was corrected before this recorded run. Checkpoints and figures were written under checkpoints/ and figures/.
