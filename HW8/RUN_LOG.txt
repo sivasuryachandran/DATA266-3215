@@ -1,0 +1,15 @@
+HW8 execution log
+Date: 2026-10-26 (America/Los_Angeles)
+Main command: ../HW6/.venv/bin/jupyter nbconvert --to notebook --execute HW8.ipynb --output HW8.ipynb --ExecutePreprocessor.timeout=3600 --ExecutePreprocessor.kernel_name=python3
+Supplement command: same, on HW8_supplement.ipynb (timeout 7200)
+
+Personal parameters: SID4=3215 SEED=3215 SLICE=215 HP_ID=5 CLS_A=5 CLS_B=2
+Environment: torch 2.14.1, device=mps
+Dataset: MNIST train=60,000 (468 batches/epoch, drop_last)
+Configuration: T=100, beta 1e-4..0.02 (abar_T=0.36356), batch_size=128, epochs=50, Adam lr=2e-4
+Model: 5 conv layers, 416,641 parameters
+
+Main run: epoch1 loss=0.15775, epoch50 loss=0.05991, train_seconds=2344.6
+Supplement (beta_end=0.1, epochs=30): final loss=0.03819, train_seconds=1395.3
+
+Both notebooks executed without error. Note: the main notebook's markdown cells were edited after execution (text only, no code or outputs changed) to correct statements made before the abar_T value was checked.
