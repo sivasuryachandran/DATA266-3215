@@ -1,0 +1,41 @@
+{
+ "gpu": "Tesla T4",
+ "model": "Qwen/Qwen2.5-1.5B-Instruct",
+ "new_tokens": 128,
+ "reps": 20,
+ "hf_b1": {
+  "tok_s": 22.487123958025652,
+  "p50_ms": 5482.2152853012085,
+  "p95_ms": 6634.914171695711
+ },
+ "vllm_b1": {
+  "tok_s": 65.9015860722236,
+  "p50_ms": 1893.188714981079,
+  "p95_ms": 1981.0285091400153
+ },
+ "vllm_b8": {
+  "tok_s": 501.90853441369956,
+  "p50_ms": 2041.558861732483,
+  "p95_ms": 2044.9964761734009
+ },
+ "vllm_b32": {
+  "tok_s": 1399.4641538029332,
+  "p50_ms": 2928.083300590515,
+  "p95_ms": 2952.002441883087
+ },
+ "kv_gb_vs_ctx_b8": {
+  "256": 0.0546875,
+  "512": 0.109375,
+  "1024": 0.21875,
+  "2048": 0.4375,
+  "4096": 0.875,
+  "8192": 1.75,
+  "16384": 3.5,
+  "32768": 7.0
+ },
+ "kv_capacity_tokens": 312672,
+ "max_ctx_b8_by_capacity": 39084,
+ "verified_ctx_b8": 32760,
+ "my_prompt": "Explain in simple terms why increasing GPU batch size can improve training throughput at first, but eventually gives smaller speed gains and can run out of GPU memory. Include how GPU utilization and memory limits contribute to this behavior.",
+ "my_prompt_output": " Increasing the batch size in a machine learning model training process can initially improve training throughput because it allows the model to process more data in a single pass through the training loop. This means that the model can make more updates to its parameters with each iteration, which can lead to faster convergence and improved performance. However, as the batch size increases, the amount of memory required by the model also increases. This is because each additional data point requires more memory to store and process. Eventually, the GPU may run out of memory, which can cause the training process to slow down or even crash. Additionally, as the batch size increases, the amount of time it takes to train the model also increases. This is because the model needs more time to process each batch of data, which can lead to longer training times and slower overall performance. Overall, increasing the batch size can improve training throughput at first, but eventually gives smaller speed gains and can run out of GPU memory. This behavior is due to the trade-off between the amount of data that can be processed in a single pass through the training loop and the amount of memory required to store and process that data."
+}

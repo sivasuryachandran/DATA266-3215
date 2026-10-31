@@ -1,0 +1,179 @@
+$ hw45.py --mode bench --bs 8 --tag baseline --out scale.jsonl
+{"tag": "baseline", "mode": "bench", "bs": 8, "amp": false, "ckpt": false, "opt8": false, "accum": 1, "eff_bs": 8, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 162.44167698031035, "step_s": 0.0492484450340271, "epoch_s": 21.57081892490387, "peak_gb": 2.489257335662842}
+
+
+$ hw45.py --mode bench --bs 16 --tag baseline --out scale.jsonl
+{"tag": "baseline", "mode": "bench", "bs": 16, "amp": false, "ckpt": false, "opt8": false, "accum": 1, "eff_bs": 16, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 208.83002174532697, "step_s": 0.07661733627319336, "epoch_s": 16.779196643829348, "peak_gb": 3.7650370597839355}
+
+
+$ hw45.py --mode bench --bs 32 --tag baseline --out scale.jsonl
+{"tag": "baseline", "mode": "bench", "bs": 32, "amp": false, "ckpt": false, "opt8": false, "accum": 1, "eff_bs": 32, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 231.15948629781622, "step_s": 0.1384325623512268, "epoch_s": 15.227581858634949, "peak_gb": 6.180331707000732}
+
+
+$ hw45.py --mode bench --bs 64 --tag baseline --out scale.jsonl
+{"tag": "baseline", "mode": "bench", "bs": 64, "amp": false, "ckpt": false, "opt8": false, "accum": 1, "eff_bs": 64, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 244.78274775838847, "step_s": 0.2614563345909119, "epoch_s": 14.380098402500154, "peak_gb": 11.119388103485107}
+
+
+$ hw45.py --mode bench --bs 128 --tag baseline --out scale.jsonl
+{"tag": "baseline", "mode": "bench", "bs": 128, "amp": false, "ckpt": false, "opt8": false, "accum": 1, "eff_bs": 128, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 256.46552395188877, "step_s": 0.49909242391586306, "epoch_s": 13.974587869644166, "peak_gb": 20.875064849853516}
+
+
+$ hw45.py --mode bench --bs 256 --tag baseline --out scale.jsonl
+{"tag": "baseline", "mode": "bench", "bs": 256, "amp": false, "ckpt": false, "opt8": false, "accum": 1, "eff_bs": 256, "gpu": "NVIDIA GeForce RTX 4090", "status": "oom"}
+
+
+$ hw45.py --mode bench --bs 8 --tag amp --out scale.jsonl --amp
+{"tag": "amp", "mode": "bench", "bs": 8, "amp": true, "ckpt": false, "opt8": false, "accum": 1, "eff_bs": 8, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 232.3472769449157, "step_s": 0.03443121910095215, "epoch_s": 15.080873966217041, "peak_gb": 2.2636771202087402}
+
+
+$ hw45.py --mode bench --bs 16 --tag amp --out scale.jsonl --amp
+{"tag": "amp", "mode": "bench", "bs": 16, "amp": true, "ckpt": false, "opt8": false, "accum": 1, "eff_bs": 16, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 351.98196579827066, "step_s": 0.045456874370574954, "epoch_s": 9.955055487155915, "peak_gb": 3.052274227142334}
+
+
+$ hw45.py --mode bench --bs 32 --tag amp --out scale.jsonl --amp
+{"tag": "amp", "mode": "bench", "bs": 32, "amp": true, "ckpt": false, "opt8": false, "accum": 1, "eff_bs": 32, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 481.8266500383041, "step_s": 0.06641392707824707, "epoch_s": 7.305531978607178, "peak_gb": 4.583147048950195}
+
+
+$ hw45.py --mode bench --bs 64 --tag amp --out scale.jsonl --amp
+{"tag": "amp", "mode": "bench", "bs": 64, "amp": true, "ckpt": false, "opt8": false, "accum": 1, "eff_bs": 64, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 526.2435807596335, "step_s": 0.1216166853904724, "epoch_s": 6.688917696475983, "peak_gb": 7.72685432434082}
+
+
+$ hw45.py --mode bench --bs 128 --tag amp --out scale.jsonl --amp
+{"tag": "amp", "mode": "bench", "bs": 128, "amp": true, "ckpt": false, "opt8": false, "accum": 1, "eff_bs": 128, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 549.4328142042781, "step_s": 0.23296751976013183, "epoch_s": 6.523090553283692, "peak_gb": 13.999742984771729}
+
+
+$ hw45.py --mode bench --bs 256 --tag amp --out scale.jsonl --amp
+{"tag": "amp", "mode": "bench", "bs": 256, "amp": true, "ckpt": false, "opt8": false, "accum": 1, "eff_bs": 256, "gpu": "NVIDIA GeForce RTX 4090", "status": "oom"}
+
+
+$ hw45.py --mode bench --bs 8 --tag ckpt --out scale.jsonl --ckpt
+{"tag": "ckpt", "mode": "bench", "bs": 8, "amp": false, "ckpt": true, "opt8": false, "accum": 1, "eff_bs": 8, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 128.90015821316885, "step_s": 0.062063539028167726, "epoch_s": 27.183830094337463, "peak_gb": 2.066344738006592}
+
+
+$ hw45.py --mode bench --bs 16 --tag ckpt --out scale.jsonl --ckpt
+{"tag": "ckpt", "mode": "bench", "bs": 16, "amp": false, "ckpt": true, "opt8": false, "accum": 1, "eff_bs": 16, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 162.1610629014829, "step_s": 0.0986673355102539, "epoch_s": 21.608146476745606, "peak_gb": 2.083056926727295}
+
+
+$ hw45.py --mode bench --bs 32 --tag ckpt --out scale.jsonl --ckpt
+{"tag": "ckpt", "mode": "bench", "bs": 32, "amp": false, "ckpt": true, "opt8": false, "accum": 1, "eff_bs": 32, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 176.41688507202267, "step_s": 0.18138853311538697, "epoch_s": 19.952738642692566, "peak_gb": 2.0849123001098633}
+
+
+$ hw45.py --mode bench --bs 64 --tag ckpt --out scale.jsonl --ckpt
+{"tag": "ckpt", "mode": "bench", "bs": 64, "amp": false, "ckpt": true, "opt8": false, "accum": 1, "eff_bs": 64, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 183.47643561941845, "step_s": 0.34881863594055174, "epoch_s": 19.185024976730347, "peak_gb": 2.85400390625}
+
+
+$ hw45.py --mode bench --bs 128 --tag ckpt --out scale.jsonl --ckpt
+{"tag": "ckpt", "mode": "bench", "bs": 128, "amp": false, "ckpt": true, "opt8": false, "accum": 1, "eff_bs": 128, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 188.35253175533845, "step_s": 0.6795767426490784, "epoch_s": 19.028148794174196, "peak_gb": 4.436340808868408}
+
+
+$ hw45.py --mode bench --bs 256 --tag ckpt --out scale.jsonl --ckpt
+
+ointing. Setting `use_cache=False`.
+Traceback (most recent call last):
+  File "C:\Users\019130215\Documents\SURYA_GPU_2\hw45.py", line 152, in <module>
+    main()
+  File "C:\Users\019130215\Documents\SURYA_GPU_2\hw45.py", line 112, in main
+    x, m, y = next(it)
+              ^^^^^^^^
+StopIteration
+
+$ hw45.py --mode bench --bs 8 --tag opt8 --out scale.jsonl --opt8
+{"tag": "opt8", "mode": "bench", "bs": 8, "amp": false, "ckpt": false, "opt8": true, "accum": 1, "eff_bs": 8, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 150.92045720834483, "step_s": 0.05300805568695068, "epoch_s": 23.2175283908844, "peak_gb": 1.8878283500671387}
+
+
+$ hw45.py --mode bench --bs 16 --tag opt8 --out scale.jsonl --opt8
+{"tag": "opt8", "mode": "bench", "bs": 16, "amp": false, "ckpt": false, "opt8": true, "accum": 1, "eff_bs": 16, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 198.84255142630687, "step_s": 0.08046567440032959, "epoch_s": 17.62198269367218, "peak_gb": 3.1179146766662598}
+
+
+$ hw45.py --mode bench --bs 32 --tag opt8 --out scale.jsonl --opt8
+{"tag": "opt8", "mode": "bench", "bs": 32, "amp": false, "ckpt": false, "opt8": true, "accum": 1, "eff_bs": 32, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 222.5156380725695, "step_s": 0.14381011724472045, "epoch_s": 15.81911289691925, "peak_gb": 5.572184085845947}
+
+
+$ hw45.py --mode bench --bs 64 --tag opt8 --out scale.jsonl --opt8
+{"tag": "opt8", "mode": "bench", "bs": 64, "amp": false, "ckpt": false, "opt8": true, "accum": 1, "eff_bs": 64, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 238.2843802317551, "step_s": 0.2685866355895996, "epoch_s": 14.772264957427979, "peak_gb": 10.502104759216309}
+
+
+$ hw45.py --mode bench --bs 128 --tag opt8 --out scale.jsonl --opt8
+{"tag": "opt8", "mode": "bench", "bs": 128, "amp": false, "ckpt": false, "opt8": true, "accum": 1, "eff_bs": 128, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 252.94201756852635, "step_s": 0.5060448288917542, "epoch_s": 14.169255208969117, "peak_gb": 20.264436721801758}
+
+
+$ hw45.py --mode bench --bs 256 --tag opt8 --out scale.jsonl --opt8
+{"tag": "opt8", "mode": "bench", "bs": 256, "amp": false, "ckpt": false, "opt8": true, "accum": 1, "eff_bs": 256, "gpu": "NVIDIA GeForce RTX 4090", "status": "oom"}
+
+
+$ hw45.py --mode bench --bs 8 --tag combo --out scale.jsonl --amp --ckpt --opt8
+{"tag": "combo", "mode": "bench", "bs": 8, "amp": true, "ckpt": true, "opt8": true, "accum": 1, "eff_bs": 8, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 119.10021820324403, "step_s": 0.06717032194137573, "epoch_s": 29.42060101032257, "peak_gb": 1.0812363624572754}
+
+
+$ hw45.py --mode bench --bs 16 --tag combo --out scale.jsonl --amp --ckpt --opt8
+{"tag": "combo", "mode": "bench", "bs": 16, "amp": true, "ckpt": true, "opt8": true, "accum": 1, "eff_bs": 16, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 232.82238518792983, "step_s": 0.06872191429138183, "epoch_s": 15.050099229812622, "peak_gb": 1.1885395050048828}
+
+
+$ hw45.py --mode bench --bs 32 --tag combo --out scale.jsonl --amp --ckpt --opt8
+{"tag": "combo", "mode": "bench", "bs": 32, "amp": true, "ckpt": true, "opt8": true, "accum": 1, "eff_bs": 32, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 372.48717940534533, "step_s": 0.08590899705886841, "epoch_s": 9.449989676475525, "peak_gb": 1.3401141166687012}
+
+
+$ hw45.py --mode bench --bs 64 --tag combo --out scale.jsonl --amp --ckpt --opt8
+{"tag": "combo", "mode": "bench", "bs": 64, "amp": true, "ckpt": true, "opt8": true, "accum": 1, "eff_bs": 64, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 401.70404771865157, "step_s": 0.15932127237319946, "epoch_s": 8.76266998052597, "peak_gb": 1.9424161911010742}
+
+
+$ hw45.py --mode bench --bs 128 --tag combo --out scale.jsonl --amp --ckpt --opt8
+{"tag": "combo", "mode": "bench", "bs": 128, "amp": true, "ckpt": true, "opt8": true, "accum": 1, "eff_bs": 128, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 418.4612698528502, "step_s": 0.30588254928588865, "epoch_s": 8.564711380004882, "peak_gb": 3.2353439331054688}
+
+
+$ hw45.py --mode bench --bs 256 --tag combo --out scale.jsonl --amp --ckpt --opt8
+{"tag": "combo", "mode": "bench", "bs": 256, "amp": true, "ckpt": true, "opt8": true, "accum": 1, "eff_bs": 256, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 431.9862490739633, "step_s": 0.5926114559173584, "epoch_s": 8.296560382843017, "peak_gb": 5.813347816467285}
+
+
+$ hw45.py --mode bench --bs 512 --tag combo --out scale.jsonl --amp --ckpt --opt8
+{"tag": "combo", "mode": "bench", "bs": 512, "amp": true, "ckpt": true, "opt8": true, "accum": 1, "eff_bs": 512, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 439.29331762475294, "step_s": 1.1655082821846008, "epoch_s": 8.158557975292206, "peak_gb": 10.975805759429932}
+
+
+$ hw45.py --mode bench --bs 1024 --tag combo --out scale.jsonl --amp --ckpt --opt8
+{"tag": "combo", "mode": "bench", "bs": 1024, "amp": true, "ckpt": true, "opt8": true, "accum": 1, "eff_bs": 1024, "gpu": "NVIDIA GeForce RTX 4090", "status": "oom"}
+
+
+$ hw45.py --mode full --tag amp --out full.jsonl --amp
+{'epoch': 1, 'train_loss': 0.9927848771640233, 'val_loss': 0.8817343746821086, 'val_acc': 0.5986666666666667}
+{'epoch': 2, 'train_loss': 0.7419528459140232, 'val_loss': 0.7620455714861551, 'val_acc': 0.6893333333333334}
+{'epoch': 3, 'train_loss': 0.5531750835691179, 'val_loss': 0.7426972670555114, 'val_acc': 0.7}
+{"tag": "amp", "mode": "full", "bs": 32, "amp": true, "ckpt": false, "opt8": false, "accum": 1, "eff_bs": 32, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "wall_s": 22.91597032546997, "peak_gb": 4.583147048950195, "best_epoch": 3, "test_acc": 0.704, "test_loss": 0.6971546219189961, "confusion": [[102, 25, 49], [31, 197, 48], [26, 43, 229]], "worst_class": 0, "rows": [215, 5214], "n": {"train": 3500, "val": 750, "test": 750}, "samples_per_s": 458.19574082489396}
+
+
+$ hw45.py --mode full --tag ckpt --out full.jsonl --ckpt
+{'epoch': 1, 'train_loss': 0.9931772237505232, 'val_loss': 0.8876934423446655, 'val_acc': 0.5933333333333334}
+{'epoch': 2, 'train_loss': 0.7493884951046534, 'val_loss': 0.7797215968767802, 'val_acc': 0.6773333333333333}
+{'epoch': 3, 'train_loss': 0.5608577705110822, 'val_loss': 0.7529266912142436, 'val_acc': 0.6986666666666667}
+{"tag": "ckpt", "mode": "full", "bs": 32, "amp": false, "ckpt": true, "opt8": false, "accum": 1, "eff_bs": 32, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "wall_s": 64.05166578292847, "peak_gb": 2.0849123001098633, "best_epoch": 3, "test_acc": 0.708, "test_loss": 0.7005282322565715, "confusion": [[103, 24, 49], [33, 198, 45], [28, 40, 230]], "worst_class": 0, "rows": [215, 5214], "n": {"train": 3500, "val": 750, "test": 750}, "samples_per_s": 163.93016280926358}
+
+
+$ hw45.py --mode full --tag opt8 --out full.jsonl --opt8
+{'epoch': 1, 'train_loss': 0.991887987613678, 'val_loss': 0.8881999413172404, 'val_acc': 0.5973333333333334}
+{'epoch': 2, 'train_loss': 0.7488231066976275, 'val_loss': 0.7915221150716146, 'val_acc': 0.664}
+{'epoch': 3, 'train_loss': 0.5719646076474871, 'val_loss': 0.7581296246846517, 'val_acc': 0.6853333333333333}
+{"tag": "opt8", "mode": "full", "bs": 32, "amp": false, "ckpt": false, "opt8": true, "accum": 1, "eff_bs": 32, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "wall_s": 50.93264961242676, "peak_gb": 5.572184085845947, "best_epoch": 3, "test_acc": 0.7053333333333334, "test_loss": 0.7080707920392354, "confusion": [[105, 23, 48], [33, 197, 46], [30, 41, 227]], "worst_class": 0, "rows": [215, 5214], "n": {"train": 3500, "val": 750, "test": 750}, "samples_per_s": 206.15459984705305}
+
+
+$ hw45.py --mode full --tag combo --out full.jsonl --amp --opt8
+{'epoch': 1, 'train_loss': 0.9931679688181196, 'val_loss': 0.8813554681142172, 'val_acc': 0.5933333333333334}
+{'epoch': 2, 'train_loss': 0.7426782924107143, 'val_loss': 0.7662024722099304, 'val_acc': 0.6906666666666667}
+{'epoch': 3, 'train_loss': 0.5522608816964286, 'val_loss': 0.7457382815678915, 'val_acc': 0.6973333333333334}
+{"tag": "combo", "mode": "full", "bs": 32, "amp": true, "ckpt": false, "opt8": true, "accum": 1, "eff_bs": 32, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "wall_s": 24.08402681350708, "peak_gb": 3.9726409912109375, "best_epoch": 3, "test_acc": 0.7066666666666667, "test_loss": 0.6959290369351705, "confusion": [[101, 25, 50], [31, 197, 48], [25, 41, 232]], "worst_class": 0, "rows": [215, 5214], "n": {"train": 3500, "val": 750, "test": 750}, "samples_per_s": 435.9736052988975}
+
+
+$ hw45.py --mode full --tag accum --out full.jsonl --bs 8 --accum 4
+{'epoch': 1, 'train_loss': 0.9869661973544529, 'val_loss': 0.8549439798990885, 'val_acc': 0.6053333333333333}
+{'epoch': 2, 'train_loss': 0.7269402814933232, 'val_loss': 0.760316194375356, 'val_acc': 0.6733333333333333}
+{'epoch': 3, 'train_loss': 0.5428457458019257, 'val_loss': 0.7427030879656474, 'val_acc': 0.6986666666666667}
+{"tag": "accum", "mode": "full", "bs": 8, "amp": false, "ckpt": false, "opt8": false, "accum": 4, "eff_bs": 32, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "wall_s": 57.79035186767578, "peak_gb": 2.9086546897888184, "best_epoch": 3, "test_acc": 0.704, "test_loss": 0.7159417371749878, "confusion": [[108, 26, 42], [32, 195, 49], [32, 41, 225]], "worst_class": 0, "rows": [215, 5214], "n": {"train": 3500, "val": 750, "test": 750}, "samples_per_s": 181.6912280451614}
+
+
+$ hw45.py --mode bench --bs 256 --tag ckpt --ckpt (rerun after bench sampling fix)
+{"tag": "ckpt", "mode": "bench", "bs": 256, "amp": false, "ckpt": true, "opt8": false, "accum": 1, "eff_bs": 256, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 188.68216353411034, "step_s": 1.3567790150642396, "epoch_s": 18.994906210899355, "peak_gb": 7.62025785446167}
+
+$ hw45.py --mode bench --bs 512 --tag ckpt --ckpt (rerun after bench sampling fix)
+{"tag": "ckpt", "mode": "bench", "bs": 512, "amp": false, "ckpt": true, "opt8": false, "accum": 1, "eff_bs": 512, "gpu": "NVIDIA GeForce RTX 4090", "status": "ok", "samples_per_s": 190.15954773189094, "step_s": 2.69247590303421, "epoch_s": 18.84733132123947, "peak_gb": 13.981421947479248}
+
+$ hw45.py --mode bench --bs 1024 --tag ckpt --ckpt (rerun after bench sampling fix)
+{"tag": "ckpt", "mode": "bench", "bs": 1024, "amp": false, "ckpt": true, "opt8": false, "accum": 1, "eff_bs": 1024, "gpu": "NVIDIA GeForce RTX 4090", "status": "oom"}
+

@@ -1,0 +1,55 @@
+# Derived from scale.jsonl / full.jsonl / partD_results.json. Timestamps were not recorded; raw console output is in RUN_LOG_raw.txt.
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | GPU=NVIDIA GeForce RTX 4090 | Driver=610.60 | PyTorch=2.6.0+cu124 | VRAM total=24564 MiB | Power limit=450 W
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | Data: Twitter_Data.csv, cleaned rows 215-5214 (5000), split 3500/750/750, SEED=3215, MAX_LEN=256, bert-base-uncased
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | Allocator capped at 93% of VRAM (Windows WDDM otherwise spills to system RAM instead of raising OOM)
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [HW4 baseline] epoch 1: train_loss=0.9932 val_loss=0.8877 val_acc=0.5933
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [HW4 baseline] epoch 2: train_loss=0.7494 val_loss=0.7797 val_acc=0.6773
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [HW4 baseline] epoch 3: train_loss=0.5609 val_loss=0.7529 val_acc=0.6987
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [HW4 baseline] wall=49.2s peak=6.18GB test_acc=0.7080 confusion=[[103, 24, 49], [33, 198, 45], [28, 40, 230]]
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] baseline bs=8: 162.4 samples/s, peak 2.49 GB, est epoch 21.6s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] baseline bs=16: 208.8 samples/s, peak 3.77 GB, est epoch 16.8s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] baseline bs=32: 231.2 samples/s, peak 6.18 GB, est epoch 15.2s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] baseline bs=64: 244.8 samples/s, peak 11.12 GB, est epoch 14.4s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] baseline bs=128: 256.5 samples/s, peak 20.88 GB, est epoch 14.0s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] baseline bs=256: OOM
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] amp bs=8: 232.3 samples/s, peak 2.26 GB, est epoch 15.1s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] amp bs=16: 352.0 samples/s, peak 3.05 GB, est epoch 10.0s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] amp bs=32: 481.8 samples/s, peak 4.58 GB, est epoch 7.3s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] amp bs=64: 526.2 samples/s, peak 7.73 GB, est epoch 6.7s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] amp bs=128: 549.4 samples/s, peak 14.00 GB, est epoch 6.5s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] amp bs=256: OOM
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] ckpt bs=8: 128.9 samples/s, peak 2.07 GB, est epoch 27.2s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] ckpt bs=16: 162.2 samples/s, peak 2.08 GB, est epoch 21.6s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] ckpt bs=32: 176.4 samples/s, peak 2.08 GB, est epoch 20.0s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] ckpt bs=64: 183.5 samples/s, peak 2.85 GB, est epoch 19.2s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] ckpt bs=128: 188.4 samples/s, peak 4.44 GB, est epoch 19.0s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] ckpt bs=256: 188.7 samples/s, peak 7.62 GB, est epoch 19.0s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] ckpt bs=512: 190.2 samples/s, peak 13.98 GB, est epoch 18.8s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] ckpt bs=1024: OOM
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] opt8 bs=8: 150.9 samples/s, peak 1.89 GB, est epoch 23.2s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] opt8 bs=16: 198.8 samples/s, peak 3.12 GB, est epoch 17.6s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] opt8 bs=32: 222.5 samples/s, peak 5.57 GB, est epoch 15.8s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] opt8 bs=64: 238.3 samples/s, peak 10.50 GB, est epoch 14.8s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] opt8 bs=128: 252.9 samples/s, peak 20.26 GB, est epoch 14.2s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] opt8 bs=256: OOM
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] combo bs=8: 119.1 samples/s, peak 1.08 GB, est epoch 29.4s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] combo bs=16: 232.8 samples/s, peak 1.19 GB, est epoch 15.1s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] combo bs=32: 372.5 samples/s, peak 1.34 GB, est epoch 9.4s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] combo bs=64: 401.7 samples/s, peak 1.94 GB, est epoch 8.8s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] combo bs=128: 418.5 samples/s, peak 3.24 GB, est epoch 8.6s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] combo bs=256: 432.0 samples/s, peak 5.81 GB, est epoch 8.3s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] combo bs=512: 439.3 samples/s, peak 10.98 GB, est epoch 8.2s
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part A/B scaling] combo bs=1024: OOM
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part B full run] baseline bs=32 accum=1: wall=49.2s peak=6.18GB test_acc=0.7080
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part B full run] amp bs=32 accum=1: wall=22.9s peak=4.58GB test_acc=0.7040
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part B full run] ckpt bs=32 accum=1: wall=64.1s peak=2.08GB test_acc=0.7080
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part B full run] opt8 bs=32 accum=1: wall=50.9s peak=5.57GB test_acc=0.7053
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part B full run] combo bs=32 accum=1: wall=24.1s peak=3.97GB test_acc=0.7067
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | [Part B full run] accum bs=8 accum=4: wall=57.8s peak=2.91GB test_acc=0.7040
+gpu_uuid=GPU-6cb18f34-3c2f-33e8-fdfb-31b18ae8a8df | GPU=Tesla T4 (Colab) | model=Qwen/Qwen2.5-1.5B-Instruct | vLLM 0.32.0 | fp16 | 128 new tokens x 20 reps
+gpu_uuid=GPU-6cb18f34-3c2f-33e8-fdfb-31b18ae8a8df | [Part D] HF pipeline b1: 22.5 tok/s, p50=5482 ms, p95=6635 ms
+gpu_uuid=GPU-6cb18f34-3c2f-33e8-fdfb-31b18ae8a8df | [Part D] vLLM b1: 65.9 tok/s, p50=1893 ms, p95=1981 ms
+gpu_uuid=GPU-6cb18f34-3c2f-33e8-fdfb-31b18ae8a8df | [Part D] vLLM b8: 501.9 tok/s, p50=2042 ms, p95=2045 ms
+gpu_uuid=GPU-6cb18f34-3c2f-33e8-fdfb-31b18ae8a8df | [Part D] vLLM b32: 1399.5 tok/s, p50=2928 ms, p95=2952 ms
+gpu_uuid=GPU-6cb18f34-3c2f-33e8-fdfb-31b18ae8a8df | [Part D] KV capacity=312672 tokens; batch-8 capacity-derived max ctx=39084; verified ctx=32760 (model position limit 32768)
+gpu_uuid=GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39 | Part C skipped (optional)
