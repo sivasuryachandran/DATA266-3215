@@ -10,7 +10,7 @@ PyTorch CUDA build: 12.4 (torch 2.6.0+cu124)
 
 CUDA reported by nvidia-smi -q: 13.3
 
-GPU (serving, Part D only): Tesla T4 on Google Colab — UUID `GPU-6cb18f34-3c2f-33e8-fdfb-31b18ae8a8df` (vLLM does not run on native Windows)
+GPU (serving, Part D only): Tesla T4 on Google Colab — run 1 UUID `GPU-6cb18f34-3c2f-33e8-fdfb-31b18ae8a8df`; re-run UUID `GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26` (a different physical T4; vLLM does not run on native Windows)
 
 ## Vendor specifications (RTX 4090)
 
@@ -104,7 +104,7 @@ Throughput/peak memory from the scaling runs at bs 32; accuracy is test accuracy
 | Baseline (HW4 settings) | 128 | 231.2 | 6.18 | 0.708 |
 | Mixed precision (bf16 autocast) | 128 | 481.8 | 4.58 | 0.704 |
 | Gradient checkpointing | 512 | 176.4 | 2.08 | 0.708 |
-| Gradient accumulation (bs 8 × 4 = eff. 32) | 128 (physical, same as baseline; bs-8 steps) | wall 57.8 s vs 49.2 s | 2.91 (full run) | 0.704 |
+| Gradient accumulation (physical batch 8 × 4 steps) | **Effective batch 32** (physical 8; max physical batch is still 128 as in the baseline, while the effective batch is no longer bounded by memory) | wall 57.8 s vs 49.2 s | 2.91 (full run) | 0.704 |
 | 8-bit optimiser (bnb AdamW8bit) | 128 | 222.5 | 5.57 | 0.705 |
 | Best combination — AMP + 8-bit (+ checkpointing for bs 512) | 512 (with ckpt) | 372.5 (AMP+ckpt+8bit) / 481.8 AMP only | 1.34 (AMP+ckpt+8bit @bs32); 3.97 (AMP+8bit full run) | 0.707 (AMP+8bit) |
 
@@ -143,9 +143,45 @@ Notebook: `hw45_partD_colab.ipynb`; raw results `partD_results.json`. Model `Qwe
 |---|---|---|---|---|---|---|---|---|
 | KV at batch 8 (GB) | 0.055 | 0.109 | 0.219 | 0.438 | 0.875 | 1.75 | 3.5 | 7.0 |
 
-(Computed from the model config, not measured per context.) With `gpu_memory_utilization=0.85` vLLM allocated a KV cache of 312,672 tokens (about 8.4 GiB; a later re-created engine reported 316,400), so memory alone would allow about **39,000 tokens per request at batch 8**. The model's position limit (32,768) is reached first: batch 8 was **verified at a context of 32,760 tokens** without running out of memory. Longest context at batch 8 on the T4 is therefore **model-limited at ~32.7k, not memory-limited**. The RTX 4090 was not measured for Part D (no Linux), and neither was a second card.
+**Measured KV cache (second Colab run, Hugging Face path).** For each context length I ran prefill for 8 sequences with `use_cache=True`, kept the cache alive and read the GPU memory actually allocated for it (`torch.cuda.memory_allocated` after minus before), alongside the formula value and the prefill peak:
 
-**Comparison with HW4 numbers.** There was no separate earlier HW4.a serving run: this single Colab T4 run (fp16, same model, same definitions) is my HW4.a Table HW4.1, and it is also the HW4.5 Part D measurement. So the HW4-vs-HW4.5 serving comparison is degenerate (identical numbers, nothing differs in hardware, precision or method). The RTX 4090 has **no** vLLM numbers (no Linux), so no cross-card serving comparison exists.
+| Context (batch 8) | Computed KV (GB) | Measured KV (GB) | Prefill peak (GB) |
+|---:|---:|---:|---:|
+| 256 | 0.055 | 0.063 | 0.19 |
+| 512 | 0.109 | 0.109 | 0.47 |
+| 1,024 | 0.219 | 0.219 | 1.36 |
+| 2,048 | 0.438 | 0.438 | 4.42 |
+| 4,096 | 0.875 | OOM | OOM |
+
+Measured KV memory matches the formula (28 KiB per token) exactly at 512–2,048; the 256 row is about 8 MB higher, which I attribute to allocator granularity at small sizes (not verified). The measurement stops at 2,048: at 4,096 the eager prefill ran out of memory on the 15 GB T4 even though the KV cache itself would be only 0.875 GB. The prefill peak grows faster than linearly (1.36 → 4.42 GB for 2× the context), consistent with attention scores being materialised, so what limits the Hugging Face path is prefill activations, not the KV cache. With one-shot prefill the HF path therefore served 2,048 tokens and failed at 4,096, so the "longest context" figure depends on how prefill is done. Measuring the larger contexts needs prefill in chunks (next table).
+
+**Measured KV cache up to 32,768 tokens (chunked prefill, same T4 `GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26`, third notebook section; `kv_chunked_results.json`).** Prefill of 8 sequences in 128-token chunks in a single pass, reading the GPU memory allocated beyond the weights at each context checkpoint:
+
+| Context (batch 8) | Computed KV (GB) | Measured KV (GB) | Measured − computed (GB) | Peak total incl. weights (GB) |
+|---:|---:|---:|---:|---:|
+| 256 | 0.055 | 0.063 | +0.008 | 3.00 |
+| 512 | 0.109 | 0.158 | +0.049 | 3.10 |
+| 1,024 | 0.219 | 0.229 | +0.010 | 3.17 |
+| 2,048 | 0.438 | 0.447 | +0.009 | 3.44 |
+| 4,096 | 0.875 | 0.883 | +0.008 | 3.98 |
+| 8,192 | 1.750 | 1.758 | +0.008 | 5.04 |
+| 16,384 | 3.500 | 3.508 | +0.008 | 7.18 |
+| 32,768 | 7.000 | 7.008 | +0.008 | 11.47 |
+
+Measured KV memory tracks the formula (28 KiB per token, linear in context) to within about 8 MB at all points except 512, where it is 49 MB high; I did not find the cause of that one point (a temporary tensor not yet freed is my guess, unverified). At 32,768 tokens the measured KV is 7.008 GB (+0.1%). The peak total at the longest context, 11.47 GB including about 3 GB of weights, is below the T4's 15 GB, so memory alone does not stop batch 8 at 32,768 tokens on this card with chunked prefill. This is a Hugging Face (non-paged) measurement; the vLLM figures below use its own paged cache.
+
+With `gpu_memory_utilization=0.85` vLLM allocated a KV cache of 312,672 tokens (about 8.4 GiB; a later re-created engine reported 316,400), so memory alone would allow about **39,000 tokens per request at batch 8**. The model's position limit (32,768) is reached first: batch 8 was **verified at a context of 32,760 tokens** without running out of memory. Longest context at batch 8 on the T4 is therefore **model-limited at ~32.7k, not memory-limited**. The RTX 4090 was not measured for Part D (no Linux), and neither was a second card.
+
+**Comparison with HW4 numbers (re-run).** There was no serving run before this work, so my first Colab T4 run (fp16, same model, same code and definitions) is my HW4.a Table HW4.1, and it was run earlier the same day. I then re-ran the same benchmark in a fresh Colab session (`hw45_partD_rerun_colab.ipynb`, results in `partD_results_run2.json`) as the HW4.5 Part D re-run. **The two runs were on different physical T4s**: run 1 `GPU-6cb18f34-3c2f-33e8-fdfb-31b18ae8a8df`, run 2 `GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26` (Colab assigned a different card and VM). Run 2 against run 1:
+
+| Configuration | Run 1 tok/s | Run 2 tok/s | Δ | Run 1 p50 (ms) | Run 2 p50 (ms) | Δ | Run 1 p95 (ms) | Run 2 p95 (ms) | Δ |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| HF pipeline, batch 1 | 22.5 | 19.9 | −11.5% | 5,482 | 5,538 | +1.0% | 6,635 | 10,590 | +59.6% |
+| vLLM, batch 1 | 65.9 | 44.0 | −33.2% | 1,893 | 2,907 | +53.5% | 1,981 | 3,145 | +58.8% |
+| vLLM, batch 8 | 501.9 | 481.2 | −4.1% | 2,042 | 2,127 | +4.2% | 2,045 | 2,138 | +4.5% |
+| vLLM, batch 32 | 1,399.5 | 1,322.0 | −5.5% | 2,928 | 3,099 | +5.8% | 2,952 | 3,123 | +5.8% |
+
+Batch 8 and 32 reproduce within about 4–6%. **Batch 1 does not**: vLLM batch 1 was 33% slower in run 2 (p50 +54%), and HF batch 1 p95 was 60% higher (10.6 s, p50 unchanged, so a few slow requests). I did not isolate the cause. A plausible explanation (a hypothesis, not tested) is that batch 1 is dominated by per-token CPU and kernel-launch overhead, which varies with the Colab VM's CPU availability and GPU clocks, while batches 8 and 32 are GPU-bound and stable. The GPU model (T4), precision (fp16), model and methodology were the same, but the physical card and Colab VM differed (UUIDs above), so card-to-card and VM-to-VM variation is a likely contributor alongside ordinary run-to-run noise (I cannot separate them with two runs); precision and method did not change; I have no evidence of a measurement flaw in run 1 beyond this variance. The conclusions do not change under either run: vLLM batch 1 is still about 2.2× faster than HF batch 1 (run 2: 44.0 vs 19.9 tok/s), vLLM batch 32 p50 (3.1 s) is still well below HF batch 1 p50 (5.5 s), and no latency crossover appears up to batch 32. The vLLM KV-cache capacity was also consistent (312,816 tokens in run 2 vs 312,672). Table HW4.1 above reports run 1; treat batch 1 numbers as having roughly ±35% uncertainty. The RTX 4090 has **no** vLLM numbers (no Linux), so no cross-card serving comparison exists.
 
 **Own prompt and model.** Model: `Qwen/Qwen2.5-1.5B-Instruct`. Own prompt (supplied by me; saved with its answer in `partD_results.json` under `my_prompt` / `my_prompt_output`, and shown in the last cell output of `hw45_partD_colab.ipynb`): "Explain in simple terms why increasing GPU batch size can improve training throughput at first, but eventually gives smaller speed gains and can run out of GPU memory. Include how GPU utilization and memory limits contribute to this behavior." Generated greedily with a 400-token limit; the answer ends naturally.
 
@@ -168,4 +204,4 @@ Assessment of the answer (my reading, checked against my own Part A/B measuremen
 Single seed/single run per configuration (no error bars); bench throughput from 20 timed steps; epoch time extrapolated; max batch is a power of two capped at 93% VRAM; accuracy differences (≤0.4 points) are well within sampling noise (±1.7%); environment: Windows (WDDM), driver 610.60, torch 2.6.0+cu124, transformers latest at install, bitsandbytes latest at install.
 
 ## Files
-`hw45.py` (training/bench harness), `infer.py` (reloads the saved `model/` for custom inference; tested on 3 custom sentences), `model/` (saved HW4 baseline fine-tune), `sweep.py`, `analyze.py`, `scale.jsonl`/`full.jsonl` (raw results), `RUN_LOG.txt` (UUID-prefixed, derived; `RUN_LOG_raw.txt` is the original), `hw45_partD_colab.ipynb` + `partD_results.json` + `part_d_*.csv` (Part D, Colab T4), `part_a_b_scaling.csv`, `part_b_full_runs.csv`, `fig_throughput_vs_batch.png`, `fig_confusion.png`, `nvidia-smi-q_GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39.txt` + `nvidia-smi-L_RTX4090.txt` + `nvidia-smi-L_ColabT4.txt` (UUID captures), `GPU_Reservation.md` (reservation and GPU-hour record), `AI_USE.md`, `README.md`. Not included: the `hw4-5` git tag (not a git repo yet), and the saved model weights / dataset (too large).
+`hw45.py` (training/bench harness), `infer.py` (reloads the saved `model/` for custom inference; tested on 3 custom sentences), `model/` (saved HW4 baseline fine-tune), `sweep.py`, `analyze.py`, `scale.jsonl`/`full.jsonl` (raw results), `RUN_LOG.txt` (UUID-prefixed, derived; `RUN_LOG_raw.txt` is the original), `hw45_partD_colab.ipynb` + `partD_results.json` + `part_d_*.csv` (Part D, Colab T4), `part_a_b_scaling.csv`, `part_b_full_runs.csv`, `fig_throughput_vs_batch.png`, `fig_confusion.png`, `nvidia-smi-q_GPU-5a5ec28e-51c2-7128-c85d-2e75b9b3cd39.txt` + `nvidia-smi-L_RTX4090.txt` + `nvidia-smi-L_ColabT4.txt` (UUID captures), `GPU_Reservation.md` (reservation and GPU-hour record), `AI_USE.md`, `README.md`. The repository is tagged `hw4-5` on GitHub. Not included in the repo: the saved model weights and the dataset (too large).

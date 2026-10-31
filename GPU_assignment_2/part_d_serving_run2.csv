@@ -1,0 +1,5 @@
+gpu_uuid,configuration,tokens_per_s,p50_ms,p95_ms
+GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26,"HF pipeline, batch 1",19.9,5538,10590
+GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26,"vLLM, batch 1",44.0,2907,3145
+GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26,"vLLM, batch 8",481.2,2127,2138
+GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26,"vLLM, batch 32",1322.0,3099,3123

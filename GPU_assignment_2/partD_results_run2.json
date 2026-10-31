@@ -1,0 +1,67 @@
+{
+ "run": "HW4.5 re-run (second independent run)",
+ "gpu": "Tesla T4",
+ "model": "Qwen/Qwen2.5-1.5B-Instruct",
+ "new_tokens": 128,
+ "reps": 20,
+ "kv_measured_b8": [
+  {
+   "context": 256,
+   "batch": 8,
+   "computed_kv_gb": 0.0546875,
+   "measured_kv_gb": 0.0626220703125,
+   "prefill_peak_gb": 0.1916675567626953
+  },
+  {
+   "context": 512,
+   "batch": 8,
+   "computed_kv_gb": 0.109375,
+   "measured_kv_gb": 0.109375,
+   "prefill_peak_gb": 0.47005128860473633
+  },
+  {
+   "context": 1024,
+   "batch": 8,
+   "computed_kv_gb": 0.21875,
+   "measured_kv_gb": 0.21875,
+   "prefill_peak_gb": 1.3639302253723145
+  },
+  {
+   "context": 2048,
+   "batch": 8,
+   "computed_kv_gb": 0.4375,
+   "measured_kv_gb": 0.4375,
+   "prefill_peak_gb": 4.423172473907471
+  },
+  {
+   "context": 4096,
+   "batch": 8,
+   "computed_kv_gb": 0.875,
+   "measured_kv_gb": null,
+   "prefill_peak_gb": null,
+   "status": "OOM"
+  }
+ ],
+ "kv_bytes_per_token": 28672,
+ "hf_b1": {
+  "tok_s": 19.89922455573853,
+  "p50_ms": 5537.7877950668335,
+  "p95_ms": 10590.423727035522
+ },
+ "vllm_b1": {
+  "tok_s": 44.03095918944659,
+  "p50_ms": 2906.770944595337,
+  "p95_ms": 3145.4111576080327
+ },
+ "vllm_b8": {
+  "tok_s": 481.20357695291136,
+  "p50_ms": 2126.5472173690796,
+  "p95_ms": 2137.978410720825
+ },
+ "vllm_b32": {
+  "tok_s": 1322.0296615696034,
+  "p50_ms": 3099.121332168579,
+  "p95_ms": 3123.3867406845093
+ },
+ "vllm_kv_capacity_tokens": 312816
+}

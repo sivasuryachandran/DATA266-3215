@@ -104,7 +104,8 @@ T4's longest context at batch 8 is limited by the model's position limit, not by
 | `sweep.py` | Runs the batch-doubling sweep (one process per configuration) and the full runs |
 | `analyze.py` | Builds the tables and figures from the raw results |
 | `infer.py` | Reloads the saved model from `model/` and classifies custom text |
-| `hw45_partD_colab.ipynb` | Part D notebook, executed on the Colab T4 (log noise trimmed) |
+| `hw45_partD_colab.ipynb` | Part D notebook, run 1, executed on a Colab T4 (log noise trimmed) |
+| `hw45_partD_rerun_colab.ipynb`, `partD_results_run2.json`, `part_d_serving_run2.csv`, `part_d_kv_measured.csv`, `kv_chunked_results.json`, `part_d_kv_measured_chunked.csv`, `nvidia-smi-L_ColabT4_rerun.txt` | Part D re-run on a second (different) Colab T4: repeat of the serving benchmark, measured KV-cache memory vs context (one-shot prefill to 2,048, chunked prefill to 32,768) |
 | `scale.jsonl`, `full.jsonl` | Raw benchmark and full-run records |
 
 **Not included** (too large or not mine to redistribute): `Twitter_Data.csv` (download from Kaggle), the

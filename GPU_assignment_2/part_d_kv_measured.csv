@@ -1,0 +1,6 @@
+gpu_uuid,context_tokens,batch,computed_kv_gb,measured_kv_gb,prefill_peak_gb
+GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26,256,8,0.055,0.063,0.19
+GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26,512,8,0.109,0.109,0.47
+GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26,1024,8,0.219,0.219,1.36
+GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26,2048,8,0.438,0.438,4.42
+GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26,4096,8,0.875,OOM,OOM

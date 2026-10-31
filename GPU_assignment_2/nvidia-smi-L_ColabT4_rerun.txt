@@ -1,0 +1,2 @@
+GPU 0: Tesla T4 (UUID: GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26)
+(copied from the executed re-run notebook, cell 1 output; Part D re-run GPU)

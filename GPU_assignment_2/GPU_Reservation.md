@@ -44,7 +44,8 @@ Runs were on 2026-10-30 (local time). Per-run timings are in `part_b_full_runs.c
 | 34 short batch-scaling benchmark runs (23 steps each) | roughly 10–15 minutes including process and model start-up (estimate) |
 | One stalled run (WDDM memory spill, discarded) | about 10 minutes (estimate) |
 | **Total, RTX 4090** | **about 0.4 GPU-hours (estimate, not metered)** |
-| Colab T4 session (Part D) | about 1 hour (free-tier T4, estimate) |
+| Colab T4 session (Part D, run 1) | about 1 hour (free-tier T4, estimate) |
+| Colab T4 session (Part D re-run, a different T4: `GPU-61a63d79-7a2b-8082-e4f3-4e0da13ffe26`) | about 0.5 hour (estimate) |
 
 ## GPU-hour estimate for one full fine-tune
 

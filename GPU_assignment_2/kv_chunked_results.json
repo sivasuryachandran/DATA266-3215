@@ -1,0 +1,65 @@
+{
+ "gpu": "Tesla T4",
+ "model": "Qwen/Qwen2.5-1.5B-Instruct",
+ "batch": 8,
+ "chunk": 128,
+ "method": "chunked prefill, one pass, KV measured at checkpoints",
+ "rows": [
+  {
+   "context": 256,
+   "batch": 8,
+   "computed_kv_gb": 0.0546875,
+   "measured_kv_gb": 0.0626220703125,
+   "peak_total_gb": 3.003903388977051
+  },
+  {
+   "context": 512,
+   "batch": 8,
+   "computed_kv_gb": 0.109375,
+   "measured_kv_gb": 0.158203125,
+   "peak_total_gb": 3.100003242492676
+  },
+  {
+   "context": 1024,
+   "batch": 8,
+   "computed_kv_gb": 0.21875,
+   "measured_kv_gb": 0.2291259765625,
+   "peak_total_gb": 3.171963691711426
+  },
+  {
+   "context": 2048,
+   "batch": 8,
+   "computed_kv_gb": 0.4375,
+   "measured_kv_gb": 0.4468994140625,
+   "peak_total_gb": 3.439663887023926
+  },
+  {
+   "context": 4096,
+   "batch": 8,
+   "computed_kv_gb": 0.875,
+   "measured_kv_gb": 0.8829345703125,
+   "peak_total_gb": 3.975552558898926
+  },
+  {
+   "context": 8192,
+   "batch": 8,
+   "computed_kv_gb": 1.75,
+   "measured_kv_gb": 1.7579345703125,
+   "peak_total_gb": 5.043423652648926
+  },
+  {
+   "context": 16384,
+   "batch": 8,
+   "computed_kv_gb": 3.5,
+   "measured_kv_gb": 3.5079345703125,
+   "peak_total_gb": 7.184536933898926
+  },
+  {
+   "context": 32768,
+   "batch": 8,
+   "computed_kv_gb": 7.0,
+   "measured_kv_gb": 7.0079345703125,
+   "peak_total_gb": 11.468228340148926
+  }
+ ]
+}
