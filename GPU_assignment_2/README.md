@@ -1,6 +1,6 @@
 # GPU Assignment 2 (HW4.5) — Training Throughput and Memory Engineering
 
-Student: Sivasurya Chandran (SJSU, DATA 266). Tag: `hw4-5`.
+Student: Sivasurya Chandran (019130215). Tag: `hw4-5`.
 
 This assignment takes the BERT sentiment fine-tune from HW4.a and measures how its training throughput and
 GPU memory use change with batch size and with four memory techniques, then re-measures LLM serving with
