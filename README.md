@@ -15,3 +15,7 @@ actual writeup.
 | [`HW4/`](HW4/) | Mini GPT from scratch (multi-head attention, decoding strategies) |
 | [`HW5/`](HW5/) | LoRA fine-tuning of flan-t5-base on DialogSum (r=4 vs r=16) |
 | [`HW6/`](HW6/) | Self-supervised and contrastive learning on STL-10 (supervised vs rotation vs SimCLR) |
+| [`HW7/`](HW7/) | GAN questions + FashionMNIST autoencoders: fully connected AE vs VAE (reconstructions, prior samples, worst-case reconstructions) |
+| [`HW8/`](HW8/) | Diffusion on MNIST: forward process, time-conditioned noise predictor, DDPM vs DDIM sampling (T=100, 50 epochs) |
+| [`GPU_assignment_1/`](GPU_assignment_1/) | GPU Assignment I (HW2.5): matmul TFLOPS across precisions, memory bandwidth, naive vs fused attention OOM boundary, sustained-load thermals on an RTX 4090 |
+| [`GPU_assignment_2/`](GPU_assignment_2/) | GPU Assignment II (HW4.5): BERT fine-tune throughput and memory engineering on an RTX 4090 (batch scaling to the memory wall, mixed precision, gradient checkpointing, gradient accumulation, 8-bit optimizer) plus vLLM serving on a Colab T4. Tagged `hw4-5` |
