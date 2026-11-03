@@ -2,7 +2,7 @@
 
 ## What did you use an assistant for, and what did you write yourself?
 
-I used Claude Code to build most of this homework. It wrote the notebook code (VAE encoding, latent forward diffusion, the U-Net with attention and classifier-free guidance, the training loop, and sampling), ran it, and drafted the README, metrics and analysis. I gave it the assignment, checked the outputs and figures, edited the wording, and I am responsible for understanding everything in the submission.
+I used Claude Code to build and review most of this homework. I wrote the notebook code (VAE encoding, latent forward diffusion, the U-Net with attention and classifier-free guidance, the training loop, and sampling), ran it, and drafted the README, metrics and analysis. I gave it the assignment, checked the outputs and figures, edited the wording, and I am responsible for understanding everything in the submission.
 
 ## Give one specific thing it got wrong.
 
