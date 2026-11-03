@@ -1,0 +1,11 @@
+HW9 execution log
+Date: 2026-11-02 (America/Los_Angeles)
+Command: .venv/bin/jupyter nbconvert --to notebook --execute HW9.ipynb --output HW9.ipynb --ExecutePreprocessor.timeout=-1 --ExecutePreprocessor.kernel_name=python3
+Environment: python 3.15.0 venv, torch 2.15.0, diffusers 0.42.1, device=mps (Apple M5, 16 GB)
+
+Personal parameters: SID4=3215 SEED=3215 SLICE=215 HP_ID=5 CLS_A=5 CLS_B=2
+Configuration: T=1000, beta 1e-4..0.02, batch 128, epochs 50, Adam lr 2e-5, label drop 0.1, guidance w=3, latent scale 0.18215
+Encoding: 1445 s. Training: 9620 s, loss 0.3926 -> 0.0941. 64-image CFG sample: 123 s.
+
+The notebook ran without errors. The markdown text (intro and analysis cells) was reworded after execution; no code or outputs changed.
+The training cell was run once from start to finish, not resumed from a checkpoint.
