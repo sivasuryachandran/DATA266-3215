@@ -6,36 +6,36 @@
    "mean_words": 148.7709568162574,
    "min_words": 31,
    "max_words": 150,
-   "chunk_s": 0.3129762001335621,
-   "embed_s": 2.712226599920541,
-   "chunks_per_s": 1741.7423751165913
+   "chunk_s": 0.3591430000960827,
+   "embed_s": 6.02920989994891,
+   "chunks_per_s": 783.5189151467475
   },
   "sentence_aware": {
    "chunks": 5256,
    "mean_words": 135.8885083713851,
    "min_words": 9,
    "max_words": 300,
-   "chunk_s": 0.38453160016797483,
-   "embed_s": 2.278499099891633,
-   "chunks_per_s": 2306.7816881077456
+   "chunk_s": 0.4074192999396473,
+   "embed_s": 6.115663199918345,
+   "chunks_per_s": 859.4325469182438
   }
  },
  "latency_ms": {
   "fixed_window|dense": {
-   "median": 6.782399956136942,
-   "p95": 23.625319823622693
+   "median": 61.61500001326203,
+   "p95": 113.22594521334395
   },
   "fixed_window|rerank": {
-   "median": 17.573749995790422,
-   "p95": 36.109134904108934
+   "median": 111.77604994736612,
+   "p95": 156.92930003860965
   },
   "sentence_aware|dense": {
-   "median": 8.376650046557188,
-   "p95": 12.34831503825262
+   "median": 61.56585004646331,
+   "p95": 81.16569990525022
   },
   "sentence_aware|rerank": {
-   "median": 18.890999956056476,
-   "p95": 26.03069494944065
+   "median": 106.10144992824644,
+   "p95": 130.25079990038648
   }
  },
  "failures": [
@@ -51,7 +51,8 @@
    "first_wrong": {
     "doc": 36,
     "text": "is said to synchronize if [math] and if all orbits synchronize, then we say to have synchronization of the map. synchronization is the simplest dynamical regime..."
-   }
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
   },
   {
    "id": "S2",
@@ -65,7 +66,8 @@
    "first_wrong": {
     "doc": 36,
     "text": "is said to synchronize if [math] and if all orbits synchronize, then we say to have synchronization of the map. synchronization is the simplest dynamical regime..."
-   }
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
   },
   {
    "id": "S2",
@@ -79,7 +81,8 @@
    "first_wrong": {
     "doc": 36,
     "text": "finally, note that the dynamics commutes with the symmetry [math] or [math] in the original variables. if [math], then [math] and [math]. in this case, the orbi..."
-   }
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
   },
   {
    "id": "S2",
@@ -93,7 +96,8 @@
    "first_wrong": {
     "doc": 36,
     "text": "the condition [math] is not necessary. indeed, if for instance [math], then [math] has an attracting fixed point in [math] $ ], and one can prove that synchroni..."
-   }
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
   },
   {
    "id": "S4",
@@ -107,7 +111,8 @@
    "first_wrong": {
     "doc": 6,
     "text": "mater. today _ * 2013 *, _ 16 _, 375386 brongersma, m. l.; halas, n. j.; nordlander, p. plasmon - induced hot carrier science and technology. _ * 2015 *, _ 10 _..."
-   }
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
   },
   {
    "id": "S4",
@@ -121,7 +126,8 @@
    "first_wrong": {
     "doc": 6,
     "text": "svirko, y.; turunen, j. phonon - enhanced light - matter interaction at the nanometre scale. _ phys. _ * 2007 *, _ 98 _, 167403 bachelier, g.; butet, j.; russie..."
-   }
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
   },
   {
    "id": "S4",
@@ -135,7 +141,8 @@
    "first_wrong": {
     "doc": 6,
     "text": "plasmon - induced hot carrier science and technology. _ * 2015 *, _ 10 _, 2534 kauranen, m.; zayats, a. photon. _ * 2012 *, _ 6 _, 737748 hentschel, m.; utikal,..."
-   }
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
   },
   {
    "id": "S4",
@@ -149,7 +156,8 @@
    "first_wrong": {
     "doc": 6,
     "text": "k.; kauranen, m.; svirko, y.; turunen, j. phonon - enhanced light - matter interaction at the nanometre scale. _ phys. _ * 2007 *, _ 98 _, 167403 bachelier, g.;..."
-   }
+   },
+   "category": "right paper, answer chunk ranked low"
   },
   {
    "id": "S7",
@@ -163,7 +171,8 @@
    "first_wrong": {
     "doc": 58,
     "text": "[math]: the set of edges. * [math]: the set of leaves. for two nodes [math] in [math], if [math], [math] is said to be a _ parent _ of [math] and, equivalently,..."
-   }
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
   },
   {
    "id": "S11",
@@ -181,7 +190,8 @@
    "first_wrong": {
     "doc": 82,
     "text": "larger than that seen in paper i. in the last three runs (january - march) it was also noticed faint (at the [math] level of the background noise) linear featur..."
-   }
+   },
+   "category": "other papers outrank the answer"
   },
   {
    "id": "S11",
@@ -198,7 +208,8 @@
    "first_wrong": {
     "doc": 89,
     "text": "noisy and fluctuates between radial and tangential anisotropy. however, the average behaviour is isotropy. shown are the binary fraction of the entire cluster (..."
-   }
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
   },
   {
    "id": "S11",
@@ -216,7 +227,8 @@
    "first_wrong": {
     "doc": 96,
     "text": "details of the observations are provided in table 1. these are among the highest resolution spectra obtained of any t dwarf. the spectra were obtained in the st..."
-   }
+   },
+   "category": "other papers outrank the answer"
   },
   {
    "id": "S11",
@@ -234,7 +246,8 @@
    "first_wrong": {
     "doc": 81,
     "text": "the environment close to the star can also be studied, directly, by means of interferometry, which is usually performed at long wavelengths. most optical / ir i..."
-   }
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
   },
   {
    "id": "S14",
@@ -248,7 +261,8 @@
    "first_wrong": {
     "doc": 40,
     "text": "a fair number of astronomers and astronomy students have a physical challenge. it is our responsibility to learn the basics of accessibility to be able to help ..."
-   }
+   },
+   "category": "right paper, answer chunk ranked low"
   },
   {
    "id": "S14",
@@ -262,7 +276,963 @@
    "first_wrong": {
     "doc": 40,
     "text": "a fair number of astronomers and astronomy students have a physical challenge. it is our responsibility to learn the basics of accessibility to be able to help ..."
-   }
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S15",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.3333333333333333,
+   "P5": 0.2,
+   "n_rel": 4,
+   "off_doc_in_top5": [
+    11
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 1,
+    "text": "of the meson, and [math] is the mass of the charged lepton. the quantity [math] describes the amplitude for the [math] and [math]-quarks within the [math] to ha..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S15",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.16666666666666666,
+   "P5": 0.0,
+   "n_rel": 4,
+   "off_doc_in_top5": [
+    11
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 1,
+    "text": "lqcd calculations. experimental determination of [math] with the leptonic decay of a [math] meson is, however, very limited as the rate is highly suppressed due..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S15",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.16666666666666666,
+   "P5": 0.0,
+   "n_rel": 4,
+   "off_doc_in_top5": [
+    11
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 1,
+    "text": "the latter is now generally considered to be the most reliable way to calculate the quantity. knowledge of decay constants is important for describing several k..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S15",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.2,
+   "P5": 0.2,
+   "n_rel": 4,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 1,
+    "text": "thus, the decay constants [math] and [math] determined from charm meson decays can be used to test and validate the necessary lqcd calculations applicable to th..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S16",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 12,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 3,
+    "text": "for the effect of the phase diffuser, a factor [math] or [math] should be inserted into the integrand of eq. [ fourteen ]. the quantity [math] is the random pha..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S16",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.6,
+   "n_rel": 12,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 3,
+    "text": "as we see, the effect of the phase screen can be described by two parameters, [math] and [math], which characterize the spatial and temporal coherence of the la..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S16",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.5,
+   "P5": 0.6,
+   "n_rel": 12,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 3,
+    "text": "as we see, the effect of the phase screen can be described by two parameters, [math] and [math], which characterize the spatial and temporal coherence of the la..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S18",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.3333333333333333,
+   "P5": 0.4,
+   "n_rel": 4,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 8,
+    "text": "as an alternative to the manual methods based on initial placement of the models by an expert in the literature, model based methods can be employed for recogni..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S18",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 4,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 8,
+    "text": "in particular, shape has been used both in high and low level image analysis tasks extensively, and it has been demonstrated that shape models (such as active s..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S19",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.3333333333333333,
+   "P5": 0.6,
+   "n_rel": 9,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 9,
+    "text": "one surprising result that has come out of the more than 200 extrasolar planet discoveries to date is the wide range of eccentricities observed. unlike our own ..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S19",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.3333333333333333,
+   "P5": 0.4,
+   "n_rel": 9,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 9,
+    "text": "one surprising result that has come out of the more than 200 extrasolar planet discoveries to date is the wide range of eccentricities observed. unlike our own ..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S19",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.3333333333333333,
+   "P5": 0.6,
+   "n_rel": 8,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 9,
+    "text": "one surprising result that has come out of the more than 200 extrasolar planet discoveries to date is the wide range of eccentricities observed. unlike our own ..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S19",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.3333333333333333,
+   "P5": 0.6,
+   "n_rel": 8,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 9,
+    "text": "one surprising result that has come out of the more than 200 extrasolar planet discoveries to date is the wide range of eccentricities observed. unlike our own ..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S20",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.16666666666666666,
+   "P5": 0.0,
+   "n_rel": 29,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 10,
+    "text": "biological aggregations such as fish schools, bird flocks, bacterial colonies, and insect swarms have characteristic morphologies governed by the group members ..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S20",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.2,
+   "P5": 0.2,
+   "n_rel": 29,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 10,
+    "text": "case of endogenous interactions that are repulsive on short length scales and attractive over longer ones; such forces are typical for swarming biological organ..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S20",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.3333333333333333,
+   "P5": 0.4,
+   "n_rel": 29,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 10,
+    "text": "biological aggregations such as fish schools, bird flocks, bacterial colonies, and insect swarms have characteristic morphologies governed by the group members ..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S20",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.3333333333333333,
+   "P5": 0.2,
+   "n_rel": 29,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 10,
+    "text": "section [ sec: morse ] is similar to section [ sec: repulsive ], but we now consider the more complicated case of endogenous interactions that are repulsive on ..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S21",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 6,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 13,
+    "text": "channel model provides a simple picture to understand the molecular state near the feshbach resonances. the analytic results of the molecular binding energy and..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S21",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.4,
+   "n_rel": 5,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 13,
+    "text": "near resonances with large resonance widths, the molecules can be well approximated as pairs in the open channel. for narrow resonances, as suggested by numeric..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S21",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.25,
+   "P5": 0.4,
+   "n_rel": 5,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 13,
+    "text": "near resonances with large resonance widths, the molecules can be well approximated as pairs in the open channel. for narrow resonances, as suggested by numeric..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S22",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 31,
+   "off_doc_in_top5": [
+    48,
+    61
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 48,
+    "text": "nightly extinction curves allowed for a flux calibration. + in fig.3 we present two spectra of ex lup: one close to the outburst maximum and the other at low ac..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S22",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.25,
+   "P5": 0.2,
+   "n_rel": 31,
+   "off_doc_in_top5": [
+    48
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 48,
+    "text": "nightly extinction curves allowed for a flux calibration. + in fig.3 we present two spectra of ex lup: one close to the outburst maximum and the other at low ac..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S22",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.16666666666666666,
+   "P5": 0.0,
+   "n_rel": 35,
+   "off_doc_in_top5": [
+    48,
+    75
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 48,
+    "text": "in fig. 4 we plot two difference spectra at low resolution. the first shows the difference between an outburst (march 3) and a post - outburst (august 16) spect..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S22",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.5,
+   "P5": 0.2,
+   "n_rel": 35,
+   "off_doc_in_top5": [
+    48
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 48,
+    "text": "figure 6 shows the region around cai 4227, which is the strongest stellar absorption line, in two post - outburst spectra. the difference of these two spectra n..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S24",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.2,
+   "n_rel": 2,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 17,
+    "text": "implement the [math] algorithm using a finite difference method to calculate the derivatives of [math]. a similar technique was used in ref. this model yields a..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S24",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 2,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 17,
+    "text": "which is nearly gaussian, but has a small non - zero skewness. that gives [math] where [math] is a pure gaussian distribution, defined by [math].\\ ] ] in this e..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S24",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.14285714285714285,
+   "P5": 0.0,
+   "n_rel": 2,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 17,
+    "text": "the two - dimensional transport equation is [math] = 0.\\ ] ] here and in the following we have returned to our convention that repeated species indices are summ..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S24",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 2,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 17,
+    "text": "the two - dimensional transport equation is [math] = 0.\\ ] ] here and in the following we have returned to our convention that repeated species indices are summ..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S26",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 5,
+   "off_doc_in_top5": [
+    69,
+    75,
+    82
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 82,
+    "text": "denis ([math]). still, within the two magnitudes where comparison is possible one finds a roughly constant zero - point offset of less than 0.02 mag for both st..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S28",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.8,
+   "n_rel": 16,
+   "off_doc_in_top5": [
+    82
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 82,
+    "text": "found that the extracted catalogs are reliable and uniform. when all patches are included, the combined eis galaxy catalog contains about one million galaxies a..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S28",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 14,
+   "off_doc_in_top5": [
+    21,
+    82
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 82,
+    "text": "the star counts show a good agreement with current galactic models, especially at high - galactic latitudes, and the galaxy counts agree remarkably well with ot..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S32",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.2,
+   "P5": 0.2,
+   "n_rel": 21,
+   "off_doc_in_top5": [
+    48,
+    57
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 48,
+    "text": "nightly extinction curves allowed for a flux calibration. + in fig.3 we present two spectra of ex lup: one close to the outburst maximum and the other at low ac..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S32",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.5,
+   "P5": 0.4,
+   "n_rel": 21,
+   "off_doc_in_top5": [
+    48
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 48,
+    "text": "al. 1989, 1991). the accuracy of the veiling determination decreases rapidly when the emission component exceeds the photospheric luminosity. in the case of ex ..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S32",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.25,
+   "P5": 0.2,
+   "n_rel": 25,
+   "off_doc_in_top5": [
+    25,
+    48,
+    57
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 48,
+    "text": "the accuracy of the veiling determination decreases rapidly when the emission component exceeds the photospheric luminosity. in the case of ex lup during its er..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S32",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.5,
+   "P5": 0.2,
+   "n_rel": 25,
+   "off_doc_in_top5": [
+    48,
+    96
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 48,
+    "text": "the accuracy of the veiling determination decreases rapidly when the emission component exceeds the photospheric luminosity. in the case of ex lup during its er..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S33",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.25,
+   "P5": 0.2,
+   "n_rel": 12,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 32,
+    "text": "transport network topology is often different from the road network topology, one may doubt the accuracy of this assumption. moreover, they just use the partial..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S33",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.5,
+   "P5": 0.4,
+   "n_rel": 12,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 32,
+    "text": "journey between major stations, the passenger has to validate his ticket through the machines at the entrance of the station, and do it again at the exit. betwe..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S35",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 1,
+   "off_doc_in_top5": [
+    69,
+    74
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 69,
+    "text": "ray sources making the diffuse x - ray background (xrb; paper ii; a.j. barger et al., in prep.). these normal galaxies contribute as much as 510% of the xrb flu..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S35",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 1,
+   "off_doc_in_top5": [
+    74
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 74,
+    "text": "as well as the dcc occurrence frequency. nonetheless, since neither the cosmic rays chemical composition at the highest energies ([math] ev) nor the full dynami..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S35",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 1,
+   "off_doc_in_top5": [
+    69
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 69,
+    "text": "barger et al., in prep.). these normal galaxies contribute as much as 510% of the xrb flux in the 0.52 kev band. the bulk of the energy density of the xrb is ce..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S35",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 1,
+   "off_doc_in_top5": [
+    69,
+    72,
+    74
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 74,
+    "text": "a more robust estimation of the power of discrimination would have to incorporate a priori information on the population frequencies for proton and fe, as well ..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S36",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.25,
+   "P5": 0.2,
+   "n_rel": 15,
+   "off_doc_in_top5": [
+    81,
+    96
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 81,
+    "text": "- mostly silicates and amorphous carbon (matsuura et al. it is thought that this dust come from the explosion, but the role played by previous mass - loss episo..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S36",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.5,
+   "P5": 0.4,
+   "n_rel": 15,
+   "off_doc_in_top5": [
+    48,
+    81,
+    96
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 96,
+    "text": "spectra obtained of any t dwarf. the spectra were obtained in the standard stare / nod mode with the [math] wide slit of the spectrometer oriented at a position..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S36",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.3333333333333333,
+   "P5": 0.2,
+   "n_rel": 14,
+   "off_doc_in_top5": [
+    81,
+    96
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 81,
+    "text": "two examples of such feedback were presented in the session: [math]car and sn1987a. the latter was observed with herschel at 100 - 500[math] m wavelengths, and ..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S36",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.2,
+   "P5": 0.2,
+   "n_rel": 14,
+   "off_doc_in_top5": [
+    48,
+    96
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 41,
+    "text": "we have examined the 2mass images which show that nltt 19868 and the nearby object are clearly separated, and we conclude that the 2mass photometric measurement..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S37",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 7,
+   "off_doc_in_top5": [
+    13
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 43,
+    "text": "chu, s.- k. mo, r.- h. fisher, and z.- x. b * 80 *, 024515 (2009). de medici, s.r. capone and x. dai, phys.rev.lett. * 102 *, 126401 (2009) l. de medici, g. gio..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S37",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.3333333333333333,
+   "P5": 0.4,
+   "n_rel": 7,
+   "off_doc_in_top5": [
+    42,
+    70
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 42,
+    "text": "the superconductivity is suppressed with the magnetic field [math], the steep increase in [math] associated with the af ordering is recovered back (fig. 3). mor..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S37",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 6,
+   "off_doc_in_top5": [
+    6,
+    13
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 43,
+    "text": "emery and s.a. kivelson, physica c * 209 *, 597 (1993); u. fabricius, and s.a. lett. * 72 *, 1918 (1994). di castro and m. lett. * 75 *, 4650 (1995). liang and ..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S37",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 6,
+   "off_doc_in_top5": [
+    42
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 43,
+    "text": "the ac - susceptibility measurements were performed on heating with an ac field of 10 oe at 1111 hz. the real component (fig.[chiac ]) reveals the onset of diam..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S38",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 13,
+   "off_doc_in_top5": [
+    75
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 45,
+    "text": "these components with the core, but the total separation can be compared with the 2006 epoch in which it was 1.045 mas. the total apparent expansion speed betwe..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S38",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 9,
+   "off_doc_in_top5": [
+    12,
+    75
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 45,
+    "text": "we assume [math] = 71 km s[math] mpc[math] and the standard cosmology so that 1= 1.835 kpc and an angular velocity of 1 mas / y = 5.98 c at the redshift (0.1008..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S39",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.2,
+   "P5": 0.2,
+   "n_rel": 1,
+   "off_doc_in_top5": [
+    24
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 53,
+    "text": "in adaptive control and recursive parameter estimation one often needs to adjust recursively an estimate [math] of a vector [math], which comprises [math] const..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S39",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 1,
+   "off_doc_in_top5": [
+    24,
+    55
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 53,
+    "text": "alternative is to use a time - varying [math], as is done in least - squares tuning. in [ sec: acceleration ] we present a tuner that sets the second derivative..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S39",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.2,
+   "n_rel": 2,
+   "off_doc_in_top5": [
+    24
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 53,
+    "text": "in adaptive control and recursive parameter estimation one often needs to adjust recursively an estimate [math] of a vector [math], which comprises [math] const..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S39",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.2,
+   "P5": 0.2,
+   "n_rel": 2,
+   "off_doc_in_top5": [
+    24
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 24,
+    "text": "then, according to eq. ([ eq: th12 g ]), [math]. if we now replace [math] with a gamma corrected version, say [math], the first derivative becomes [math], the s..."
+   },
+   "category": "other papers outrank the answer"
+  },
+  {
+   "id": "S40",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.6,
+   "n_rel": 3,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 55,
+    "text": "which the unknown coefficient is not present. _ element _ of this paper is the method of the solution of this equation. this method is based on the construction..."
+   },
+   "category": "right paper, answer chunk ranked low"
+  },
+  {
+   "id": "S40",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 2,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 55,
+    "text": "in addition to the analytical study, we test this method numerically using both computationally simulated and the above mentioned experimental data. first, we d..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
+  },
+  {
+   "id": "S40",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 2,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 55,
+    "text": "in addition to the analytical study, we test this method numerically using both computationally simulated and the above mentioned experimental data. first, we d..."
+   },
+   "category": "capped: few relevant chunks (top-1 correct)"
   },
   {
    "id": "D1-t2-nomem",
@@ -282,7 +1252,8 @@
    "first_wrong": {
     "doc": 41,
     "text": "objects depicted in fig. [ fig_ratio ], [math] averages [math], which is lower than the bulk - earth abundance ratio of [math] but is still consistent given the..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D1-t2-nomem",
@@ -301,43 +1272,47 @@
    "first_wrong": {
     "doc": 12,
     "text": "smaller scale data where nonlinear effects might be somewhat larger than previously suspected. using an analytic approximation to the [math], they estimate that..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D1-t2-nomem",
    "chunking": "sentence_aware",
    "rerank": false,
-   "RR": 0.3333333333333333,
+   "RR": 0.25,
    "P5": 0.2,
    "n_rel": 9,
    "off_doc_in_top5": [
     12,
-    39,
-    82
+    82,
+    93
    ],
    "top1_relevant": false,
    "first_wrong": {
     "doc": 82,
     "text": "the domain in which the comparison can be made is relatively small because of saturation of objects in eis at the bright end ([math]) and the shallow magnitude ..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D1-t2-nomem",
    "chunking": "sentence_aware",
    "rerank": true,
    "RR": 1.0,
-   "P5": 0.4,
+   "P5": 0.2,
    "n_rel": 9,
    "off_doc_in_top5": [
     34,
     39,
+    46,
     82
    ],
    "top1_relevant": true,
    "first_wrong": {
-    "doc": 82,
-    "text": "the domain in which the comparison can be made is relatively small because of saturation of objects in eis at the bright end ([math]) and the shallow magnitude ..."
-   }
+    "doc": 46,
+    "text": "this experience leads naturally to the idea of trying to define what the higher dimensional analogues of the gray tensor product are, so as to set up a similar ..."
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D2-t2-nomem",
@@ -356,7 +1331,8 @@
    "first_wrong": {
     "doc": 85,
     "text": "mass transfer stability could be smaller than unity. the stability parameter [math] which enters the expression for steady - state mass transfer, equation [ eq:..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D2-t2-mem",
@@ -370,7 +1346,8 @@
    "first_wrong": {
     "doc": 36,
     "text": "is said to synchronize if [math] and if all orbits synchronize, then we say to have synchronization of the map. synchronization is the simplest dynamical regime..."
-   }
+   },
+   "category": "follow-up with memory: right paper, weak ranking"
   },
   {
    "id": "D2-t2-nomem",
@@ -388,7 +1365,8 @@
    "first_wrong": {
     "doc": 10,
     "text": "an external potential, [math], and on the real line. in the h - stable regime, the continuum model displays spreading density profiles, while in the catastrophi..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D2-t2-mem",
@@ -402,7 +1380,8 @@
    "first_wrong": {
     "doc": 36,
     "text": "is said to synchronize if [math] and if all orbits synchronize, then we say to have synchronization of the map. synchronization is the simplest dynamical regime..."
-   }
+   },
+   "category": "follow-up with memory: right paper, weak ranking"
   },
   {
    "id": "D2-t2-nomem",
@@ -419,7 +1398,8 @@
    "first_wrong": {
     "doc": 61,
     "text": "we should acknowledge at the start that it seems a daunting task to try to explain with a single model the diverse, unstable behavior exhibited by this source, ..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D2-t2-nomem",
@@ -436,7 +1416,8 @@
    "first_wrong": {
     "doc": 10,
     "text": "note that ([ eq: morse ]) has fourier transform [ eq: qhatmorse ] [math]}{(1+{k}^{2})(1+(kl)^2)}.\\end{aligned}\\ ] ] the condition for h - stability is equivalen..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D3-t2-nomem",
@@ -454,7 +1435,8 @@
    "first_wrong": {
     "doc": 48,
     "text": "telescopes. this photometry was later calibrated with respect to standard stars including extinction and colour corrections. all reductions have been made with ..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D3-t2-mem",
@@ -468,7 +1450,8 @@
    "first_wrong": {
     "doc": 48,
     "text": "16 to enhance the visibility of the absorption dip and to remove possible contamination due to photospheric lines. the displacement of the absorption dip measur..."
-   }
+   },
+   "category": "follow-up with memory: right paper, weak ranking"
   },
   {
    "id": "D3-t2-nomem",
@@ -487,7 +1470,8 @@
    "first_wrong": {
     "doc": 45,
     "text": "8.4 ghz. during that same time s2 has only slightly decreased. meanwhile both n5 and s5 have been declining though that appears to have leveled off starting in ..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D3-t2-nomem",
@@ -505,7 +1489,8 @@
    "first_wrong": {
     "doc": 29,
     "text": "fitting the brightness excess at the cme rims at those times where bright rims are visible are consistent with a value of [math]. ll parameter & best - fit valu..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D3-t2-mem",
@@ -519,7 +1504,8 @@
    "first_wrong": {
     "doc": 48,
     "text": "comparing the sequence of spectra between march 3 and 6 we can see a substantial fading of the absorption. the mean velocity displacement of the absorption meas..."
-   }
+   },
+   "category": "follow-up with memory: right paper, weak ranking"
   },
   {
    "id": "D3-t2-nomem",
@@ -538,7 +1524,8 @@
    "first_wrong": {
     "doc": 45,
     "text": "we are currently in the unbalanced situation where s5 appears to be brighter than n5, which would at first sight seem contrary to the expectations from doppler ..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D4-t2-nomem",
@@ -557,7 +1544,8 @@
    "first_wrong": {
     "doc": 39,
     "text": "the inertial range are respectively [math] ([math]), [math] ([math]), [math] ([math]) and [math] ([math]), in which the statistical error is the standard deviat..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D4-t2-nomem",
@@ -576,7 +1564,8 @@
    "first_wrong": {
     "doc": 12,
     "text": "claims of a lower limit on [math] from the dmr data alone are, at the very least, premature.) the [math] (e.g., eqs. [ 1 ] and [ 2 ]) were determined from a num..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D4-t2-nomem",
@@ -596,7 +1585,8 @@
    "first_wrong": {
     "doc": 55,
     "text": "we have observed a substantial mismatch of amplitudes between computationally simulated and experimental data. hence, we have calibrated experimental data here ..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D4-t2-nomem",
@@ -615,7 +1605,8 @@
    "first_wrong": {
     "doc": 12,
     "text": "(the yb and bw claims of a lower limit on [math] from the dmr data alone are, at the very least, premature.) the [math] (e.g., eqs. [ 1 ] and [ 2 ]) were determ..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D5-t2-nomem",
@@ -632,7 +1623,8 @@
    "first_wrong": {
     "doc": 4,
     "text": "interpretation of the contribution of the dirac - sea quarks. to see it, we first recall that the theoretical unpolarized distribution function [math] appearing..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D5-t2-nomem",
@@ -648,7 +1640,8 @@
    "first_wrong": {
     "doc": 4,
     "text": "dependence of [math] and [math]. as a function of [math], the dirac sea contribution to [math] decreases fast, whereas the valence quark contribution to it incr..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D5-t2-nomem",
@@ -666,7 +1659,8 @@
    "first_wrong": {
     "doc": 84,
     "text": "this implies that all cone angles are integer multiples of [math]. equivalently a flat surface is a triple [math] such that [math] is a topological compact conn..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D5-t2-nomem",
@@ -683,7 +1677,8 @@
    "first_wrong": {
     "doc": 4,
     "text": "as a function of [math], the dirac sea contribution to [math] decreases fast, whereas the valence quark contribution to it increases slowly, so that the total [..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D6-t2-nomem",
@@ -702,7 +1697,8 @@
    "first_wrong": {
     "doc": 59,
     "text": "field is to plot vorticity isosurfaces see for instance the plots from. the resulting pictures are usually very `` crowded '', in the sense that there are many ..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D6-t2-nomem",
@@ -718,7 +1714,8 @@
    "first_wrong": {
     "doc": 59,
     "text": "available scales in the velocity, we can visualize vorticity at scale [math] by the curl of the velocity box - filtered at scale [math]. we follow a simple proc..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D6-t2-nomem",
@@ -736,7 +1733,8 @@
    "first_wrong": {
     "doc": 26,
     "text": "the arrows show the direction of the time evolution.,title=\"fig:\",width=264 ] and [math] planes for the case of torsion parameter [math], where we choose the pa..."
-   }
+   },
+   "category": "follow-up without memory"
   },
   {
    "id": "D6-t2-nomem",
@@ -753,7 +1751,762 @@
    "first_wrong": {
     "doc": 59,
     "text": "we can exploit this facility to investigate the multiscale character of the turbulent cascade. because vorticity is dominated by the smallest available scales i..."
-   }
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D8-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 5,
+   "off_doc_in_top5": [
+    16,
+    89
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 16,
+    "text": "scattering be able accurately calculate biexciton binding energies. for the mass ratios considered (and far beyond, including deuterium) the biexcitons can not ..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D8-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.3333333333333333,
+   "P5": 0.2,
+   "n_rel": 5,
+   "off_doc_in_top5": [
+    16,
+    89,
+    90
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 89,
+    "text": "based on the average kinetic energy of the cluster stars (e.g. mcmillan 1993) increases the k100 values by a factor of three compared to the k200 values, i.e. t..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D8-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.4,
+   "n_rel": 5,
+   "off_doc_in_top5": [
+    16,
+    89
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 89,
+    "text": "the binaries have relatively more internal energy in the simulation with less stars. sharp dips in the binding energy occur throughout the simulations when bina..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D8-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.16666666666666666,
+   "P5": 0.0,
+   "n_rel": 5,
+   "off_doc_in_top5": [
+    16,
+    89
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 89,
+    "text": "as expected the average energy per binary increases as we move inwards towards the cluster centre, although the values within the 1 - 10% and 10 - 50% regions a..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D9-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.16666666666666666,
+   "P5": 0.0,
+   "n_rel": 4,
+   "off_doc_in_top5": [
+    25,
+    61
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 61,
+    "text": "in fig. ([ fig: data ]) is similar to that from panel (a) to (b) in fig. ([ fig: lcurves ]) as well. the physical reason for the cycle time getting shorter with..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D9-t2-mem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.2,
+   "n_rel": 4,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 57,
+    "text": "peak theoretical sunspot number and peak observed sunspot number. the linear correlation coefficients and the corresponding significance levels are given on the..."
+   },
+   "category": "follow-up with memory: right paper, weak ranking"
+  },
+  {
+   "id": "D9-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 4,
+   "off_doc_in_top5": [
+    61,
+    89
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 61,
+    "text": "the light curve of grs 1915 + 105, the rise / fall time scales are always shorter in the data than they are in the simulations. the fast rises and falls are per..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D9-t2-mem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 4,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 57,
+    "text": "peak theoretical sunspot number and peak observed sunspot number. the linear correlation coefficients and the corresponding significance levels are given on the..."
+   },
+   "category": "follow-up with memory: right paper, weak ranking"
+  },
+  {
+   "id": "D9-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.2,
+   "n_rel": 3,
+   "off_doc_in_top5": [
+    4,
+    61
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 61,
+    "text": "although our model is able to reproduce a number of the general trends seen in the light curve of grs 1915 + 105, the rise / fall time scales are always shorter..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D9-t2-mem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.4,
+   "n_rel": 3,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 57,
+    "text": "the solid line is the variation of [math] used to match the theoretical periods with the observed periods. (b) variation of theoretical sunspot number (dashed l..."
+   },
+   "category": "follow-up with memory: right paper, weak ranking"
+  },
+  {
+   "id": "D9-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 3,
+   "off_doc_in_top5": [
+    4,
+    61
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 61,
+    "text": "the time scale for the transition front to traverse an unstable region of size r is [math], i.e., the transitions in the disk actually take [math] times longer ..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D11-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 33,
+   "off_doc_in_top5": [
+    19,
+    32,
+    84,
+    90
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 19,
+    "text": "[math] for the type - ii 2hdm, [math] for the l2hdm, [math] for the nmssm, and [math] for the nmssm. in performing the scans, we note that for the nmssm and the..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D11-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 33,
+   "off_doc_in_top5": [
+    12,
+    19,
+    32,
+    90
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 19,
+    "text": "properties totally determined by two free parameters. in new physics models, the higgs sector is usually extended by adding higgs doublets and/or singlets, and ..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D11-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.16666666666666666,
+   "P5": 0.0,
+   "n_rel": 39,
+   "off_doc_in_top5": [
+    19,
+    32,
+    97,
+    98
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 19,
+    "text": "with the above constraints, we perform four independent random scans over the parameter space of the type - ii 2hdm, the l2hdm, the nmssm and the nmssm respecti..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D11-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.16666666666666666,
+   "P5": 0.0,
+   "n_rel": 39,
+   "off_doc_in_top5": [
+    19,
+    32,
+    47,
+    90
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 19,
+    "text": "with the above constraints, we perform four independent random scans over the parameter space of the type - ii 2hdm, the l2hdm, the nmssm and the nmssm respecti..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D12-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 2,
+   "off_doc_in_top5": [
+    12,
+    57
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 12,
+    "text": "here (in grsb we focussed on [math]); and (5) we consider a range of [math] values here (in grsb we concentrated on [math] gyr). we emphasize, however, that the..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D12-t2-mem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 2,
+   "off_doc_in_top5": [
+    69,
+    72,
+    74
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 74,
+    "text": "as well as the dcc occurrence frequency. nonetheless, since neither the cosmic rays chemical composition at the highest energies ([math] ev) nor the full dynami..."
+   },
+   "category": "follow-up with memory: other papers in top 5"
+  },
+  {
+   "id": "D12-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 2,
+   "off_doc_in_top5": [
+    12,
+    19,
+    82
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 12,
+    "text": "is due to the galactic plane. we are unable to model this contribution to the sky temperature to sufficient accuracy to enable its subtraction, thus we excise a..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D12-t2-mem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 2,
+   "off_doc_in_top5": [
+    72,
+    74
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 74,
+    "text": "by electrons and photons, suggesting the suppression of neutral pions with respect to charged pions. regardless of the outcome of the debate on the nature of ce..."
+   },
+   "category": "follow-up with memory: other papers in top 5"
+  },
+  {
+   "id": "D12-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 1,
+   "off_doc_in_top5": [
+    12,
+    51,
+    90
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 12,
+    "text": "tables 912 list some observational predictions for the models considered here, and the boldface entries are those that are inconsistent with current observation..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D12-t2-mem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 1,
+   "off_doc_in_top5": [
+    69,
+    72,
+    74
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 74,
+    "text": "a more robust estimation of the power of discrimination would have to incorporate a priori information on the population frequencies for proton and fe, as well ..."
+   },
+   "category": "follow-up with memory: other papers in top 5"
+  },
+  {
+   "id": "D12-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 1,
+   "off_doc_in_top5": [
+    12,
+    23,
+    61
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 12,
+    "text": "it should be noted that the model predictions of [math] (eq. [ 14 ]) in tables 912 assume that for [math] galaxies [math] = 1/1.3 $ ] holds exactly, i.e., they ..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D12-t2-mem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 1,
+   "off_doc_in_top5": [
+    72,
+    74
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 74,
+    "text": "so far, there has been no evidence from colliders or cr experiments. motivated by the possibility of attaining much higher statistics in current ultra - high en..."
+   },
+   "category": "follow-up with memory: other papers in top 5"
+  },
+  {
+   "id": "D13-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.2,
+   "P5": 0.2,
+   "n_rel": 7,
+   "off_doc_in_top5": [
+    12,
+    14,
+    21
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 12,
+    "text": "generally use the most recent analyses since we assume that they incorporate a better understanding of the uncertainties, especially those due to systematics. t..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D13-t2-mem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 7,
+   "off_doc_in_top5": [
+    14,
+    75,
+    82
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 82,
+    "text": "this paper presents data for the last two patches (c and d) of the sky observed by the public eso imaging survey (eis), being carried out in preparation for the..."
+   },
+   "category": "follow-up with memory: other papers in top 5"
+  },
+  {
+   "id": "D13-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.5,
+   "P5": 0.4,
+   "n_rel": 7,
+   "off_doc_in_top5": [
+    12,
+    14
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 45,
+    "text": "expansion rate, we can derive a kinematic age for 1946 + 708 assuming a constant expansion rate. the velocity measurement derived above yields a kinematic age o..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D13-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.2,
+   "n_rel": 6,
+   "off_doc_in_top5": [
+    12,
+    14,
+    21
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 12,
+    "text": "to reconcile the models with the high measured values of the hubble parameter [math], we have chosen to focus on [math] 10.5, 12, and 13.5 gyr, which are near t..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D13-t2-mem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 6,
+   "off_doc_in_top5": [
+    14,
+    82
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 45,
+    "text": "we assume [math] = 71 km s[math] mpc[math] and the standard cosmology so that 1= 1.835 kpc and an angular velocity of 1 mas / y = 5.98 c at the redshift (0.1008..."
+   },
+   "category": "follow-up with memory: other papers in top 5"
+  },
+  {
+   "id": "D13-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.5,
+   "P5": 0.4,
+   "n_rel": 6,
+   "off_doc_in_top5": [
+    12,
+    14
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 45,
+    "text": "the velocity measurement derived above yields a kinematic age of 4000 [math] 1000 years. this is on the long end of cso ages measured to date (gugliucci et al. ..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D13-t2-mem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 6,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 45,
+    "text": "we assume [math] = 71 km s[math] mpc[math] and the standard cosmology so that 1= 1.835 kpc and an angular velocity of 1 mas / y = 5.98 c at the redshift (0.1008..."
+   },
+   "category": "follow-up with memory: right paper, weak ranking"
+  },
+  {
+   "id": "D14-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 5,
+   "off_doc_in_top5": [
+    10,
+    66,
+    85
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 85,
+    "text": "mass transfer stability could be smaller than unity. the stability parameter [math] which enters the expression for steady - state mass transfer, equation [ eq:..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D14-t2-mem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 5,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 53,
+    "text": "steady - state covariance of the parameter error decreases when the signal [math] increases in magnitude, and that it can be made smaller via appropriate choice..."
+   },
+   "category": "follow-up with memory: right paper, weak ranking"
+  },
+  {
+   "id": "D14-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 5,
+   "off_doc_in_top5": [
+    2,
+    36,
+    61,
+    66
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 2,
+    "text": "starting centered at the stable fixed point [math] with a root - mean - square gaussian width of [math], and the brown curve for trajectories starting from the ..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D14-t2-mem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 5,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 53,
+    "text": "steady - state covariance of the parameter error decreases when the signal [math] increases in magnitude, and that it can be made smaller via appropriate choice..."
+   },
+   "category": "follow-up with memory: right paper, weak ranking"
+  },
+  {
+   "id": "D14-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 4,
+   "off_doc_in_top5": [
+    10,
+    61,
+    66,
+    85
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 85,
+    "text": "the maximum caml efficiency still compatible with mass transfer stability could be smaller than unity. the stability parameter [math] which enters the expressio..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D14-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 4,
+   "off_doc_in_top5": [
+    26,
+    36,
+    61,
+    66
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 61,
+    "text": "our results are qualitatively similar to the framework of the disk instability discussed by belloni et al. for grs 1915 + 105 since in the low state the inner d..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D15-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 17,
+   "off_doc_in_top5": [
+    40,
+    99
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 99,
+    "text": "literature [ cols=\"^,^,^,^,^,^,^ \", ] the area and the percentage are not really zero, but they are negligible compared with the i m and lm contribution to the ..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D15-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 17,
+   "off_doc_in_top5": [
+    40
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 40,
+    "text": "made. differences can be seen on the coding level, but otherwise one can not tell the old version from the new one by visual inspection alone. the change has re..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D15-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 16,
+   "off_doc_in_top5": [
+    40,
+    99
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 99,
+    "text": "in particular, for [math] the asp - ft routing algorithm is the best solution, whereas for [math] ssp routing algorithms, implemented as in fig. [ fig: node ] (..."
+   },
+   "category": "follow-up without memory"
+  },
+  {
+   "id": "D15-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.5,
+   "P5": 0.2,
+   "n_rel": 16,
+   "off_doc_in_top5": [
+    40
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 40,
+    "text": "accessibility needs some muscle to drive it. it is not just about good people doing good deeds it is also about ensuring that everyone has access to things that..."
+   },
+   "category": "follow-up without memory"
   }
- ]
+ ],
+ "failure_categories": {
+  "capped: few relevant chunks (top-1 correct)": 27,
+  "right paper, answer chunk ranked low": 23,
+  "other papers outrank the answer": 23,
+  "follow-up without memory": 52,
+  "follow-up with memory: right paper, weak ranking": 10,
+  "follow-up with memory: other papers in top 5": 6
+ },
+ "wtl": {
+  "rerank vs dense (fixed)": {
+   "wins": 10,
+   "ties": 27,
+   "losses": 3
+  },
+  "rerank vs dense (sentence)": {
+   "wins": 6,
+   "ties": 29,
+   "losses": 5
+  },
+  "sentence vs fixed (dense)": {
+   "wins": 9,
+   "ties": 25,
+   "losses": 6
+  },
+  "sentence vs fixed (rerank)": {
+   "wins": 6,
+   "ties": 29,
+   "losses": 5
+  }
+ }
 }

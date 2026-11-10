@@ -1,5 +1,5 @@
 ﻿[data] 100 documents, avg words=6517
 [index] fixed_window    chunks= 4724 mean_words=149 min=31 max=150
 [index] sentence_aware  chunks= 5256 mean_words=136 min=9 max=300
-[index] done in 24s
+[index] done in 25s
 [done] results.json written

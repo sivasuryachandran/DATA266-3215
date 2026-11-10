@@ -1,0 +1,222 @@
+{
+ "n_items": 120,
+ "n_queries": 14,
+ "agreement": 0.8083333333333333,
+ "kappa": 0.5490196078431373,
+ "rubric_precision": 0.8275862068965517,
+ "rubric_recall": 0.9,
+ "tp": 72,
+ "tn": 25,
+ "fp": 15,
+ "fn": 8,
+ "judged_relevant": 80,
+ "rubric_relevant": 87,
+ "per_config": [
+  {
+   "qid": "S9",
+   "cfg": "fixed_window|dense",
+   "P5_rubric": 0.8,
+   "P5_judged": 0.8,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "S9",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 0.8,
+   "P5_judged": 1.0,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "S37",
+   "cfg": "fixed_window|dense",
+   "P5_rubric": 0.4,
+   "P5_judged": 0.0,
+   "RR_rubric": 1.0,
+   "RR_judged": 0.0
+  },
+  {
+   "qid": "S37",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 0.4,
+   "P5_judged": 0.2,
+   "RR_rubric": 1.0,
+   "RR_judged": 0.2
+  },
+  {
+   "qid": "S5",
+   "cfg": "fixed_window|dense",
+   "P5_rubric": 1.0,
+   "P5_judged": 1.0,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "S5",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 1.0,
+   "P5_judged": 1.0,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "S17",
+   "cfg": "fixed_window|dense",
+   "P5_rubric": 0.8,
+   "P5_judged": 1.0,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "S17",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 0.8,
+   "P5_judged": 0.6,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "S8",
+   "cfg": "fixed_window|dense",
+   "P5_rubric": 1.0,
+   "P5_judged": 0.8,
+   "RR_rubric": 1.0,
+   "RR_judged": 0.5
+  },
+  {
+   "qid": "S8",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 0.8,
+   "P5_judged": 0.4,
+   "RR_rubric": 1.0,
+   "RR_judged": 0.5
+  },
+  {
+   "qid": "S32",
+   "cfg": "fixed_window|dense",
+   "P5_rubric": 0.2,
+   "P5_judged": 0.2,
+   "RR_rubric": 0.2,
+   "RR_judged": 0.2
+  },
+  {
+   "qid": "S32",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 0.2,
+   "P5_judged": 0.2,
+   "RR_rubric": 0.5,
+   "RR_judged": 0.5
+  },
+  {
+   "qid": "S29",
+   "cfg": "fixed_window|dense",
+   "P5_rubric": 0.8,
+   "P5_judged": 1.0,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "S29",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 0.8,
+   "P5_judged": 1.0,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "S31",
+   "cfg": "fixed_window|dense",
+   "P5_rubric": 1.0,
+   "P5_judged": 0.8,
+   "RR_rubric": 1.0,
+   "RR_judged": 0.5
+  },
+  {
+   "qid": "S31",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 1.0,
+   "P5_judged": 0.6,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "S25",
+   "cfg": "fixed_window|dense",
+   "P5_rubric": 1.0,
+   "P5_judged": 0.8,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "S25",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 0.6,
+   "P5_judged": 0.6,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "S26",
+   "cfg": "fixed_window|dense",
+   "P5_rubric": 0.2,
+   "P5_judged": 0.2,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "S26",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 0.8,
+   "P5_judged": 0.6,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "D4-t2",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 0.8,
+   "P5_judged": 0.6,
+   "RR_rubric": 1.0,
+   "RR_judged": 0.5
+  },
+  {
+   "qid": "D2-t2",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 0.6,
+   "P5_judged": 0.8,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "D8-t2",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 0.6,
+   "P5_judged": 0.8,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  },
+  {
+   "qid": "D1-t2",
+   "cfg": "sentence_aware|rerank",
+   "P5_rubric": 1.0,
+   "P5_judged": 1.0,
+   "RR_rubric": 1.0,
+   "RR_judged": 1.0
+  }
+ ],
+ "mean|fixed_window|dense": {
+  "P5_rubric": 0.72,
+  "P5_judged": 0.6599999999999999,
+  "RR_rubric": 0.9199999999999999,
+  "RR_judged": 0.72,
+  "n": 10
+ },
+ "mean|sentence_aware|rerank": {
+  "P5_rubric": 0.7285714285714285,
+  "P5_judged": 0.6714285714285714,
+  "RR_rubric": 0.9642857142857143,
+  "RR_judged": 0.8357142857142856,
+  "n": 14
+ }
+}

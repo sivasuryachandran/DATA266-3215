@@ -63,4 +63,28 @@ for d in rp.DIALOGS:
 M["failures"] = fails
 print(len(fails), "failing (query, config) cases")
 for f in fails: print(f["id"], f["chunking"], "rerank" if f["rerank"] else "dense", "RR=%.2f P@5=%.1f nrel=%d off_docs=%s top1_ok=%s" % (f["RR"], f["P5"], f["n_rel"], f["off_doc_in_top5"], f["top1_relevant"]))
+def category(f):
+    if "-t2-nomem" in f["id"]: return "follow-up without memory"
+    if "-t2-mem" in f["id"]:   return "follow-up with memory: right paper, weak ranking" if not f["off_doc_in_top5"] else "follow-up with memory: other papers in top 5"
+    if f["top1_relevant"]:     return "capped: few relevant chunks (top-1 correct)"
+    if f["off_doc_in_top5"]:   return "other papers outrank the answer"
+    return "right paper, answer chunk ranked low"
+from collections import Counter
+M["failure_categories"] = dict(Counter(category(f) for f in fails))
+for f in fails: f["category"] = category(f)
+print(M["failure_categories"])
+
+# ---- per-query wins / ties / losses (reciprocal rank), from results.json
+res = json.load(open(os.path.join(ROOT, "results.json")))["perquery"]
+ids = [q["id"] for q in rp.QUERIES]
+def wtl(a, b, key="RR"):
+    d = [res[a(i)][key] - res[b(i)][key] for i in ids]
+    return dict(wins=sum(x > 1e-9 for x in d), ties=sum(abs(x) <= 1e-9 for x in d), losses=sum(x < -1e-9 for x in d))
+M["wtl"] = {
+  "rerank vs dense (fixed)":    wtl(lambda i: f"{i}|fixed_window|rerank",    lambda i: f"{i}|fixed_window|dense"),
+  "rerank vs dense (sentence)": wtl(lambda i: f"{i}|sentence_aware|rerank",  lambda i: f"{i}|sentence_aware|dense"),
+  "sentence vs fixed (dense)":  wtl(lambda i: f"{i}|sentence_aware|dense",   lambda i: f"{i}|fixed_window|dense"),
+  "sentence vs fixed (rerank)": wtl(lambda i: f"{i}|sentence_aware|rerank",  lambda i: f"{i}|fixed_window|rerank"),
+}
+print(json.dumps(M["wtl"], indent=1))
 json.dump(M, open(os.path.join(ROOT, "measurements.json"), "w"), indent=1)

@@ -1,0 +1,188 @@
+﻿device: cuda | python 3.12.10 | torch 2.11.0+cu128
+fixed_window {'chunks': 4724, 'mean_words': 148.7709568162574, 'min_words': 31, 'max_words': 150, 'chunk_s': 0.3591430000960827, 'embed_s': 6.02920989994891, 'chunks_per_s': 783.5189151467475}
+sentence_aware {'chunks': 5256, 'mean_words': 135.8885083713851, 'min_words': 9, 'max_words': 300, 'chunk_s': 0.4074192999396473, 'embed_s': 6.115663199918345, 'chunks_per_s': 859.4325469182438}
+[index] fixed_window    chunks= 4724 mean_words=149 min=31 max=150
+[index] sentence_aware  chunks= 5256 mean_words=136 min=9 max=300
+{
+ "fixed_window|dense": {
+  "median": 61.61500001326203,
+  "p95": 113.22594521334395
+ },
+ "fixed_window|rerank": {
+  "median": 111.77604994736612,
+  "p95": 156.92930003860965
+ },
+ "sentence_aware|dense": {
+  "median": 61.56585004646331,
+  "p95": 81.16569990525022
+ },
+ "sentence_aware|rerank": {
+  "median": 106.10144992824644,
+  "p95": 130.25079990038648
+ }
+}
+141 failing (query, config) cases
+S2 fixed_window dense RR=1.00 P@5=0.2 nrel=4 off_docs=[] top1_ok=True
+S2 fixed_window rerank RR=1.00 P@5=0.4 nrel=4 off_docs=[] top1_ok=True
+S2 sentence_aware dense RR=1.00 P@5=0.4 nrel=5 off_docs=[] top1_ok=True
+S2 sentence_aware rerank RR=1.00 P@5=0.4 nrel=5 off_docs=[] top1_ok=True
+S4 fixed_window dense RR=1.00 P@5=0.4 nrel=3 off_docs=[] top1_ok=True
+S4 fixed_window rerank RR=1.00 P@5=0.4 nrel=3 off_docs=[] top1_ok=True
+S4 sentence_aware dense RR=1.00 P@5=0.4 nrel=2 off_docs=[] top1_ok=True
+S4 sentence_aware rerank RR=0.50 P@5=0.2 nrel=2 off_docs=[] top1_ok=False
+S7 fixed_window dense RR=1.00 P@5=0.4 nrel=4 off_docs=[] top1_ok=True
+S11 fixed_window dense RR=0.50 P@5=0.2 nrel=2 off_docs=[25, 82, 96] top1_ok=False
+S11 fixed_window rerank RR=1.00 P@5=0.4 nrel=2 off_docs=[89, 96] top1_ok=True
+S11 sentence_aware dense RR=0.33 P@5=0.2 nrel=2 off_docs=[25, 81, 96] top1_ok=False
+S11 sentence_aware rerank RR=1.00 P@5=0.2 nrel=2 off_docs=[81, 89, 96] top1_ok=True
+S14 fixed_window dense RR=0.25 P@5=0.4 nrel=5 off_docs=[] top1_ok=False
+S14 sentence_aware dense RR=0.50 P@5=0.6 nrel=7 off_docs=[] top1_ok=False
+S15 fixed_window dense RR=0.33 P@5=0.2 nrel=4 off_docs=[11] top1_ok=False
+S15 fixed_window rerank RR=0.17 P@5=0.0 nrel=4 off_docs=[11] top1_ok=False
+S15 sentence_aware dense RR=0.17 P@5=0.0 nrel=4 off_docs=[11] top1_ok=False
+S15 sentence_aware rerank RR=0.20 P@5=0.2 nrel=4 off_docs=[] top1_ok=False
+S16 fixed_window rerank RR=1.00 P@5=0.4 nrel=12 off_docs=[] top1_ok=True
+S16 sentence_aware dense RR=0.50 P@5=0.6 nrel=12 off_docs=[] top1_ok=False
+S16 sentence_aware rerank RR=0.50 P@5=0.6 nrel=12 off_docs=[] top1_ok=False
+S18 sentence_aware dense RR=0.33 P@5=0.4 nrel=4 off_docs=[] top1_ok=False
+S18 sentence_aware rerank RR=1.00 P@5=0.4 nrel=4 off_docs=[] top1_ok=True
+S19 fixed_window dense RR=0.33 P@5=0.6 nrel=9 off_docs=[] top1_ok=False
+S19 fixed_window rerank RR=0.33 P@5=0.4 nrel=9 off_docs=[] top1_ok=False
+S19 sentence_aware dense RR=0.33 P@5=0.6 nrel=8 off_docs=[] top1_ok=False
+S19 sentence_aware rerank RR=0.33 P@5=0.6 nrel=8 off_docs=[] top1_ok=False
+S20 fixed_window dense RR=0.17 P@5=0.0 nrel=29 off_docs=[] top1_ok=False
+S20 fixed_window rerank RR=0.20 P@5=0.2 nrel=29 off_docs=[] top1_ok=False
+S20 sentence_aware dense RR=0.33 P@5=0.4 nrel=29 off_docs=[] top1_ok=False
+S20 sentence_aware rerank RR=0.33 P@5=0.2 nrel=29 off_docs=[] top1_ok=False
+S21 fixed_window rerank RR=1.00 P@5=0.4 nrel=6 off_docs=[] top1_ok=True
+S21 sentence_aware dense RR=0.50 P@5=0.4 nrel=5 off_docs=[] top1_ok=False
+S21 sentence_aware rerank RR=0.25 P@5=0.4 nrel=5 off_docs=[] top1_ok=False
+S22 fixed_window dense RR=0.00 P@5=0.0 nrel=31 off_docs=[48, 61] top1_ok=False
+S22 fixed_window rerank RR=0.25 P@5=0.2 nrel=31 off_docs=[48] top1_ok=False
+S22 sentence_aware dense RR=0.17 P@5=0.0 nrel=35 off_docs=[48, 75] top1_ok=False
+S22 sentence_aware rerank RR=0.50 P@5=0.2 nrel=35 off_docs=[48] top1_ok=False
+S24 fixed_window dense RR=0.50 P@5=0.2 nrel=2 off_docs=[] top1_ok=False
+S24 fixed_window rerank RR=1.00 P@5=0.2 nrel=2 off_docs=[] top1_ok=True
+S24 sentence_aware dense RR=0.14 P@5=0.0 nrel=2 off_docs=[] top1_ok=False
+S24 sentence_aware rerank RR=0.00 P@5=0.0 nrel=2 off_docs=[] top1_ok=False
+S26 fixed_window dense RR=1.00 P@5=0.2 nrel=5 off_docs=[69, 75, 82] top1_ok=True
+S28 fixed_window dense RR=0.50 P@5=0.8 nrel=16 off_docs=[82] top1_ok=False
+S28 sentence_aware rerank RR=1.00 P@5=0.4 nrel=14 off_docs=[21, 82] top1_ok=True
+S32 fixed_window dense RR=0.20 P@5=0.2 nrel=21 off_docs=[48, 57] top1_ok=False
+S32 fixed_window rerank RR=0.50 P@5=0.4 nrel=21 off_docs=[48] top1_ok=False
+S32 sentence_aware dense RR=0.25 P@5=0.2 nrel=25 off_docs=[25, 48, 57] top1_ok=False
+S32 sentence_aware rerank RR=0.50 P@5=0.2 nrel=25 off_docs=[48, 96] top1_ok=False
+S33 fixed_window dense RR=0.25 P@5=0.2 nrel=12 off_docs=[] top1_ok=False
+S33 fixed_window rerank RR=0.50 P@5=0.4 nrel=12 off_docs=[] top1_ok=False
+S35 fixed_window dense RR=1.00 P@5=0.2 nrel=1 off_docs=[69, 74] top1_ok=True
+S35 fixed_window rerank RR=1.00 P@5=0.2 nrel=1 off_docs=[74] top1_ok=True
+S35 sentence_aware dense RR=1.00 P@5=0.2 nrel=1 off_docs=[69] top1_ok=True
+S35 sentence_aware rerank RR=1.00 P@5=0.2 nrel=1 off_docs=[69, 72, 74] top1_ok=True
+S36 fixed_window dense RR=0.25 P@5=0.2 nrel=15 off_docs=[81, 96] top1_ok=False
+S36 fixed_window rerank RR=0.50 P@5=0.4 nrel=15 off_docs=[48, 81, 96] top1_ok=False
+S36 sentence_aware dense RR=0.33 P@5=0.2 nrel=14 off_docs=[81, 96] top1_ok=False
+S36 sentence_aware rerank RR=0.20 P@5=0.2 nrel=14 off_docs=[48, 96] top1_ok=False
+S37 fixed_window dense RR=1.00 P@5=0.4 nrel=7 off_docs=[13] top1_ok=True
+S37 fixed_window rerank RR=0.33 P@5=0.4 nrel=7 off_docs=[42, 70] top1_ok=False
+S37 sentence_aware dense RR=1.00 P@5=0.2 nrel=6 off_docs=[6, 13] top1_ok=True
+S37 sentence_aware rerank RR=1.00 P@5=0.4 nrel=6 off_docs=[42] top1_ok=True
+S38 fixed_window dense RR=1.00 P@5=0.4 nrel=13 off_docs=[75] top1_ok=True
+S38 sentence_aware dense RR=1.00 P@5=0.4 nrel=9 off_docs=[12, 75] top1_ok=True
+S39 fixed_window dense RR=0.20 P@5=0.2 nrel=1 off_docs=[24] top1_ok=False
+S39 fixed_window rerank RR=0.00 P@5=0.0 nrel=1 off_docs=[24, 55] top1_ok=False
+S39 sentence_aware dense RR=0.50 P@5=0.2 nrel=2 off_docs=[24] top1_ok=False
+S39 sentence_aware rerank RR=0.20 P@5=0.2 nrel=2 off_docs=[24] top1_ok=False
+S40 fixed_window dense RR=0.50 P@5=0.6 nrel=3 off_docs=[] top1_ok=False
+S40 sentence_aware dense RR=1.00 P@5=0.4 nrel=2 off_docs=[] top1_ok=True
+S40 sentence_aware rerank RR=1.00 P@5=0.4 nrel=2 off_docs=[] top1_ok=True
+D1-t2-nomem fixed_window dense RR=0.00 P@5=0.0 nrel=6 off_docs=[12, 41, 69, 72, 90] top1_ok=False
+D1-t2-nomem fixed_window rerank RR=1.00 P@5=0.2 nrel=6 off_docs=[12, 46, 61, 69] top1_ok=True
+D1-t2-nomem sentence_aware dense RR=0.25 P@5=0.2 nrel=9 off_docs=[12, 82, 93] top1_ok=False
+D1-t2-nomem sentence_aware rerank RR=1.00 P@5=0.2 nrel=9 off_docs=[34, 39, 46, 82] top1_ok=True
+D2-t2-nomem fixed_window dense RR=0.00 P@5=0.0 nrel=7 off_docs=[10, 61, 66, 85] top1_ok=False
+D2-t2-mem fixed_window dense RR=1.00 P@5=0.4 nrel=7 off_docs=[] top1_ok=True
+D2-t2-nomem fixed_window rerank RR=0.14 P@5=0.0 nrel=7 off_docs=[2, 10, 61] top1_ok=False
+D2-t2-mem fixed_window rerank RR=1.00 P@5=0.4 nrel=7 off_docs=[] top1_ok=True
+D2-t2-nomem sentence_aware dense RR=0.14 P@5=0.0 nrel=6 off_docs=[61, 85] top1_ok=False
+D2-t2-nomem sentence_aware rerank RR=0.50 P@5=0.2 nrel=6 off_docs=[10, 61] top1_ok=False
+D3-t2-nomem fixed_window dense RR=0.14 P@5=0.0 nrel=6 off_docs=[23, 29, 41] top1_ok=False
+D3-t2-mem fixed_window dense RR=1.00 P@5=0.4 nrel=6 off_docs=[] top1_ok=True
+D3-t2-nomem fixed_window rerank RR=0.14 P@5=0.0 nrel=6 off_docs=[14, 23, 45, 61] top1_ok=False
+D3-t2-nomem sentence_aware dense RR=1.00 P@5=0.2 nrel=8 off_docs=[3, 14, 29] top1_ok=True
+D3-t2-mem sentence_aware dense RR=0.50 P@5=0.6 nrel=8 off_docs=[] top1_ok=False
+D3-t2-nomem sentence_aware rerank RR=0.33 P@5=0.2 nrel=8 off_docs=[14, 23, 45, 69] top1_ok=False
+D4-t2-nomem fixed_window dense RR=0.00 P@5=0.0 nrel=4 off_docs=[12, 39, 83, 89] top1_ok=False
+D4-t2-nomem fixed_window rerank RR=0.00 P@5=0.0 nrel=4 off_docs=[12, 61, 83, 90] top1_ok=False
+D4-t2-nomem sentence_aware dense RR=0.00 P@5=0.0 nrel=4 off_docs=[12, 39, 55, 83, 90] top1_ok=False
+D4-t2-nomem sentence_aware rerank RR=0.00 P@5=0.0 nrel=4 off_docs=[12, 27, 61, 83] top1_ok=False
+D5-t2-nomem fixed_window dense RR=0.00 P@5=0.0 nrel=8 off_docs=[4, 74] top1_ok=False
+D5-t2-nomem fixed_window rerank RR=0.00 P@5=0.0 nrel=8 off_docs=[4] top1_ok=False
+D5-t2-nomem sentence_aware dense RR=0.00 P@5=0.0 nrel=9 off_docs=[4, 84, 88] top1_ok=False
+D5-t2-nomem sentence_aware rerank RR=0.00 P@5=0.0 nrel=9 off_docs=[4, 15] top1_ok=False
+D6-t2-nomem fixed_window dense RR=0.00 P@5=0.0 nrel=36 off_docs=[8, 25, 26, 59] top1_ok=False
+D6-t2-nomem fixed_window rerank RR=0.33 P@5=0.2 nrel=36 off_docs=[59] top1_ok=False
+D6-t2-nomem sentence_aware dense RR=0.00 P@5=0.0 nrel=40 off_docs=[25, 26, 59] top1_ok=False
+D6-t2-nomem sentence_aware rerank RR=0.25 P@5=0.2 nrel=40 off_docs=[8, 59] top1_ok=False
+D8-t2-nomem fixed_window dense RR=1.00 P@5=0.4 nrel=5 off_docs=[16, 89] top1_ok=True
+D8-t2-nomem fixed_window rerank RR=0.33 P@5=0.2 nrel=5 off_docs=[16, 89, 90] top1_ok=False
+D8-t2-nomem sentence_aware dense RR=0.50 P@5=0.4 nrel=5 off_docs=[16, 89] top1_ok=False
+D8-t2-nomem sentence_aware rerank RR=0.17 P@5=0.0 nrel=5 off_docs=[16, 89] top1_ok=False
+D9-t2-nomem fixed_window dense RR=0.17 P@5=0.0 nrel=4 off_docs=[25, 61] top1_ok=False
+D9-t2-mem fixed_window dense RR=0.50 P@5=0.2 nrel=4 off_docs=[] top1_ok=False
+D9-t2-nomem fixed_window rerank RR=1.00 P@5=0.2 nrel=4 off_docs=[61, 89] top1_ok=True
+D9-t2-mem fixed_window rerank RR=1.00 P@5=0.4 nrel=4 off_docs=[] top1_ok=True
+D9-t2-nomem sentence_aware dense RR=0.50 P@5=0.2 nrel=3 off_docs=[4, 61] top1_ok=False
+D9-t2-mem sentence_aware dense RR=0.50 P@5=0.4 nrel=3 off_docs=[] top1_ok=False
+D9-t2-nomem sentence_aware rerank RR=1.00 P@5=0.4 nrel=3 off_docs=[4, 61] top1_ok=True
+D11-t2-nomem fixed_window dense RR=0.00 P@5=0.0 nrel=33 off_docs=[19, 32, 84, 90] top1_ok=False
+D11-t2-nomem fixed_window rerank RR=0.00 P@5=0.0 nrel=33 off_docs=[12, 19, 32, 90] top1_ok=False
+D11-t2-nomem sentence_aware dense RR=0.17 P@5=0.0 nrel=39 off_docs=[19, 32, 97, 98] top1_ok=False
+D11-t2-nomem sentence_aware rerank RR=0.17 P@5=0.0 nrel=39 off_docs=[19, 32, 47, 90] top1_ok=False
+D12-t2-nomem fixed_window dense RR=0.00 P@5=0.0 nrel=2 off_docs=[12, 57] top1_ok=False
+D12-t2-mem fixed_window dense RR=1.00 P@5=0.2 nrel=2 off_docs=[69, 72, 74] top1_ok=True
+D12-t2-nomem fixed_window rerank RR=0.00 P@5=0.0 nrel=2 off_docs=[12, 19, 82] top1_ok=False
+D12-t2-mem fixed_window rerank RR=1.00 P@5=0.4 nrel=2 off_docs=[72, 74] top1_ok=True
+D12-t2-nomem sentence_aware dense RR=0.00 P@5=0.0 nrel=1 off_docs=[12, 51, 90] top1_ok=False
+D12-t2-mem sentence_aware dense RR=1.00 P@5=0.2 nrel=1 off_docs=[69, 72, 74] top1_ok=True
+D12-t2-nomem sentence_aware rerank RR=0.00 P@5=0.0 nrel=1 off_docs=[12, 23, 61] top1_ok=False
+D12-t2-mem sentence_aware rerank RR=1.00 P@5=0.2 nrel=1 off_docs=[72, 74] top1_ok=True
+D13-t2-nomem fixed_window dense RR=0.20 P@5=0.2 nrel=7 off_docs=[12, 14, 21] top1_ok=False
+D13-t2-mem fixed_window dense RR=1.00 P@5=0.2 nrel=7 off_docs=[14, 75, 82] top1_ok=True
+D13-t2-nomem fixed_window rerank RR=0.50 P@5=0.4 nrel=7 off_docs=[12, 14] top1_ok=False
+D13-t2-nomem sentence_aware dense RR=0.50 P@5=0.2 nrel=6 off_docs=[12, 14, 21] top1_ok=False
+D13-t2-mem sentence_aware dense RR=1.00 P@5=0.2 nrel=6 off_docs=[14, 82] top1_ok=True
+D13-t2-nomem sentence_aware rerank RR=0.50 P@5=0.4 nrel=6 off_docs=[12, 14] top1_ok=False
+D13-t2-mem sentence_aware rerank RR=1.00 P@5=0.2 nrel=6 off_docs=[] top1_ok=True
+D14-t2-nomem fixed_window dense RR=0.00 P@5=0.0 nrel=5 off_docs=[10, 66, 85] top1_ok=False
+D14-t2-mem fixed_window dense RR=1.00 P@5=0.4 nrel=5 off_docs=[] top1_ok=True
+D14-t2-nomem fixed_window rerank RR=0.00 P@5=0.0 nrel=5 off_docs=[2, 36, 61, 66] top1_ok=False
+D14-t2-mem fixed_window rerank RR=1.00 P@5=0.4 nrel=5 off_docs=[] top1_ok=True
+D14-t2-nomem sentence_aware dense RR=0.00 P@5=0.0 nrel=4 off_docs=[10, 61, 66, 85] top1_ok=False
+D14-t2-nomem sentence_aware rerank RR=0.00 P@5=0.0 nrel=4 off_docs=[26, 36, 61, 66] top1_ok=False
+D15-t2-nomem fixed_window dense RR=0.00 P@5=0.0 nrel=17 off_docs=[40, 99] top1_ok=False
+D15-t2-nomem fixed_window rerank RR=1.00 P@5=0.2 nrel=17 off_docs=[40] top1_ok=True
+D15-t2-nomem sentence_aware dense RR=0.00 P@5=0.0 nrel=16 off_docs=[40, 99] top1_ok=False
+D15-t2-nomem sentence_aware rerank RR=0.50 P@5=0.2 nrel=16 off_docs=[40] top1_ok=False
+{'capped: few relevant chunks (top-1 correct)': 27, 'right paper, answer chunk ranked low': 23, 'other papers outrank the answer': 23, 'follow-up without memory': 52, 'follow-up with memory: right paper, weak ranking': 10, 'follow-up with memory: other papers in top 5': 6}
+{
+ "rerank vs dense (fixed)": {
+  "wins": 10,
+  "ties": 27,
+  "losses": 3
+ },
+ "rerank vs dense (sentence)": {
+  "wins": 6,
+  "ties": 29,
+  "losses": 5
+ },
+ "sentence vs fixed (dense)": {
+  "wins": 9,
+  "ties": 25,
+  "losses": 6
+ },
+ "sentence vs fixed (rerank)": {
+  "wins": 6,
+  "ties": 29,
+  "losses": 5
+ }
+}
