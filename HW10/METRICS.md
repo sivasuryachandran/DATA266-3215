@@ -19,10 +19,10 @@ Numbers in the quality tables are copied from the outputs of the executed `HW10_
 
 | Chunking | Chunks | Mean words | Min | Max | Chunk time (s) | Embed time (s) | Chunks per second |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| fixed window (150 / 30 overlap) | 4,724 | 148.8 | 31 | 150 | 0.33 | 2.17 | 2,177 |
-| sentence-aware (about 150) | 5,256 | 135.9 | 9 | 300 | 0.33 | 2.14 | 2,456 |
+| fixed window (150 / 30 overlap) | 4,724 | 148.8 | 31 | 150 | 0.31 | 2.71 | 1,742 |
+| sentence-aware (about 150) | 5,256 | 135.9 | 9 | 300 | 0.38 | 2.28 | 2,307 |
 
-Embedding ran on an NVIDIA GeForce RTX 5090. Building both collections took 16 s in the last run.
+Embedding ran on an NVIDIA GeForce RTX 5090 (timings from the first `measure.py` run on 2026-11-09). Building both collections took 16–25 s across runs.
 
 ## Without vs with reranking (40 single-turn queries)
 
@@ -88,16 +88,16 @@ Largest per-query changes in reciprocal rank from reranking: gains S14 (0.25 →
 
 Agreement 80.8%, Cohen's κ 0.55 (moderate), rubric precision 0.83, recall 0.90. The rubric is lenient: its 15 false positives are mostly methods, notation, references and background chunks from the right paper. On the audited pool it overstates P@5 by about 0.06 (fixed dense 0.72 vs 0.66; sentence reranked 0.73 vs 0.67) and MRR by 0.13–0.20 (0.92 vs 0.72; 0.96 vs 0.84). Absolute scores are therefore upper bounds; the comparisons between configurations are more reliable than the levels.
 
-## Query latency (40 queries × 3 passes, GPU)
+## Query latency (GPU; first `measure.py` run: the original 14 queries × 3 passes, k = 10)
 
 | Chunking | Pipeline | Median (ms) | p95 (ms) |
 |---|---|---:|---:|
-| fixed | dense only | 4.9 | 6.4 |
-| fixed | dense + rerank | 16.5 | 20.2 |
-| sentence | dense only | 5.1 | 7.7 |
-| sentence | dense + rerank | 16.2 | 21.8 |
+| fixed | dense only | 6.8 | 23.6 |
+| fixed | dense + rerank | 17.6 | 36.1 |
+| sentence | dense only | 8.4 | 12.3 |
+| sentence | dense + rerank | 18.9 | 26.0 |
 
-Reranking 20 candidates adds about 11 ms per query on this GPU. I did not obtain a clean CPU timing (the one CPU attempt was interrupted). An earlier GPU measurement while other programs were using the card gave 18–30 ms for reranked queries, so latency varies with load.
+Reranking 20 candidates adds about 10 ms per query on this GPU. A later re-measurement over all 40 queries (stored in `measurements.json`) gave 4.9–5.1 ms dense and 16.2–16.5 ms reranked, so latency varies by a few milliseconds with machine load.
 
 ## Cost
 

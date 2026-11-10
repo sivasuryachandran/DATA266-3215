@@ -26,7 +26,7 @@ Final run:
 
 Single-turn (40 queries), MRR: fixed dense 0.775, fixed rerank 0.845, sentence dense 0.785, sentence rerank 0.813
 Memory, turn 2 (15 dialogues), MRR: no memory 0.234 / 0.430 / 0.337 / 0.428 -> with memory 0.967 / 1.000 / 0.933 / 1.000
-Latency (median, 40 queries, GPU): dense 4.9-5.1 ms; dense + rerank 16.2-16.5 ms
+Latency (median, GPU, first measure.py run, 14 queries x 3 passes): dense 6.8-8.4 ms; dense + rerank 17.6-18.9 ms (later 40-query re-measurement in measurements.json: 4.9-5.1 ms and 16.2-16.5 ms)
 Failure analysis: 141 flagged (query, configuration) cases; categories listed in METRICS.md
 Rubric audit: 120 chunks, 14 queries; agreement 0.808, Cohen's kappa 0.549, rubric precision 0.828, recall 0.900. Labels assigned by the assistant (Claude), not independent annotators.
 Note: notebook markdown findings were written from the printed tables of an earlier execution of the same code; the final execution reproduced the same tables.
