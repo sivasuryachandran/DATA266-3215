@@ -1,0 +1,32 @@
+﻿HW10 execution log
+Date: 2026-11-09
+Command: python fetch_data.py; python rag_pipeline.py; python measure.py; python build_nb.py; jupyter nbconvert --to notebook --execute --inplace HW10_RAG.ipynb
+Environment: Windows 11 Pro 10.0.26200, Python 3.12.10, NVIDIA GeForce RTX 5090, torch 2.11.0+cu128, sentence-transformers 6.2.0, chromadb 1.5.9, datasets 5.2.0, transformers 5.22.2, numpy 2.5.4, pandas 3.1.1
+Dataset: ccdv/arxiv-summarization, config document, first 100 train documents (streamed), average 6,517 words
+Configuration: embedder all-MiniLM-L6-v2; reranker cross-encoder/ms-marco-MiniLM-L-6-v2; 20 candidates; chunk size 150 words; overlap 30 words (fixed) or 1 sentence (sentence-aware); memory window 1 turn
+Random components: none (results identical across reruns)
+
+Data loading: load_dataset on the full split failed with "No space left on device" (C: drive had about 6 GB free). Switched to streaming=True with HF_HOME on D:; 100 documents saved to docs100.json.
+
+First indexing run (before the fix):
+  [index] fixed_window    chunks= 4767 mean_words=149 min=31 max=150
+  [index] sentence_aware  chunks=  100 mean_words=5686 min=541 max=29688
+Cause: the sentence splitter assumed one sentence per line. Added a regex splitter.
+Second run: sentence_aware max=1820 words (run-on text). Added a hard split at 150 words.
+First query set (8 queries): MRR 1.0 in every configuration. Added S9-S14 (paraphrased).
+
+Final indexing run:
+  [data] 100 documents, avg words=6517
+  [index] fixed_window    chunks= 4724 mean_words=149 min=31 max=150
+  [index] sentence_aware  chunks= 5256 mean_words=136 min=9 max=300
+  [index] done in 24s
+  [done] results.json written
+Full pipeline wall time: 48.6 s including model loading.
+
+Single-turn (14 queries), MRR: fixed dense 0.911, fixed rerank 1.000, sentence dense 0.917, sentence rerank 0.964
+Memory, turn 2 (6 dialogues), MRR: no memory 0.024-0.347 across the four configurations -> with memory 0.917-1.000
+Latency (median, 14 queries): dense 6.8-8.4 ms; dense + rerank 17.6-18.9 ms
+Failure analysis: 43 flagged (query, configuration) cases; groups listed in METRICS.md
+
+Notebook: HW10_RAG.ipynb built by build_nb.py (29 cells) and executed with nbconvert; the first execution failed with NameError (preprocess used before definition in the data cell); fixed and re-executed, no errors in the final run.
+All results are from runs on 2026-11-09. Markdown findings in the notebook were written from the tables printed by this run.

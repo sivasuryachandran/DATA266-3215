@@ -1,0 +1,759 @@
+{
+ "device": "cuda",
+ "index": {
+  "fixed_window": {
+   "chunks": 4724,
+   "mean_words": 148.7709568162574,
+   "min_words": 31,
+   "max_words": 150,
+   "chunk_s": 0.3129762001335621,
+   "embed_s": 2.712226599920541,
+   "chunks_per_s": 1741.7423751165913
+  },
+  "sentence_aware": {
+   "chunks": 5256,
+   "mean_words": 135.8885083713851,
+   "min_words": 9,
+   "max_words": 300,
+   "chunk_s": 0.38453160016797483,
+   "embed_s": 2.278499099891633,
+   "chunks_per_s": 2306.7816881077456
+  }
+ },
+ "latency_ms": {
+  "fixed_window|dense": {
+   "median": 6.782399956136942,
+   "p95": 23.625319823622693
+  },
+  "fixed_window|rerank": {
+   "median": 17.573749995790422,
+   "p95": 36.109134904108934
+  },
+  "sentence_aware|dense": {
+   "median": 8.376650046557188,
+   "p95": 12.34831503825262
+  },
+  "sentence_aware|rerank": {
+   "median": 18.890999956056476,
+   "p95": 26.03069494944065
+  }
+ },
+ "failures": [
+  {
+   "id": "S2",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 4,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 36,
+    "text": "is said to synchronize if [math] and if all orbits synchronize, then we say to have synchronization of the map. synchronization is the simplest dynamical regime..."
+   }
+  },
+  {
+   "id": "S2",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 4,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 36,
+    "text": "is said to synchronize if [math] and if all orbits synchronize, then we say to have synchronization of the map. synchronization is the simplest dynamical regime..."
+   }
+  },
+  {
+   "id": "S2",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 5,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 36,
+    "text": "finally, note that the dynamics commutes with the symmetry [math] or [math] in the original variables. if [math], then [math] and [math]. in this case, the orbi..."
+   }
+  },
+  {
+   "id": "S2",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 5,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 36,
+    "text": "the condition [math] is not necessary. indeed, if for instance [math], then [math] has an attracting fixed point in [math] $ ], and one can prove that synchroni..."
+   }
+  },
+  {
+   "id": "S4",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 3,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 6,
+    "text": "mater. today _ * 2013 *, _ 16 _, 375386 brongersma, m. l.; halas, n. j.; nordlander, p. plasmon - induced hot carrier science and technology. _ * 2015 *, _ 10 _..."
+   }
+  },
+  {
+   "id": "S4",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 3,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 6,
+    "text": "svirko, y.; turunen, j. phonon - enhanced light - matter interaction at the nanometre scale. _ phys. _ * 2007 *, _ 98 _, 167403 bachelier, g.; butet, j.; russie..."
+   }
+  },
+  {
+   "id": "S4",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 2,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 6,
+    "text": "plasmon - induced hot carrier science and technology. _ * 2015 *, _ 10 _, 2534 kauranen, m.; zayats, a. photon. _ * 2012 *, _ 6 _, 737748 hentschel, m.; utikal,..."
+   }
+  },
+  {
+   "id": "S4",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.5,
+   "P5": 0.2,
+   "n_rel": 2,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 6,
+    "text": "k.; kauranen, m.; svirko, y.; turunen, j. phonon - enhanced light - matter interaction at the nanometre scale. _ phys. _ * 2007 *, _ 98 _, 167403 bachelier, g.;..."
+   }
+  },
+  {
+   "id": "S7",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 4,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 58,
+    "text": "[math]: the set of edges. * [math]: the set of leaves. for two nodes [math] in [math], if [math], [math] is said to be a _ parent _ of [math] and, equivalently,..."
+   }
+  },
+  {
+   "id": "S11",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.2,
+   "n_rel": 2,
+   "off_doc_in_top5": [
+    25,
+    82,
+    96
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 82,
+    "text": "larger than that seen in paper i. in the last three runs (january - march) it was also noticed faint (at the [math] level of the background noise) linear featur..."
+   }
+  },
+  {
+   "id": "S11",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 2,
+   "off_doc_in_top5": [
+    89,
+    96
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 89,
+    "text": "noisy and fluctuates between radial and tangential anisotropy. however, the average behaviour is isotropy. shown are the binary fraction of the entire cluster (..."
+   }
+  },
+  {
+   "id": "S11",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.3333333333333333,
+   "P5": 0.2,
+   "n_rel": 2,
+   "off_doc_in_top5": [
+    25,
+    81,
+    96
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 96,
+    "text": "details of the observations are provided in table 1. these are among the highest resolution spectra obtained of any t dwarf. the spectra were obtained in the st..."
+   }
+  },
+  {
+   "id": "S11",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 2,
+   "off_doc_in_top5": [
+    81,
+    89,
+    96
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 81,
+    "text": "the environment close to the star can also be studied, directly, by means of interferometry, which is usually performed at long wavelengths. most optical / ir i..."
+   }
+  },
+  {
+   "id": "S14",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.25,
+   "P5": 0.4,
+   "n_rel": 5,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 40,
+    "text": "a fair number of astronomers and astronomy students have a physical challenge. it is our responsibility to learn the basics of accessibility to be able to help ..."
+   }
+  },
+  {
+   "id": "S14",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.6,
+   "n_rel": 7,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 40,
+    "text": "a fair number of astronomers and astronomy students have a physical challenge. it is our responsibility to learn the basics of accessibility to be able to help ..."
+   }
+  },
+  {
+   "id": "D1-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 6,
+   "off_doc_in_top5": [
+    12,
+    41,
+    69,
+    72,
+    90
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 41,
+    "text": "objects depicted in fig. [ fig_ratio ], [math] averages [math], which is lower than the bulk - earth abundance ratio of [math] but is still consistent given the..."
+   }
+  },
+  {
+   "id": "D1-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 6,
+   "off_doc_in_top5": [
+    12,
+    46,
+    61,
+    69
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 12,
+    "text": "smaller scale data where nonlinear effects might be somewhat larger than previously suspected. using an analytic approximation to the [math], they estimate that..."
+   }
+  },
+  {
+   "id": "D1-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.3333333333333333,
+   "P5": 0.2,
+   "n_rel": 9,
+   "off_doc_in_top5": [
+    12,
+    39,
+    82
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 82,
+    "text": "the domain in which the comparison can be made is relatively small because of saturation of objects in eis at the bright end ([math]) and the shallow magnitude ..."
+   }
+  },
+  {
+   "id": "D1-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 9,
+   "off_doc_in_top5": [
+    34,
+    39,
+    82
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 82,
+    "text": "the domain in which the comparison can be made is relatively small because of saturation of objects in eis at the bright end ([math]) and the shallow magnitude ..."
+   }
+  },
+  {
+   "id": "D2-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 7,
+   "off_doc_in_top5": [
+    10,
+    61,
+    66,
+    85
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 85,
+    "text": "mass transfer stability could be smaller than unity. the stability parameter [math] which enters the expression for steady - state mass transfer, equation [ eq:..."
+   }
+  },
+  {
+   "id": "D2-t2-mem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 7,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 36,
+    "text": "is said to synchronize if [math] and if all orbits synchronize, then we say to have synchronization of the map. synchronization is the simplest dynamical regime..."
+   }
+  },
+  {
+   "id": "D2-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.14285714285714285,
+   "P5": 0.0,
+   "n_rel": 7,
+   "off_doc_in_top5": [
+    2,
+    10,
+    61
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 10,
+    "text": "an external potential, [math], and on the real line. in the h - stable regime, the continuum model displays spreading density profiles, while in the catastrophi..."
+   }
+  },
+  {
+   "id": "D2-t2-mem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 7,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 36,
+    "text": "is said to synchronize if [math] and if all orbits synchronize, then we say to have synchronization of the map. synchronization is the simplest dynamical regime..."
+   }
+  },
+  {
+   "id": "D2-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.14285714285714285,
+   "P5": 0.0,
+   "n_rel": 6,
+   "off_doc_in_top5": [
+    61,
+    85
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 61,
+    "text": "we should acknowledge at the start that it seems a daunting task to try to explain with a single model the diverse, unstable behavior exhibited by this source, ..."
+   }
+  },
+  {
+   "id": "D2-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.5,
+   "P5": 0.2,
+   "n_rel": 6,
+   "off_doc_in_top5": [
+    10,
+    61
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 10,
+    "text": "note that ([ eq: morse ]) has fourier transform [ eq: qhatmorse ] [math]}{(1+{k}^{2})(1+(kl)^2)}.\\end{aligned}\\ ] ] the condition for h - stability is equivalen..."
+   }
+  },
+  {
+   "id": "D3-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.14285714285714285,
+   "P5": 0.0,
+   "n_rel": 6,
+   "off_doc_in_top5": [
+    23,
+    29,
+    41
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 48,
+    "text": "telescopes. this photometry was later calibrated with respect to standard stars including extinction and colour corrections. all reductions have been made with ..."
+   }
+  },
+  {
+   "id": "D3-t2-mem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.4,
+   "n_rel": 6,
+   "off_doc_in_top5": [],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 48,
+    "text": "16 to enhance the visibility of the absorption dip and to remove possible contamination due to photospheric lines. the displacement of the absorption dip measur..."
+   }
+  },
+  {
+   "id": "D3-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.14285714285714285,
+   "P5": 0.0,
+   "n_rel": 6,
+   "off_doc_in_top5": [
+    14,
+    23,
+    45,
+    61
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 45,
+    "text": "8.4 ghz. during that same time s2 has only slightly decreased. meanwhile both n5 and s5 have been declining though that appears to have leveled off starting in ..."
+   }
+  },
+  {
+   "id": "D3-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 1.0,
+   "P5": 0.2,
+   "n_rel": 8,
+   "off_doc_in_top5": [
+    3,
+    14,
+    29
+   ],
+   "top1_relevant": true,
+   "first_wrong": {
+    "doc": 29,
+    "text": "fitting the brightness excess at the cme rims at those times where bright rims are visible are consistent with a value of [math]. ll parameter & best - fit valu..."
+   }
+  },
+  {
+   "id": "D3-t2-mem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.5,
+   "P5": 0.6,
+   "n_rel": 8,
+   "off_doc_in_top5": [],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 48,
+    "text": "comparing the sequence of spectra between march 3 and 6 we can see a substantial fading of the absorption. the mean velocity displacement of the absorption meas..."
+   }
+  },
+  {
+   "id": "D3-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.3333333333333333,
+   "P5": 0.2,
+   "n_rel": 8,
+   "off_doc_in_top5": [
+    14,
+    23,
+    45,
+    69
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 45,
+    "text": "we are currently in the unbalanced situation where s5 appears to be brighter than n5, which would at first sight seem contrary to the expectations from doppler ..."
+   }
+  },
+  {
+   "id": "D4-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 4,
+   "off_doc_in_top5": [
+    12,
+    39,
+    83,
+    89
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 39,
+    "text": "the inertial range are respectively [math] ([math]), [math] ([math]), [math] ([math]) and [math] ([math]), in which the statistical error is the standard deviat..."
+   }
+  },
+  {
+   "id": "D4-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 4,
+   "off_doc_in_top5": [
+    12,
+    61,
+    83,
+    90
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 12,
+    "text": "claims of a lower limit on [math] from the dmr data alone are, at the very least, premature.) the [math] (e.g., eqs. [ 1 ] and [ 2 ]) were determined from a num..."
+   }
+  },
+  {
+   "id": "D4-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 4,
+   "off_doc_in_top5": [
+    12,
+    39,
+    55,
+    83,
+    90
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 55,
+    "text": "we have observed a substantial mismatch of amplitudes between computationally simulated and experimental data. hence, we have calibrated experimental data here ..."
+   }
+  },
+  {
+   "id": "D4-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 4,
+   "off_doc_in_top5": [
+    12,
+    27,
+    61,
+    83
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 12,
+    "text": "(the yb and bw claims of a lower limit on [math] from the dmr data alone are, at the very least, premature.) the [math] (e.g., eqs. [ 1 ] and [ 2 ]) were determ..."
+   }
+  },
+  {
+   "id": "D5-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 8,
+   "off_doc_in_top5": [
+    4,
+    74
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 4,
+    "text": "interpretation of the contribution of the dirac - sea quarks. to see it, we first recall that the theoretical unpolarized distribution function [math] appearing..."
+   }
+  },
+  {
+   "id": "D5-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 8,
+   "off_doc_in_top5": [
+    4
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 4,
+    "text": "dependence of [math] and [math]. as a function of [math], the dirac sea contribution to [math] decreases fast, whereas the valence quark contribution to it incr..."
+   }
+  },
+  {
+   "id": "D5-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 9,
+   "off_doc_in_top5": [
+    4,
+    84,
+    88
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 84,
+    "text": "this implies that all cone angles are integer multiples of [math]. equivalently a flat surface is a triple [math] such that [math] is a topological compact conn..."
+   }
+  },
+  {
+   "id": "D5-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 9,
+   "off_doc_in_top5": [
+    4,
+    15
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 4,
+    "text": "as a function of [math], the dirac sea contribution to [math] decreases fast, whereas the valence quark contribution to it increases slowly, so that the total [..."
+   }
+  },
+  {
+   "id": "D6-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 36,
+   "off_doc_in_top5": [
+    8,
+    25,
+    26,
+    59
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 59,
+    "text": "field is to plot vorticity isosurfaces see for instance the plots from. the resulting pictures are usually very `` crowded '', in the sense that there are many ..."
+   }
+  },
+  {
+   "id": "D6-t2-nomem",
+   "chunking": "fixed_window",
+   "rerank": true,
+   "RR": 0.3333333333333333,
+   "P5": 0.2,
+   "n_rel": 36,
+   "off_doc_in_top5": [
+    59
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 59,
+    "text": "available scales in the velocity, we can visualize vorticity at scale [math] by the curl of the velocity box - filtered at scale [math]. we follow a simple proc..."
+   }
+  },
+  {
+   "id": "D6-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": false,
+   "RR": 0.0,
+   "P5": 0.0,
+   "n_rel": 40,
+   "off_doc_in_top5": [
+    25,
+    26,
+    59
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 26,
+    "text": "the arrows show the direction of the time evolution.,title=\"fig:\",width=264 ] and [math] planes for the case of torsion parameter [math], where we choose the pa..."
+   }
+  },
+  {
+   "id": "D6-t2-nomem",
+   "chunking": "sentence_aware",
+   "rerank": true,
+   "RR": 0.25,
+   "P5": 0.2,
+   "n_rel": 40,
+   "off_doc_in_top5": [
+    8,
+    59
+   ],
+   "top1_relevant": false,
+   "first_wrong": {
+    "doc": 59,
+    "text": "we can exploit this facility to investigate the multiscale character of the turbulent cascade. because vorticity is dominated by the smallest available scales i..."
+   }
+  }
+ ]
+}
