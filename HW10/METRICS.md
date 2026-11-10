@@ -1,73 +1,103 @@
 # HW10 metrics
 
-All numbers come from `results.json` (quality) and `measurements.json` (timing, failures), produced by `rag_pipeline.py` and `measure.py`. Query-level values are in `results.json` under `perquery`.
+Numbers in the quality tables are copied from the outputs of the executed `HW10_RAG.ipynb` (GPU run, 2026-11-09). `results.json` comes from a separate run of `rag_pipeline.py` and agrees on every single-turn value; a few no-memory dialogue rows differ by up to about 0.015 (for example sentence-aware, reranked, no memory: P@5 0.240 in the notebook, 0.253 in `results.json`). Timing and failure data are in `measurements.json`, written by `measure.py`.
 
 ## Setup
 
 | Item | Value |
 |---|---|
-| Dataset | `ccdv/arxiv-summarization`, config `document`, first 100 `train` documents |
-| Average document length | 6,517 words |
-| Vector database | ChromaDB 1.5.9, persistent, cosine HNSW, one collection per chunking |
-| Embedder | `sentence-transformers/all-MiniLM-L6-v2` (normalised) |
+| Dataset | `ccdv/arxiv-summarization`, config `document`, first 100 `train` documents (average 6,517 words) |
+| Vector database | ChromaDB 1.5.9, persistent, cosine HNSW, one collection per chunking (single-threaded build, `search_ef` 200) |
+| Embedder | `sentence-transformers/all-MiniLM-L6-v2`, normalised |
 | Reranker | `cross-encoder/ms-marco-MiniLM-L-6-v2` over the top 20 dense candidates |
-| Single-turn queries | 14 (S1–S8 reuse the paper's wording, S9–S14 are paraphrased) |
-| Dialogues | 6 two-turn dialogues (D1–D6); only turn 2 is scored |
-| Relevance | coded rubric: target paper and at least 3 of 3–4 concept patterns (2 for D6) |
+| Single-turn queries | 40 (S1–S8 reuse the paper's wording, S9–S40 are paraphrased) |
+| Dialogues | 15 two-turn dialogues (D1–D15); only turn 2 is scored |
+| Relevance | coded rubric: chunk is from the target paper and mentions at least 3 of 3–4 concept patterns (2 for D6) |
+| Confidence intervals | 95% bootstrap over queries (5,000 resamples, seed 0); paired for differences |
 
 ## Chunking statistics
 
-| Chunking | Chunks | Mean words | Min words | Max words | Chunk time (s) | Embed time (s) | Chunks per second |
+| Chunking | Chunks | Mean words | Min | Max | Chunk time (s) | Embed time (s) | Chunks per second |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| fixed window (150 / 30 overlap) | 4,724 | 148.8 | 31 | 150 | 0.31 | 2.71 | 1,742 |
-| sentence-aware (about 150) | 5,256 | 135.9 | 9 | 300 | 0.38 | 2.28 | 2,307 |
+| fixed window (150 / 30 overlap) | 4,724 | 148.8 | 31 | 150 | 0.33 | 2.17 | 2,177 |
+| sentence-aware (about 150) | 5,256 | 135.9 | 9 | 300 | 0.33 | 2.14 | 2,456 |
 
-Embedding ran on an NVIDIA GeForce RTX 5090. Building both Chroma collections took 17–24 s across runs.
+Embedding ran on an NVIDIA GeForce RTX 5090. Building both collections took 16 s in the last run.
 
-## Without vs with reranking (14 single-turn queries)
+## Without vs with reranking (40 single-turn queries)
 
 | Chunking | Reranking | P@1 | P@3 | P@5 | P@10 | R@5 | R@10 | MRR |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
-| fixed | no | 0.857 | 0.738 | 0.686 | 0.586 | 0.416 | 0.685 | 0.911 |
-| fixed | yes | 1.000 | 0.786 | 0.757 | 0.643 | 0.516 | 0.751 | 1.000 |
-| sentence | no | 0.857 | 0.810 | 0.757 | 0.629 | 0.434 | 0.668 | 0.917 |
-| sentence | yes | 0.929 | 0.786 | 0.743 | 0.664 | 0.408 | 0.713 | 0.964 |
+| fixed | no | 0.675 | 0.600 | 0.575 | 0.480 | 0.373 | 0.554 | 0.775 |
+| fixed | yes | 0.775 | 0.625 | 0.605 | 0.520 | 0.384 | 0.577 | 0.845 |
+| sentence | no | 0.675 | 0.625 | 0.585 | 0.495 | 0.357 | 0.554 | 0.785 |
+| sentence | yes | 0.725 | 0.617 | 0.600 | 0.525 | 0.366 | 0.584 | 0.813 |
 
-The chunking comparison is the fixed and sentence rows with the same reranking setting.
+### 95% confidence intervals
 
-## Per-query reciprocal rank for the queries that are not 1.0 everywhere
+| Chunking | Reranking | P@5 | R@5 | MRR |
+|---|---|---|---|---|
+| fixed | no | 0.575 [0.475, 0.675] | 0.373 [0.290, 0.464] | 0.775 [0.669, 0.872] |
+| fixed | yes | 0.605 [0.515, 0.690] | 0.384 [0.291, 0.483] | 0.845 [0.747, 0.931] |
+| sentence | no | 0.585 [0.485, 0.680] | 0.357 [0.280, 0.441] | 0.785 [0.686, 0.879] |
+| sentence | yes | 0.600 [0.505, 0.695] | 0.366 [0.291, 0.447] | 0.813 [0.712, 0.906] |
 
-| Query | fixed, dense | fixed, rerank | sentence, dense | sentence, rerank |
-|---|---:|---:|---:|---:|
-| S4 (SiC second harmonic) | 1.00 | 1.00 | 1.00 | 0.50 |
-| S11 (merging binaries, templates) | 0.50 | 1.00 | 0.33 | 1.00 |
-| S14 (accessible astronomy resources) | 0.25 | 1.00 | 0.50 | 1.00 |
+### Paired differences (wins / ties / losses are per query, on reciprocal rank in the last column)
 
-All other queries (S1–S3, S5–S10, S12, S13) have reciprocal rank 1.00 in every configuration.
+| Comparison | ΔP@5 [CI] | ΔR@5 [CI] | ΔMRR [CI] | W / T / L (MRR) |
+|---|---|---|---|---|
+| rerank − dense, fixed | +0.030 [−0.025, 0.085] | +0.010 [−0.065, 0.080] | **+0.070 [0.000, 0.144]** | 10 / 27 / 3 |
+| rerank − dense, sentence | +0.015 [−0.025, 0.060] | +0.009 [−0.028, 0.041] | +0.028 [−0.031, 0.093] | 6 / 29 / 5 |
+| sentence − fixed, dense | +0.010 [−0.045, 0.065] | −0.017 [−0.072, 0.035] | +0.010 [−0.066, 0.088] | 9 / 25 / 6 |
+| sentence − fixed, rerank | −0.005 [−0.055, 0.045] | −0.018 [−0.069, 0.034] | −0.032 [−0.115, 0.052] | 6 / 29 / 5 |
 
-## Without vs with conversational memory (turn 2 of 6 dialogues)
+Only the fixed-window MRR gain from reranking has a lower bound at (not below) zero, and that is borderline. Nothing else in the reranking or chunking comparisons is distinguishable from zero.
+
+Largest per-query changes in reciprocal rank from reranking: gains S14 (0.25 → 1.00, fixed), S11 (0.33 → 1.00, sentence), S18 (0.33 → 1.00, sentence); losses S37 (1.00 → 0.33, fixed), S4 (1.00 → 0.50, sentence), S39 (0.50 → 0.20, sentence).
+
+## Without vs with conversational memory (turn 2 of 15 dialogues)
 
 | Chunking | Reranking | Memory | P@1 | P@3 | P@5 | R@5 | R@10 | MRR |
 |---|---|---|---:|---:|---:|---:|---:|---:|
-| fixed | no | no | 0.000 | 0.000 | 0.000 | 0.000 | 0.028 | 0.024 |
-| fixed | no | yes | 1.000 | 0.722 | 0.667 | 0.460 | 0.639 | 1.000 |
-| fixed | yes | no | 0.167 | 0.111 | 0.067 | 0.032 | 0.084 | 0.270 |
-| fixed | yes | yes | 1.000 | 0.833 | 0.800 | 0.564 | 0.760 | 1.000 |
-| sentence | no | no | 0.167 | 0.111 | 0.067 | 0.039 | 0.088 | 0.246 |
-| sentence | no | yes | 0.833 | 0.722 | 0.767 | 0.481 | 0.668 | 0.917 |
-| sentence | yes | no | 0.167 | 0.222 | 0.167 | 0.090 | 0.118 | 0.347 |
-| sentence | yes | yes | 1.000 | 0.944 | 0.867 | 0.539 | 0.706 | 1.000 |
+| fixed | no | no | 0.200 | 0.156 | 0.160 | 0.090 | 0.171 | 0.234 |
+| fixed | no | yes | 0.933 | 0.667 | 0.573 | 0.378 | 0.597 | 0.967 |
+| fixed | yes | no | 0.333 | 0.267 | 0.200 | 0.106 | 0.225 | 0.430 |
+| fixed | yes | yes | 1.000 | 0.778 | 0.720 | 0.502 | 0.700 | 1.000 |
+| sentence | no | no | 0.200 | 0.200 | 0.187 | 0.117 | 0.192 | 0.337 |
+| sentence | no | yes | 0.867 | 0.667 | 0.640 | 0.473 | 0.609 | 0.933 |
+| sentence | yes | no | 0.267 | 0.267 | 0.240 | 0.144 | 0.215 | 0.428 |
+| sentence | yes | yes | 1.000 | 0.756 | 0.707 | 0.520 | 0.654 | 1.000 |
 
-## Query latency (14 queries, 3 passes, GPU)
+### Paired improvement from memory (all intervals exclude zero)
+
+| Chunking | Reranking | ΔP@5 [CI] | ΔR@5 [CI] | ΔMRR [CI] |
+|---|---|---|---|---|
+| fixed | no | +0.413 [0.227, 0.613] | +0.288 [0.165, 0.435] | +0.733 [0.510, 0.920] |
+| fixed | yes | +0.520 [0.360, 0.667] | +0.396 [0.253, 0.557] | +0.570 [0.349, 0.779] |
+| sentence | no | +0.453 [0.280, 0.613] | +0.355 [0.206, 0.527] | +0.596 [0.340, 0.821] |
+| sentence | yes | +0.467 [0.267, 0.653] | +0.376 [0.204, 0.551] | +0.572 [0.372, 0.767] |
+
+## Rubric audit (120 chunks read one by one)
+
+`audit.py` pooled the top-5 chunks of fixed|dense and sentence|rerank for 10 randomly sampled single-turn queries, plus sentence|rerank|memory for 4 dialogues. Each chunk was labelled useful or not for answering the query without seeing the rubric's verdict. **The labels were assigned by Claude, not by independent human annotators**; the chunks are in `audit_items.txt` and the labels in `audit_labels.json` so they can be spot-checked.
+
+| | Rubric: relevant | Rubric: not relevant |
+|---|---:|---:|
+| Judged useful | 72 | 8 |
+| Judged not useful | 15 | 25 |
+
+Agreement 80.8%, Cohen's κ 0.55 (moderate), rubric precision 0.83, recall 0.90. The rubric is lenient: its 15 false positives are mostly methods, notation, references and background chunks from the right paper. On the audited pool it overstates P@5 by about 0.06 (fixed dense 0.72 vs 0.66; sentence reranked 0.73 vs 0.67) and MRR by 0.13–0.20 (0.92 vs 0.72; 0.96 vs 0.84). Absolute scores are therefore upper bounds; the comparisons between configurations are more reliable than the levels.
+
+## Query latency (40 queries × 3 passes, GPU)
 
 | Chunking | Pipeline | Median (ms) | p95 (ms) |
 |---|---|---:|---:|
-| fixed | dense only | 6.8 | 23.6 |
-| fixed | dense + rerank | 17.6 | 36.1 |
-| sentence | dense only | 8.4 | 12.3 |
-| sentence | dense + rerank | 18.9 | 26.0 |
+| fixed | dense only | 4.9 | 6.4 |
+| fixed | dense + rerank | 16.5 | 20.2 |
+| sentence | dense only | 5.1 | 7.7 |
+| sentence | dense + rerank | 16.2 | 21.8 |
 
-Reranking 20 candidates adds about 10 ms per query on this GPU. On a CPU it would be much larger; I did not measure that.
+Reranking 20 candidates adds about 11 ms per query on this GPU. I did not obtain a clean CPU timing (the one CPU attempt was interrupted). An earlier GPU measurement while other programs were using the card gave 18–30 ms for reranked queries, so latency varies with load.
 
 ## Cost
 
@@ -75,22 +105,30 @@ Reranking 20 candidates adds about 10 ms per query on this GPU. On a CPU it woul
 |---|---|
 | API calls | 0 |
 | Money spent on inference | $0 (all models run locally) |
-| One full run of `rag_pipeline.py` | 48.6 s wall clock, including model loading |
+| `rag_pipeline.py` end to end | 38 s wall clock including model loading |
+| Executed notebook | 51 s |
 
 ## Error analysis
 
-`measure.py` flags every (query, configuration) pair with reciprocal rank below 1 or P@5 below 0.5. That is 43 of the 56 single-turn cases (14 queries × 4 configurations) and 48 dialogue cases (6 dialogues × 8 configurations). They fall into four groups.
+`measure.py` flags every (query, configuration) case with reciprocal rank below 1 or P@5 below 0.5: **141** cases (40 queries × 4 configurations + 15 dialogues × 8 configurations = 280 cases in total). It sorts them automatically:
 
-| Group | Cases | What happened |
+| Category | Cases | What happens |
 |---|---:|---|
-| Few relevant chunks (ceiling) | 10 | S2, S4, S7 and S11 with reranking: the index holds only 2–5 chunks that satisfy the rubric, so P@5 is capped at 0.4–1.0 even when the top result is right. All ten have reciprocal rank 1.00. These are not retrieval failures. |
-| Paraphrase miss in dense retrieval | 4 | S11 and S14 without reranking. For S11 the top 5 contained chunks from other papers (documents 25, 81 or 82, 96); for S14 the right paper was found but its general chunks ranked above the ones about accessibility. Reranking moved the first relevant chunk to rank 1 in all four. |
-| Reranker regression | 1 | S4, sentence chunks: the cross-encoder placed a chunk from the right paper that fails the rubric above the relevant one (reciprocal rank 0.50). |
-| No-memory follow-ups | 24 | Turn 2 alone ("What conditions make it stable?", "How accurate is it compared with numerical simulations?", "What is the role of the Dirac cone there?") retrieved chunks from unrelated papers. 12 of the 24 have reciprocal rank 0.00, including all four configurations of D4 and D5. Reranking does not rescue them because the cross-encoder scores against the same ambiguous query. |
-| Memory residual | 4 | D2 and D3 with memory have the right paper in every top-5 slot, but only 2 of 5 are relevant (P@5 0.4), and D3 with sentence chunks and no reranking has reciprocal rank 0.50. Memory fixes the topic, not the ranking inside the paper. |
+| Follow-up without memory | 52 | Turn 2 alone ("What conditions make it stable?", "Which sites does it prefer?") retrieves unrelated papers; 24 of the 52 have reciprocal rank 0. Reranking cannot rescue them because it scores against the same ambiguous query. |
+| Capped by few relevant chunks (top-1 correct) | 27 | S2, S4, S7, S11, S24, S35, S40 and others: only 1–5 chunks in the index satisfy the rubric, so P@5 is capped even though the first result is right. Not retrieval failures. |
+| Right paper, answer chunk ranked low | 23 | The correct paper is found but rubric-passing chunks rank below intro, notation or reference text (S14, S16, S19, S20, S33). |
+| Other papers outrank the answer | 23 | Paraphrase misses: S11, S22 (supernova typing; top-5 includes the EX Lupi paper), S32 (solar eruption; the EX Lupi "eruption" paper outranks it), S36, S39. Reranking fixes some (S11) and not others (S22, S32, S36). |
+| Follow-up with memory: right paper, weak ranking | 10 | Memory fixes the topic, but only 1–2 of the top 5 chunks answer the question (D2, D3, D9, D14). |
+| Follow-up with memory: other papers in top 5 | 6 | D12 (cosmic-ray cutoff) and D13 (radio galaxy age) still pull in chunks from other papers after the first relevant hit. |
 
-The groups add to 10 + 4 + 1 + 24 + 4 = 43. The full per-case list is printed by `measure.py` and stored in `measurements.json` under `failures`.
+Per-case detail is in `measurements.json` under `failures`.
 
 ## Caveats
 
-14 queries and 6 dialogues are too few to separate configurations that differ by a few points; one query changing rank moves a single-turn average by about 0.07 and a memory average by about 0.17. Relevance is a keyword rubric tied to one paper per query, so useful chunks from other papers count as wrong and some right-paper chunks that do not contain the keywords count as wrong. Recall is computed against the relevant chunks in each index, so recall values are not directly comparable between chunkings, and S10 (65 relevant chunks) caps recall for any method. The memory test is favourable by design and has no topic switches. Only retrieval is evaluated; no answers are generated. The candidate pool is 20, so reranking cannot recover chunks the dense stage missed. Latency numbers are from a single GPU machine.
+- Queries, dialogues, the relevance rubric and the audit labels were all produced by the same assistant; there are no independent human annotators. The audit covers 14 of the 55 queries and dialogues.
+- Forty queries still give wide intervals (about ±0.1 on P@5 and MRR), which is why the reranking and chunking differences are inconclusive.
+- Recall is computed against the rubric-relevant chunks in each index, so recall is not directly comparable between chunkings, and S10 (65 relevant chunks) caps recall for any method.
+- The memory test is favourable by design: the follow-ups cannot be answered alone and no dialogue switches topic. Simple concatenation would pollute retrieval after a topic change.
+- Only retrieval is evaluated; no answers are generated. The candidate pool is 20, so reranking cannot recover chunks the dense stage missed.
+- Reruns are not bit-identical: one query's rank changed between two runs of the same code (GPU floating-point differences on near-tied chunks). Differences of that size are far below the confidence intervals.
+- During development the S37 rubric was rewritten after it returned zero relevant chunks (it required the phrase "charge order", which appears only in the paper's abstract, not its body).

@@ -374,12 +374,12 @@
   "sentence_aware|rerank|nomem": {
    "P@1": 0.26666666666666666,
    "R@1": 0.040067340067340064,
-   "P@3": 0.26666666666666666,
-   "R@3": 0.09566498316498316,
-   "P@5": 0.24000000000000002,
-   "R@5": 0.1441329966329966,
-   "P@10": 0.18666666666666668,
-   "R@10": 0.21493330743330744,
+   "P@3": 0.28888888888888886,
+   "R@3": 0.10307239057239057,
+   "P@5": 0.25333333333333335,
+   "R@5": 0.15154040404040403,
+   "P@10": 0.19333333333333336,
+   "R@10": 0.22234071484071485,
    "RR": 0.4277777777777778
   },
   "sentence_aware|rerank|mem": {
@@ -3308,12 +3308,12 @@
   "D1-t2|sentence_aware|rerank|nomem": {
    "P@1": 1.0,
    "R@1": 0.1111111111111111,
-   "P@3": 0.3333333333333333,
-   "R@3": 0.1111111111111111,
-   "P@5": 0.2,
-   "R@5": 0.1111111111111111,
-   "P@10": 0.1,
-   "R@10": 0.1111111111111111,
+   "P@3": 0.6666666666666666,
+   "R@3": 0.2222222222222222,
+   "P@5": 0.4,
+   "R@5": 0.2222222222222222,
+   "P@10": 0.2,
+   "R@10": 0.2222222222222222,
    "RR": 1.0
   },
   "D2-t2|sentence_aware|rerank|nomem": {
@@ -3647,17 +3647,17 @@
     {
      "doc": 0,
      "relevant": true,
+     "text": "we now add some theoretical and numerical comparisons on the goodness of our learning rates with those from the literature. as already mentioned in the introduction, some reasons for the popularity of..."
+    },
+    {
+     "doc": 0,
+     "relevant": true,
      "text": "the figures seem to indicate that our learning rate from theorem [ mainratesthm ] is probably not optimal for small dimensions. however, the main focus of the present paper is on high dimensions..[tab..."
     },
     {
      "doc": 46,
      "relevant": false,
      "text": "this experience leads naturally to the idea of trying to define what the higher dimensional analogues of the gray tensor product are, so as to set up a similar inductive definition as for strict [math..."
-    },
-    {
-     "doc": 82,
-     "relevant": false,
-     "text": "the domain in which the comparison can be made is relatively small because of saturation of objects in eis at the bright end ([math]) and the shallow magnitude limit of denis ([math]). still, within t..."
     }
    ]
   },
@@ -3786,9 +3786,9 @@
    0.695
   ],
   "memory|sentence_aware|rerank|nomem|P@5": [
-   0.24000000000000002,
-   0.10666666666666666,
-   0.4000000000000001
+   0.25333333333333335,
+   0.11999999999999998,
+   0.4133333333333334
   ],
   "memory|sentence_aware|rerank|mem|P@5": [
    0.7066666666666667,
@@ -3846,9 +3846,9 @@
    0.44668839833304064
   ],
   "memory|sentence_aware|rerank|nomem|R@5": [
-   0.1441329966329966,
-   0.05801872895622895,
-   0.2468482744107743
+   0.15154040404040403,
+   0.06443202861952863,
+   0.2573745791245791
   ],
   "memory|sentence_aware|rerank|mem|R@5": [
    0.5198174048174048,
@@ -3953,9 +3953,9 @@
    0.6133333333333334
   ],
   "mem-nomem|sentence_aware|rerank|P@5": [
-   0.4666666666666667,
-   0.26666666666666666,
-   0.6533333333333332
+   0.45333333333333337,
+   0.25333333333333335,
+   0.6266666666666667
   ],
   "rerank-dense|fixed_window|R@5": [
    0.010323593216069831,
@@ -3993,9 +3993,9 @@
    0.5240084175084175
   ],
   "mem-nomem|sentence_aware|rerank|R@5": [
-   0.37568440818440824,
-   0.20393840650090653,
-   0.5552866809116809
+   0.3682770007770008,
+   0.19752952602952603,
+   0.548059829059829
   ],
   "rerank-dense|fixed_window|RR": [
    0.06999999999999999,
