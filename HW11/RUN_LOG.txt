@@ -1,0 +1,15 @@
+HW11 execution log
+Date: 2026-11-17 (America/Los_Angeles)
+Command: .venv/bin/jupyter nbconvert --to notebook --execute HW11.ipynb --output HW11.ipynb --ExecutePreprocessor.timeout=-1 --ExecutePreprocessor.kernel_name=python3
+Environment: python 3.14 venv, torch 2.15.0, transformers 5.23.0, torchvision 0.29.2, device=mps (Apple Silicon)
+
+Personal parameters: SID4=3215 SEED=3215 SLICE=215 HP_ID=5 CLS_A=5 CLS_B=2
+Model: openai/clip-vit-base-patch32 (151.3M params). Part 1: 1,000 CIFAR-10 test images (100/class), caption "a photo of a dog". Part 2: all 10,000 test images.
+Results: Part 1 ROC-AUC 0.962; Part 2 accuracy 88.80% (single prompt), 89.05% (4-template ensemble).
+
+Run history:
+- Run 1 (about 25 min, mostly a slow CIFAR-10 download): failed at the box-plot cell, because this matplotlib renamed boxplot(labels=) to tick_labels=. Fixed.
+- A second attempt did not run because of a failed sed command, noticed and rerun.
+- Final run: succeeded, 21 min wall time (full 10,000-image embedding), no errors.
+
+The markdown text (intro and analysis cells) was reworded after execution; no code or outputs changed.

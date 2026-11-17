@@ -21,3 +21,4 @@ actual writeup.
 | [`GPU_assignment_2/`](GPU_assignment_2/) | GPU Assignment II (HW4.5): BERT fine-tune throughput and memory engineering on an RTX 4090 (batch scaling to the memory wall, mixed precision, gradient checkpointing, gradient accumulation, 8-bit optimizer) plus vLLM serving on a Colab T4. Tagged `hw4-5` |
 | [`HW9/`](HW9/) | Latent diffusion on Fashion-MNIST: SD VAE latents, class-conditional U-Net, classifier-free guidance |
 | [`HW10/`](HW10/) | RAG with reranking, two chunking strategies and conversational memory on arXiv papers (ChromaDB, cross-encoder reranking, Precision@K / Recall@K / MRR) |
+| [`HW11/`](HW11/) | CLIP image-text similarity (1,000 CIFAR-10 images vs one caption) and zero-shot CIFAR-10 classification (88.8%, per-class accuracy, confusion matrix) |
