@@ -1,0 +1,7 @@
+ckpt/
+.venv/
+.ipynb_checkpoints/
+teacher_model/
+outputs/*.npy
+.DS_Store
+*.7z
