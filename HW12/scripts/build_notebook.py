@@ -170,8 +170,8 @@ code(r'''
 import torch.nn.functional as F
 from transformers import AutoModelForSequenceClassification
 ag = load_dataset("fancyzhx/ag_news"); CLASSES = ag["train"].features["label"].names
-tr_text, tr_y = ag["train"]["text"], np.array(ag["train"]["label"])
-te_text, te_y = ag["test"]["text"], np.array(ag["test"]["label"])
+tr_text, tr_y = list(ag["train"]["text"]), np.array(ag["train"]["label"])
+te_text, te_y = list(ag["test"]["text"]), np.array(ag["test"]["label"])
 log(f"AG News train={len(tr_text)} test={len(te_text)} classes={CLASSES}")
 
 def encode(tk, texts):

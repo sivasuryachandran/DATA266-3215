@@ -9,9 +9,11 @@ Siva Surya Chandran
 Only SEED is used in this homework (HP_ID adds no temperature in HW11).
 
 ## Status
-`HW12.ipynb` is built by `scripts/build_notebook.py` but **has not been executed yet**: it needs a CUDA GPU, the instructor's `teacher_model/` folder, and the instructor-approved GPTQ base LLM, none of which are on this Mac. Run it top to bottom on Colab (T4 or better) with `teacher_model/` uploaded next to it. The run writes `RUN_LOG.txt`, `METRICS.md`, `outputs/*.json` and `figures/*.png`; commit the executed notebook with outputs.
+`HW12.ipynb` was executed top to bottom on a Colab Tesla T4 with outputs saved. Results: `METRICS.md` (Tables HW11.1 and HW11.2 plus the sweeps), `REPORT.md` (written findings, error analysis, quantization vs distillation), `RUN_LOG.txt`, `figures/` (loss trends, sweeps), `AI_USE.md`. The notebook's two findings cells were left as placeholders on purpose (the notebook was not edited after the run); the findings are in `REPORT.md`. `outputs/*.json` and the checkpoints exist only on the Colab machine.
 
-## Things to confirm before running
+Headline: GPTQ 4-bit on `facebook/opt-125m` -> perplexity 27.66 to 31.18, size 250.5 to 129.3 MB, but about 1.9x slower. Distillation -> DistilBERT student matches the BERT teacher (94.45% vs 94.43% on AG News test) at 1.95x lower batch-1 latency and 38.7% smaller size.
+
+## Choices and assumptions
 1. `LLM_ID` (cell 1) defaults to `facebook/opt-125m`. Replace it with the instructor-provided model; the notebook records the exact revision hash.
 2. The pasted brief lost its math: the temperature set, the alpha set and the formula symbol were blank. I assumed T in {1, 2, 4, 8} and alpha in {0.3, 0.5, 0.7} (alpha = weight on cross-entropy, KL weight = 1 - alpha, KL scaled by T^2), with alpha = 0.5 during the temperature sweep. Edit `TEMPS`, `ALPHAS`, `SWEEP_ALPHA` in cell 1 if the brief says otherwise.
 3. Teacher logits are extracted for all 120k training samples as required; 5,000 of them are held out as validation so T and alpha are chosen without using the test set. Students train on the other 115k.

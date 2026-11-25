@@ -1,0 +1,75 @@
+HW11 execution log (assignment HW11, submitted in the HW12 folder)
+Source: console log lines the notebook printed during the run that produced METRICS.md (timestamps are UTC, Google Colab, Tesla T4).
+Command: HW12.ipynb run top to bottom in a Colab runtime (cell 0 installs and restarts the runtime).
+
+Personal parameters: SID4=3215 SEED=3215 SLICE=215 HP_ID=5 CLS_A=5 CLS_B=2
+
+[2026-11-25T01:21:50] === HW11 run start ===
+[2026-11-25T01:21:50] SID4=3215 SEED=3215 SLICE=215 HP_ID=5 CLS_A=5 CLS_B=2
+[2026-11-25T01:21:50] GPU=Tesla T4 torch=2.15.0+cu132 transformers=5.24.1 python=3.13.16
+[2026-11-25T01:24:26] Base LLM: facebook/opt-125m revision=27dcfa74d334bc871f3234de431e71c6eeba5dd6
+[2026-11-25T01:24:45] calibration windows=128 x 1024 tokens; Wikitext2 test tokens=287645
+[2026-11-25T01:25:45] Base LLM (fp16) {"name": "Base LLM (fp16)", "ppl": 27.661468398681446, "nll": 3.3200404122708154, "gen_p50_ms": 593.1802100000141, "gen_p95_ms": 815.0904545499542, "prefill_p50_ms": 11.430783499918107, "prefill_p95_ms": 14.3219713499775, "peak_mem_gb": 1.365654528, "size_mb": 250.501832}
+[2026-11-25T01:28:37] GPTQ quantization time 169s
+[2026-11-25T01:29:56] GPTQ 4-bit LLM {"name": "GPTQ 4-bit LLM", "ppl": 31.18310850164278, "nll": 3.4398765540305756, "gen_p50_ms": 1156.2839954999617, "gen_p95_ms": 1542.9275501998743, "prefill_p50_ms": 20.768685499888306, "prefill_p95_ms": 25.422097549903807, "peak_mem_gb": 1.23369728, "size_mb": 129.277734}
+[2026-11-25T01:33:27] AG News train=120000 test=7600 classes=['World', 'Sports', 'Business', 'Sci/Tech']
+[2026-11-25T01:33:28] teacher: ['BertForSequenceClassification'] params 109485316
+[2026-11-25T01:35:34] teacher logits extracted for 120000 train samples in 127s; teacher test acc=0.9443; train acc=0.9895
+[2026-11-25T01:52:12] [T=1,a=0.5] step 1000/3594 loss=0.1860 ce=0.2037 kd=0.1684
+[2026-11-25T01:54:26] [T=1,a=0.5] epoch 1/2 val_acc=0.9388
+[2026-11-25T01:55:00] [T=1,a=0.5] step 2000/3594 loss=0.1121 ce=0.1260 kd=0.0982
+[2026-11-25T01:57:49] [T=1,a=0.5] step 3000/3594 loss=0.1004 ce=0.1140 kd=0.0867
+[2026-11-25T01:59:31] [T=1,a=0.5] epoch 2/2 val_acc=0.9434
+[2026-11-25T01:59:33] [T=1,a=0.5] DONE T=1 alpha=0.5 val_acc=0.9434 test_acc=0.9457 time=599s
+[2026-11-25T02:02:56] [T=2,a=0.5] step 1000/3594 loss=0.3503 ce=0.2349 kd=0.4658
+[2026-11-25T02:05:12] [T=2,a=0.5] epoch 1/2 val_acc=0.9404
+[2026-11-25T02:05:46] [T=2,a=0.5] step 2000/3594 loss=0.2022 ce=0.1432 kd=0.2613
+[2026-11-25T02:08:34] [T=2,a=0.5] step 3000/3594 loss=0.1841 ce=0.1344 kd=0.2339
+[2026-11-25T02:10:15] [T=2,a=0.5] epoch 2/2 val_acc=0.9442
+[2026-11-25T02:10:18] [T=2,a=0.5] DONE T=2 alpha=0.5 val_acc=0.9442 test_acc=0.9454 time=607s
+[2026-11-25T02:13:32] [T=4,a=0.5] step 1000/3594 loss=0.4860 ce=0.2584 kd=0.7136
+[2026-11-25T02:15:47] [T=4,a=0.5] epoch 1/2 val_acc=0.9386
+[2026-11-25T02:16:21] [T=4,a=0.5] step 2000/3594 loss=0.2739 ce=0.1561 kd=0.3916
+[2026-11-25T02:19:10] [T=4,a=0.5] step 3000/3594 loss=0.2550 ce=0.1510 kd=0.3589
+[2026-11-25T02:20:51] [T=4,a=0.5] epoch 2/2 val_acc=0.9446
+[2026-11-25T02:20:54] [T=4,a=0.5] DONE T=4 alpha=0.5 val_acc=0.9446 test_acc=0.9470 time=608s
+[2026-11-25T02:23:52] [T=8,a=0.5] step 1000/3594 loss=0.5029 ce=0.2625 kd=0.7433
+[2026-11-25T02:26:07] [T=8,a=0.5] epoch 1/2 val_acc=0.9410
+[2026-11-25T02:26:41] [T=8,a=0.5] step 2000/3594 loss=0.2858 ce=0.1607 kd=0.4110
+[2026-11-25T02:29:29] [T=8,a=0.5] step 3000/3594 loss=0.2604 ce=0.1515 kd=0.3693
+[2026-11-25T02:31:11] [T=8,a=0.5] epoch 2/2 val_acc=0.9454
+[2026-11-25T02:31:14] [T=8,a=0.5] DONE T=8 alpha=0.5 val_acc=0.9454 test_acc=0.9461 time=609s
+[2026-11-25T02:31:47] best temperature by validation accuracy: T=8
+[2026-11-25T02:34:33] [T=8,a=0.3] step 1000/3594 loss=0.5932 ce=0.2712 kd=0.7313
+[2026-11-25T02:36:49] [T=8,a=0.3] epoch 1/2 val_acc=0.9416
+[2026-11-25T02:37:23] [T=8,a=0.3] step 2000/3594 loss=0.3315 ce=0.1657 kd=0.4025
+[2026-11-25T02:40:11] [T=8,a=0.3] step 3000/3594 loss=0.3125 ce=0.1643 kd=0.3760
+[2026-11-25T02:41:53] [T=8,a=0.3] epoch 2/2 val_acc=0.9472
+[2026-11-25T02:41:55] [T=8,a=0.3] DONE T=8 alpha=0.3 val_acc=0.9472 test_acc=0.9445 time=607s
+[2026-11-25T02:44:52] [T=8,a=0.5] step 1000/3594 loss=0.5029 ce=0.2625 kd=0.7433
+[2026-11-25T02:47:07] [T=8,a=0.5] epoch 1/2 val_acc=0.9410
+[2026-11-25T02:47:42] [T=8,a=0.5] step 2000/3594 loss=0.2858 ce=0.1607 kd=0.4110
+[2026-11-25T02:50:30] [T=8,a=0.5] step 3000/3594 loss=0.2604 ce=0.1515 kd=0.3693
+[2026-11-25T02:52:11] [T=8,a=0.5] epoch 2/2 val_acc=0.9454
+[2026-11-25T02:52:14] [T=8,a=0.5] DONE T=8 alpha=0.5 val_acc=0.9454 test_acc=0.9461 time=609s
+[2026-11-25T02:55:02] [T=8,a=0.7] step 1000/3594 loss=0.4043 ce=0.2494 kd=0.7658
+[2026-11-25T02:57:17] [T=8,a=0.7] epoch 1/2 val_acc=0.9408
+[2026-11-25T02:57:51] [T=8,a=0.7] step 2000/3594 loss=0.2398 ce=0.1541 kd=0.4400
+[2026-11-25T03:00:40] [T=8,a=0.7] step 3000/3594 loss=0.2152 ce=0.1416 kd=0.3868
+[2026-11-25T03:02:22] [T=8,a=0.7] epoch 2/2 val_acc=0.9462
+[2026-11-25T03:02:24] [T=8,a=0.7] DONE T=8 alpha=0.7 val_acc=0.9462 test_acc=0.9464 time=609s
+[2026-11-25T03:02:25] best alpha at T=8: 0.3; overall best student: {'val': 0.9472, 'T': 8, 'alpha': 0.3, 'tag': 'T=8,a=0.3'}
+[2026-11-25T03:03:10] Teacher (BERT-base) {"name": "Teacher (BERT-base)", "acc": 0.9443421052631579, "p50_ms": 8.632621999367984, "p95_ms": 10.419325150087387, "peak_mem_gb": 1.43190784, "size_mb": 437.965806, "params_m": 109.485316}
+[2026-11-25T03:03:24] Best distilled student (T=8, alpha=0.3) {"name": "Best distilled student (T=8, alpha=0.3)", "acc": 0.9444736842105264, "p50_ms": 4.417160499997408, "p95_ms": 5.279400300196355, "peak_mem_gb": 1.699738624, "size_mb": 268.55135, "params_m": 66.956548}
+[2026-11-25T03:03:25] largest degradation: class 'Business' (teacher 0.9137 -> student 0.9111)
+[2026-11-25T03:03:25] === HW11 run end ===
+
+Errors hit while getting to this run (each fixed before the final run; details in AI_USE.md):
+- load_dataset('wikitext') rejected by the new huggingface_hub (needs namespaced id Salesforce/wikitext).
+- torchaudio/CUDA-version mismatch after gptqmodel upgraded torch -> OPT failed to import (OPTForCausalLM); fixed by removing torchaudio/torchvision and restarting the runtime.
+- GPTQ calibration crashed: 'CUDA error: device-side assert triggered' (2048-token windows + BOS exceeded OPT's 2048 positions); fixed with 1024-token calibration windows.
+- teacher_model not found on Colab (first as a missing folder, then a truncated 178 MB upload of the 401.7 MB .7z); fixed by re-downloading with a size check.
+- ValueError 'text input must be of type str' in teacher-logit extraction (datasets returned a Column object); fixed with list(...).
+- Runtime restarts lost kernel state several times (NameError for AutoModelForCausalLM / load_dataset); cells were re-run in order.
+
+Note: Part 1 was run twice because outputs/part1.json was lost with a runtime restart; the table uses the second Part 1 run (base 01:25:45, GPTQ 01:29:56). The first run gave the same perplexities (27.661 / 31.183).
